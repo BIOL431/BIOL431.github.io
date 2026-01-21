@@ -1,0 +1,492 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "",
+    "text": "Welcome to BIOL 431"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction to the Course",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "1  TEST",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2\n\n\n\n2 test\n\n1 + 1\n\n[1] 2\n\n\nasdfaf\n\n\n3 test2\nasfda"
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "linearmodels.html",
+    "href": "linearmodels.html",
+    "title": "5  Linear Models",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n6 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n7 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "simulation.html",
+    "href": "simulation.html",
+    "title": "4  Simulation and Probability",
+    "section": "",
+    "text": "Schedule\n\nSimulating data (15 min)\nFunctions (10 min)\nWriting functions (25 min)\nBasics of probability distributions (20 min)\np-values (20 min)\n\nLearning outcomes\nAfter this lecture, students should know:\n\nSimulating data can help us understand what assumptions we’ve made and lets us build and test models when we know the answer\nFunctions are a set of code that take inputs and return outputs based on a set of instructions that the user gives\nProbability distributions can be discrete or continuous\nProbability distributions have different ranges (sets of possible values) and supports (values they can take)\nDiscrete probability distributions have probability mass, and those probabilities must sum to 1\nContinuous probability distributions have probability density under each potential value and the area under the curve must sum to 1\nThe normal (Gaussian) distribution has a range of \\(\\in (-\\infty, \\infty)\\) and support of all real numbers\nThe Bernoulli distribution has a range of \\(\\in (0, 1)\\) and a support of \\((0,1)\\)\nThe probability mass function for the Bernoulli distribution is \\(P(X=1) = p, P(X=0) = 1-p\\)\nReal numbers are those found on the number line (rational and irrational numbers) but not imaginary; integers are whole numbers that can be positive, negative, or zero; rational numbers can be expressed as ratio of two integers; irrational numbers cannot\nEmpirical data can be used to estimate probability of observing data\nProbability density or mass functions can be used to estimate the probability of observing data\nA p-value is the probability of observing your data, or data more extreme, if the null is true\n\n\n5 Why simulate data\n\n\n6 Functions\n\n\n7 Probability distributions\n\n\n8 Discrete\n\nrbinom(n = 1, size = 1, prob=0.5)\n\n[1] 1\n\n\n\n\n9 Continuous\n\nrnorm(1, 0, 1)\n\n[1] -0.601442\n\n\n\n\n10 Probability mass\n\npbinom(1, 1, 0.5)\n\n[1] 1\n\n\n\n\n11 Probability density\n\npnorm(1, 0, 1)\n\n[1] 0.8413447"
+  },
+  {
+    "objectID": "jags.html",
+    "href": "jags.html",
+    "title": "18  Fitting Bayesian Models",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n19 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n20 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "modelfit.html",
+    "href": "modelfit.html",
+    "title": "6  Model Fitting",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n7 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n8 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "causality.html",
+    "href": "causality.html",
+    "title": "14  Correlation and Causation",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n15 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n16 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "hypotheses.html",
+    "href": "hypotheses.html",
+    "title": "2  Hypotheses and Models",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n3 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n4 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "index.html#test2",
+    "href": "index.html#test2",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "test2",
+    "text": "test2\n\n1 + 1\n\n[1] 2\n\n\n\ntest 3\n\nlevel 4"
+  },
+  {
+    "objectID": "variables.html",
+    "href": "variables.html",
+    "title": "3  Random Variables",
+    "section": "",
+    "text": "Katie: HHHHL(L) Ed: L(H) David: (L) Rose: H(H) Jo: HLHHLLHHLHHLL(H)\nSchedule\n\nGuillemot chick survival (5 min) video\nSimulating draws from a Bernoulli distribution (15 min)\nActivity: probability of guessing horse or laminator correctly (30 min)\nBinomial distribution (10 min)\nLaw of large numbers (20 min)\nVectors (10 min)\n\nLearning outcomes\nAfter this lecture, students should know:\n\nRandom variables are described by probability distributions\nRandom variables can be described mathematically\nThe Bernoulli distribution simulates one flip of a coin\nThe probability of success is on a per trial basis\nThe Binomial distribution simulates multiple trials\nIncreasing sample sizes towards infinity results in more stable estimates of probability from observations\nR has built-in functions for simulating most probability distributions"
+  },
+  {
+    "objectID": "distributions.html",
+    "href": "distributions.html",
+    "title": "10  Probability Distributions",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n11 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n12 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "uncertainty.html",
+    "href": "uncertainty.html",
+    "title": "9  Uncertainty",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n10 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n11 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "pathanalysis.html",
+    "href": "pathanalysis.html",
+    "title": "15  Path Analysis",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n16 test\n\n1 + 1\n\n[1] 2\n\n\n\n\n17 test2\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "index.html#about-this-book-1",
+    "href": "index.html#about-this-book-1",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "About this ‘book’",
+    "text": "About this ‘book’\nThese are my notes to accompany lectures for BIOL 480Q/580Q: Ecological Modeling (Fall 2024). They are not meant to be a textbook by any means, but rather a pretty casual introduction to statistics and modeling in R relevant to ecologists. Because the course is cross-listed as a graduate and undergraduate course, I assume many folks are coming to it with minimal background in probability, statistics, or coding, so this should hopefully be a pretty gentle introduction.\nAlso, I am writing it up as we go along in the course this semester, so more sections will be added as we go along. I will do my best to tell you which section(s) we will cover each week but we may spill over if we get through something quickly, or spend more time on some concepts than I anticipate."
+  },
+  {
+    "objectID": "index.html#why-this-course",
+    "href": "index.html#why-this-course",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "Why this course?",
+    "text": "Why this course?\nJust before I started graduate school nearly a decade ago, a survey found that most early career ecologists lacked adequate quantitative training and 75% were not satisfied with their own understanding of ecological modeling. Ecology has always been heavily rooted in mathematics, and has become increasingly quantitative in recent decades, but graduate training has lagged behind that trend. I was lucky to have taken an Ecological Modeling course taught by two brilliant quantitative ecologists (and excellent human beings) - Morgan Tingley and Robi Bagchi - during my PhD at the University of Connecticut. This course is inspired by theirs, and similarly aims to train the next generation of quantitative ecologists.\n\n\n\nFigure from Barraquand et al. (2014) showing the relationship between early career ecologists’ satisfaction with their understanding of mathematical models and how involved they are in ecological modeling.\n\n\nOne of the reasons I teach this course is because I think it is really important for students to really understand their data and how to properly analyze it to address their hypotheses. Too often, the way statistics is taught (including how I was first introduced to it as an undergrad) is very rigid, with strict rules to follow, assumptions to be met, and prescribed ways of doing things. Many of us have come across guidelines like these charts for how to pick the right statistical test for your data.\n \nI also think that this approach to learning statistics instills a wariness about doing analyses ‘wrong’, which can turn many students away from statistics and modeling. I have absolutely no data to back this up, but I suspect the rigid way in which statistics is taught is one reason for a gender gap in quantitative ecology. Gender stereotypes can cause girls to internalize that they are ‘bad at math’ at an early age, which combined with a fear of not getting the ‘rules’ of statistics right, could be one reason why only 4% of early career women in ecology indicate being very involved in ecological modeling compared to 10% of men.\n\n\n\nGender differences in how PhD students and postdocs in North America rate their involvement in ecological modeling (5 being high, 1 being low). Figure derived from supplemental materials in Barraquand et al. (2014).\n\n\n\n\n\nGender differences in how PhD students and postdocs in North America rate their level of comfort in using equations for ecological modeling (5 being high, 1 being low). Figure derived from supplemental materials in Barraquand et al. (2014).\n\n\nIt is also really important for students to develop quantitative skills for their future employment prospects. For graduate students aiming for academic careers, quantitative skills can help them secure permanent positions. 40% of faculty job listings in ecology and related fields require some level of quantitative skills, and 21% require “strong” quantitative skills. Many industry and government research positions also require quantitative skills, including data analysis, visualization, and modeling.\nPerhaps most importantly, learning how to code and build models opens up a whole new world of possibilities for asking interesting questions. More often than not, we address questions using the tools we have at our disposal (i.e. if you’ve got a hammer, everything looks like a nail). The type of statistical tests that students often learn are inadequate to deal with many of the questions and hypotheses in ecology and related fields. Instead of being constrained by what statistical tests will be possible with the data or cramming the data into a test that does not really fit, students can learn to build models that truly address their research questions, opening up the possibility for more novel hypotheses."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "About me",
+    "text": "About me\nHi! If you’re reading this, you’re probably a student in BIOL 431/531: Ecological Modeling. If not, it’s a bit weird that you ended up here, but welcome. I’m Eliza Grames, an Assistant Professor at Binghamton University. I am a conservation biologist and quantitative ecologist whose research primarily focuses on understanding the long-term status and trends of insect biodiversity, drivers of insect biodiversity loss, and consequences of declines in insect abundance and biomass for ecosystem function. As the course goes on, you will also learn that I really like cooking, the Lord of the Rings, and memes."
+  },
+  {
+    "objectID": "index.html#about-this-book",
+    "href": "index.html#about-this-book",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "About this ‘book’",
+    "text": "About this ‘book’\nThese notes are meant to supplement and accompany lectures and labs for BIOL 431/531: Ecological Modeling (Spring 2026) at Binghamton University. They are not meant to be a formal textbook by any means, but rather a pretty casual introduction to data, statistics, and modeling in R for ecologists. Because the course is cross-listed as a graduate and undergraduate course, I assume most people have minimal background in probability, statistics, or coding, so this should hopefully be a pretty gentle (and meme-heavy) introduction.\nThis ‘book’ was first drafted in Fall 2024, however, the course was previously taught as a 2-credit graduate seminar so I am editing and writing new sections as we go along. More sections will be added, and current sections may be updated depending on the pacing of the course (e.g., we may slow down if topics are particularly challenging, or may breeze through some if they do not warrant more time). This is the first semester the course has been taught as a full course with a lab section, and there will be some growing pains. I will do my best to tell you which section(s) we will cover each week and they will roughly parallel the syllabus, but we could end up skipping ahead, going backwards, or spending more time on some concepts than I anticipate.\nIf you’re reading along and find something to be particularly confusing, please do let me know! This is one of the two courses I regularly teach (the other being BIOL 477: Conservation Biology) and I will be updating this ‘book’ and all the other course materials every semester until it is finally in a shape I am mostly happy with (at which point I will still be tweaking things, but for the first few semesters, there will likely be major changes)."
+  },
+  {
+    "objectID": "index.html#why-do-i-teach-this-course",
+    "href": "index.html#why-do-i-teach-this-course",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "Why do I teach this course?",
+    "text": "Why do I teach this course?\nEcology has always been heavily rooted in mathematics, but we often don’t include it in student training as much as we should. Just before I started graduate school (a decade ago, at this point!), a survey found that most early career ecologists lacked adequate quantitative training and 75% were not satisfied with their own understanding of ecological modeling. Ecology has always been heavily rooted in mathematics, and has become increasingly quantitative in recent decades, but graduate training has lagged behind that trend. I was lucky to have taken an Ecological Modeling course taught by two brilliant quantitative ecologists (and excellent human beings) - Morgan Tingley and Robi Bagchi - during my PhD at the University of Connecticut. This course is inspired by theirs, and similarly aims to train the next generation of quantitative ecologists.\n\n\n\nFigure from Barraquand et al. (2014) showing the relationship between early career ecologists’ satisfaction with their understanding of mathematical models and how involved they are in ecological modeling.\n\n\nOne of the reasons I teach this course is because I think it is really important for students to really understand their data and how to properly analyze it to address their hypotheses. Too often, the way statistics is taught (including how I was first introduced to it as an undergrad) is very rigid, with strict rules to follow, assumptions to be met, and prescribed ways of doing things. Many of us have come across guidelines like these charts for how to pick the right statistical test for your data.\n \nI also think that this approach to learning statistics instills a wariness about doing analyses ‘wrong’, which can turn many students away from statistics and modeling. I have absolutely no data to back this up, but I suspect the rigid way in which statistics is taught is one barrier to more students from historically underrepresented groups in STEM pursuing quantitative ecology. For example, gender stereotypes can cause girls to internalize that they are ‘bad at math’ at an early age, which combined with a fear of not getting the ‘rules’ of statistics right, could be one reason why only 4% of early career women in ecology indicate being very involved in ecological modeling compared to 10% of men. Note that the survey these data are based on only included binary categories for gender (one of the many ways in which data, and statistics, we encounter do not always reflect reality!).\n\n\n\nGender differences in how PhD students and postdocs in North America rate their involvement in ecological modeling (5 being high, 1 being low). Figure derived from supplemental materials in Barraquand et al. (2014).\n\n\n\n\n\nGender differences in how PhD students and postdocs in North America rate their level of comfort in using equations for ecological modeling (5 being high, 1 being low). Figure derived from supplemental materials in Barraquand et al. (2014).\n\n\nIt is also really important for students to develop quantitative skills for their future employment prospects. For graduate students aiming for academic careers, quantitative skills can help them secure permanent positions. 40% of faculty job listings in ecology and related fields require some level of quantitative skills, and 21% require “strong” quantitative skills. Many industry and government research positions also require quantitative skills, including data analysis, visualization, and modeling.\nPerhaps most importantly, learning how to code and build models opens up a whole new world of possibilities for asking interesting questions. More often than not, we address questions using the tools we have at our disposal (i.e. if you’ve got a hammer, everything looks like a nail). The type of statistical tests that students often learn are inadequate to deal with many of the questions and hypotheses in ecology and related fields. Instead of being constrained by what statistical tests will be possible with the data or cramming the data into a test that does not really fit, students can learn to build models that truly address their research questions, opening up the possibility for more novel hypotheses."
+  },
+  {
+    "objectID": "index.html#how-to-approach-this-course",
+    "href": "index.html#how-to-approach-this-course",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "How to approach this course",
+    "text": "How to approach this course\nThe goal of this course is to get you to think quantitatively i.e. recognizing that data are generated by deterministic and stochastic processes, both of which are defined by you (or your understanding of the biology of the system that you are modeling or making inference on). No one can really tell you how to model or analyze your data - there is no lookup table for ecological modeling.\nAfter this course, you should know enough to 1) be dangerous on Google / StackOverflow to find analytical / modeling approaches that match your questions and data, and 2) write or adapt code to implement those models and not be reliant on a GUI. The goal is not complete mastery of statistics, modeling, or data analysis.\n\n\n\nThe goal of this course is to get you closer to becoming dangerous.\n\n\n1. It is not about content mastery. This course likely requires a different mindset from what you have encountered previously, primarily because it is not about content mastery. To be a specialist in any field, including biology, there is a lot of content that you need to have under your belt, which is why many undergraduate (and graduate) courses emphasize understanding principles and knowing certain key information (e.g. you need to know population dynamics, cell division, anatomy and physiology, evolutionary principles, etc.). In contrast, this course is much more about building your toolset and learning techniques, then recombining them in new ways when faced with different modeling problems. In many ways, learning how to analyze your data, how to code, how to specify models, etc. is like learning how to cook.\nThink of content mastery as foraging - if you are in the woods collecting mushrooms, you must know which ones are edible and which are poisonous and how to tell the difference. Knowing what you can and cannot eat is essential background information. Modeling, on the other hand, is more like cooking - what are you going to do with what you’ve gathered?\n2. It is better to know of many methods than to know a few in-depth.\nWe have 28 hours together this semester. With that time, I could teach you one specific model each week and we could go very in-depth to know all the details, assumptions, modifications, etc. To put it in a cooking context, I could teach you one recipe each week and by the end of the course you would know how to make 14 of my favorite dishes. Or, instead, you could be exposed to many different types of food that you might like to make depending on what you’re in the mood for, covering a variety of cooking styles, techniques, and cuisines. Knowing that these dishes exist and having a general sense of what you want to make gives you many more options than just knowing how I make guacamole.\n3. Not all methods are suitable for your research questions.\nEven knowing that there are many dishes you could make, not all of them will suit you. Some weeks the dishes won’t work for your dietary needs (e.g. maybe you never have nested data) or you will wonder why anyone would ever want to cook French food. Then, we will get to Mexican food the next week (er, I mean structural equation modeling) and it will be exactly what you were looking for. Even on weeks that are not currently relevant to your research, it is still good to know that they exist and you may encounter those methods in other ways and be glad you have a basic understanding (e.g. as a peer reviewer).\n4. You can always look up how to implement a method.\nIf you know a dish exists but you are not entirely sure how to make it, you can look up a recipe and follow along. The same is true of models. Some recipes are not exactly what you want, but if you know what you’re looking for, eventually you’ll find a good example, guide, or tutorial. And sometimes, you may go to a restaurant (i.e. a journal article) and you really like it and try to recreate it!\n5. Practicing is important.\nThe first time you try a new recipe, it may not go well, but you’ll get better with practice. And at least you tried! With coding, you will need to keep at it and you will learn new tricks the more you practice.\n6. Selecting methods a priori is better than post-hoc.\nSometimes, you have been handed ingredients and are trying to find a recipe that will work with what you have. For example, in a data context, your PI may give you a dataset, you may be working with historical data, or you collected the data before having a plan for analysis. In an ideal world, you know what you are going to cook in advance so you have all the ingredients that you need on hand.\n\n\n\nFiguring out which models are possible post-hoc.\n\n\n\n\n\nPlanning your analyses before collecting data,"
+  },
+  {
+    "objectID": "index.html#a-brief-history-of-statistics-and-eugenics",
+    "href": "index.html#a-brief-history-of-statistics-and-eugenics",
+    "title": "BIOL 431/531: Ecological Modeling",
+    "section": "A brief history of statistics and eugenics",
+    "text": "A brief history of statistics and eugenics\nThere are many figures in ecology and evolutionary biology that were giants in their field and helped shape modern science, and who were also extremely problematic individuals (and not just because ‘it was a different time’). Often, the way we learn about these individuals is first through their contributions to the field, and secondarily that they were a ‘bad person’ but that we should still value their intellectual contributions and somehow consider those to be separate from the person. For example, John James Audubon made numerous contributions to ornithology, and also bought and sold enslaved people. You could argue that those are separate aspects of the same person (…you could also argue that he greatly benefited from his status in society as a result of oppressing and enslaving other people and that enabled him to contribute to ornithology, but that is a conversation for a different course…). This is not the case with statistics. Most of modern statistics is built on work done by Sir Francis Galton, Karl Pearson, and Ronald Fisher, all of whom were staunch advocates of eugenics. They also collectively developed the ideas of standard deviation, correlation, regression to the mean, the correlation coefficient, method of moments, \\(\\chi^2\\) test, p-values, principle components analysis, and many other fundamental ideas in statistics. The point is not that these men made exceptional contributions to statistics and also happened to be eugenicists, but rather that they developed statistics to support their eugenicist viewpoints. After all, who could argue with the data they showed to support their view that other races were inferior to white Europeans?\n\n\n\nKarl Pearson (left) and Sir Francis Galton (right), circa 1910\n\n\nMany of the concepts we still use to this day in statistics come out of this tradition. For example, even the idea that a population (in the statistical sense) can be described from a single distribution is rooted in eugenics. At the same time Pearson was writing about mixtures of ‘homogeneous groups’ from a mathematical perspective, he was also advocating for colonialism and destruction of what he considered to be ‘inferior races’ because a more ‘homogeneous’ society was better.\n\n\n\nPearson in Contributions to the Mathematical Theory of Evolution in 1894\n\n\n\n\n\nPearson in National Life from the Standpoint of Science\n\n\nThe specific values, thresholds, cutoffs, and conventions that underlie most of null hypothesis significance testing were developed to support a eugenicist agenda. Always remember that they are not mathematically justified or ordained by some law of nature, but rather prescribed by a handful of like-minded eugenicists over a century ago. You should not feel bad about “breaking” their rules from time to time. Also, statistics is constantly evolving, so there are no hard and fast rules to follow."
+  },
+  {
+    "objectID": "intro.html#how-to-approach-this-course",
+    "href": "intro.html#how-to-approach-this-course",
+    "title": "1  Thinking like a Modeler",
+    "section": "1.1 How to approach this course",
+    "text": "1.1 How to approach this course\nLearning how to code and model is a lot like learning how to cook in many ways. You can be pretty bad at it and still do it, it takes a lot of time to get good at it, and there are many, many different ways to be good at it (and a whole lot of different and often exciting or truly horrendous ways to be bad at it!).\n1. It is not about content mastery. This course likely requires a different mindset from what you have encountered previously, primarily because it is not about content mastery. To be a specialist in any field, including biology, there is a lot of content that you need to have under your belt, which is why many undergraduate (and graduate) courses emphasize understanding principles and knowing certain key information (e.g. you need to know population dynamics, cell division, anatomy and physiology, evolutionary principles, etc.). In contrast, this course is much more about building your toolset and learning techniques, then recombining them in new ways when faced with different modeling problems. In many ways, learning how to analyze your data, how to code, how to specify models, etc. is like learning how to cook.\nThink of content mastery as foraging - if you are in the woods collecting mushrooms, you must know which ones are edible and which are poisonous and how to tell the difference. Knowing what you can and cannot eat is essential background information. Modeling, on the other hand, is more like cooking - what are you going to do with what you’ve gathered?\n2. It is better to know of many methods than to know a few in-depth.\nWe have 84 hours together this semester. With that time, I could teach you one specific model each week and we could go very in-depth to know all the details, assumptions, modifications, etc. To put it in a cooking context, I could teach you one recipe each week and by the end of the course you would know how to make 14 of my favorite dishes. Or, instead, you could be exposed to many different types of food that you might like to make depending on what you’re in the mood for, covering a variety of cooking styles, techniques, and cuisines. Knowing that these dishes exist and having a general sense of what you want to make gives you many more options than just knowing how I make guacamole.\n3. Not all methods are suitable for your research questions.\nEven knowing that there are many dishes you could make, not all of them will suit you. Some weeks the dishes won’t work for your dietary needs (e.g. maybe you never have nested data) or you will wonder why anyone would ever want to cook French food. Then, we will get to Mexican food the next week (er, I mean Principal Components Analysis) and it will be exactly what you were looking for. Even on weeks that are not currently relevant to your research, it is still good to know that they exist and you may encounter those methods in other ways and be glad you have a basic understanding (e.g. as a peer reviewer, or food critic).\n4. You can always look up how to implement a method.\nIf you know a dish exists but you are not entirely sure how to make it, you can look up a recipe and follow along. The same is true of models. Some recipes are not exactly what you want, but if you know what you’re looking for, eventually you’ll find a good example, guide, or tutorial. And sometimes, you may go to a restaurant (i.e. a journal article) and taste something you really like it and try to recreate it!\n5. Practicing is important.\nThe first time you try a new recipe, it may not go well, but you’ll get better with practice. And at least you tried! With coding, you will need to keep at it and you will learn new tricks the more you practice.\n6. Selecting methods a priori is better than post-hoc.\nSometimes, you have been handed ingredients and are trying to find a recipe that will work with what you have. For example, in a data context, your PI may give you a dataset, you may be working with historical data, or you collected the data before having a plan for analysis. In an ideal world, you know what you are going to cook in advance so you have all the ingredients that you need on hand."
+  },
+  {
+    "objectID": "intro.html#a-brief-history-of-statistics-and-eugenics",
+    "href": "intro.html#a-brief-history-of-statistics-and-eugenics",
+    "title": "2  Thinking like a Modeler",
+    "section": "2.3 A brief history of statistics and eugenics",
+    "text": "2.3 A brief history of statistics and eugenics\nThere are many figures in ecology and evolutionary biology that were giants in their field and helped shape modern science, and who were also extremely problematic individuals (and not just because ‘it was a different time’). Often, the way we learn about these individuals is first through their contributions to the field, and secondarily that they were a ‘bad person’ but that we should still value their intellectual contributions and somehow consider those to be separate from the person. For example, John James Audubon made numerous contributions to ornithology, and also bought and sold enslaved people. You could argue that those are separate aspects of the same person (…you could also argue that he greatly benefited from his status in society as a result of oppressing and enslaving other people and that enabled him to contribute to ornithology, but that is a conversation for a different course…). This is not the case with statistics. Most of modern statistics is built on work done by Sir Francis Galton, Karl Pearson, and Ronald Fisher, all of whom were staunch advocates of eugenics. They also collectively developed the ideas of standard deviation, correlation, regression to the mean, the correlation coefficient, method of moments, \\(\\chi^2\\) test, p-values, principle components analysis, and many other fundamental ideas in statistics. The point is not that these men made exceptional contributions to statistics and also happened to be eugenicists, but rather that they developed statistics to support their eugenicist viewpoints. After all, who could argue with the data they showed to support their view that other races were inferior to white Europeans?\n\n\n\nKarl Pearson (left) and Sir Francis Galton (right), circa 1910\n\n\nMany of the concepts we still use to this day in statistics come out of this tradition. For example, even the idea that a population (in the statistical sense) can be described from a single distribution is rooted in eugenics. At the same time Pearson was writing about mixtures of ‘homogeneous groups’ from a mathematical perspective, he was also advocating for colonialism and destruction of what he considered to be ‘inferior races’ because a more ‘homogeneous’ society was better.\n\n\n\nPearson in Contributions to the Mathematical Theory of Evolution in 1894\n\n\n\n\n\nPearson in National Life from the Standpoint of Science\n\n\nThe specific values, thresholds, cutoffs, and conventions that underlie most of null hypothesis significance testing were developed to support a eugenicist agenda. Always remember that they are not mathematically justified or ordained by some law of nature, but rather prescribed by a handful of like-minded eugenicists over a century ago. You should not feel bad about “breaking” their rules from time to time. Also, statistics is constantly evolving, so there are no hard and fast rules to follow."
+  },
+  {
+    "objectID": "lessonplans.html#inference",
+    "href": "lessonplans.html#inference",
+    "title": "Lesson Plans",
+    "section": "Inference",
+    "text": "Inference\n\nIntroduction to the course\n\n\nHypotheses and models"
+  },
+  {
+    "objectID": "lessonplans.html#random-variables",
+    "href": "lessonplans.html#random-variables",
+    "title": "Lesson Plans",
+    "section": "Random variables",
+    "text": "Random variables\n\nRandom variables\n\n\nSimulation and probability"
+  },
+  {
+    "objectID": "lessonplans.html#linear-models-i",
+    "href": "lessonplans.html#linear-models-i",
+    "title": "Lesson Plans",
+    "section": "Linear models I",
+    "text": "Linear models I\n\nComponents of linear models\n\n\nModel fitting"
+  },
+  {
+    "objectID": "lessonplans.html#linear-models-ii",
+    "href": "lessonplans.html#linear-models-ii",
+    "title": "Lesson Plans",
+    "section": "Linear models II",
+    "text": "Linear models II\n\nEvaluating models\n\n\nPrediction and inference"
+  },
+  {
+    "objectID": "lessonplans.html#linear-models-ii-1",
+    "href": "lessonplans.html#linear-models-ii-1",
+    "title": "Lesson Plans",
+    "section": "Linear models II",
+    "text": "Linear models II\n\nUncertainty\n\n\nProbability distributions"
+  },
+  {
+    "objectID": "lessonplans.html#generalized-linear-models",
+    "href": "lessonplans.html#generalized-linear-models",
+    "title": "Lesson Plans",
+    "section": "Generalized linear models",
+    "text": "Generalized linear models\n\nLink functions\n\n\nDistributions"
+  },
+  {
+    "objectID": "lessonplans.html#mixed-effects-models",
+    "href": "lessonplans.html#mixed-effects-models",
+    "title": "Lesson Plans",
+    "section": "Mixed effects models",
+    "text": "Mixed effects models\n\nNon-independence\n\n\nRandom effects"
+  },
+  {
+    "objectID": "lessonplans.html#causal-inference",
+    "href": "lessonplans.html#causal-inference",
+    "title": "Lesson Plans",
+    "section": "Causal inference",
+    "text": "Causal inference\n\nCorrelation and causation\n\n\nPath analysis"
+  },
+  {
+    "objectID": "lessonplans.html#bayesian-methods",
+    "href": "lessonplans.html#bayesian-methods",
+    "title": "Lesson Plans",
+    "section": "Bayesian methods",
+    "text": "Bayesian methods\n\nBayes theorem\n\n\nMCMC estimation"
+  },
+  {
+    "objectID": "lessonplans.html#bayesian-models",
+    "href": "lessonplans.html#bayesian-models",
+    "title": "Lesson Plans",
+    "section": "Bayesian models",
+    "text": "Bayesian models\n\nJAGS\n\n\nHierarchical Bayesian models"
+  },
+  {
+    "objectID": "lessonplans.html#advanced-bayesian-models",
+    "href": "lessonplans.html#advanced-bayesian-models",
+    "title": "Lesson Plans",
+    "section": "Advanced Bayesian models",
+    "text": "Advanced Bayesian models\n\nCustom models"
+  },
+  {
+    "objectID": "lessonplans.html#mixture-models",
+    "href": "lessonplans.html#mixture-models",
+    "title": "Lesson Plans",
+    "section": "Mixture models",
+    "text": "Mixture models\n\nOverdispersion\n\n\nLatent variables"
+  },
+  {
+    "objectID": "lessonplans.html#multivariate-methods",
+    "href": "lessonplans.html#multivariate-methods",
+    "title": "Lesson Plans",
+    "section": "Multivariate methods",
+    "text": "Multivariate methods\n\nDimensionality reduction\n\n\nMultivariate models"
+  },
+  {
+    "objectID": "lessonplans.html#cautionary-tales",
+    "href": "lessonplans.html#cautionary-tales",
+    "title": "Lesson Plans",
+    "section": "Cautionary tales",
+    "text": "Cautionary tales\n\nInformation theoretic approaches\n\n\nEthics in modeling"
+  },
+  {
+    "objectID": "lessonplans.html#emerging-methods",
+    "href": "lessonplans.html#emerging-methods",
+    "title": "Lesson Plans",
+    "section": "Emerging methods",
+    "text": "Emerging methods\n\nEmerging methods"
+  },
+  {
+    "objectID": "intro.html#how-to-become-a-quantitative-ecologist",
+    "href": "intro.html#how-to-become-a-quantitative-ecologist",
+    "title": "1  Thinking like a Modeler",
+    "section": "1.2 How to become a quantitative ecologist",
+    "text": "1.2 How to become a quantitative ecologist\nBecoming ‘quanty’ requires a shift in how you think about the world. For some of us, it is a very intuitive way to approach things. For others, it may be a bit dissimilar to how you usually approach things. There are a few general mindset shifts that I think can be helpful as you embark on your journey of becoming better at quantitative reasoning, modeling, and coding.\n1) You are learning a new language The best predictor of being good at coding is not experience with math, computers, or anything techy - it is being good at learning new languages. I think this applies not just to the coding portion of the course, but really everything with thinking like a modeler. What modelers do, routinely, is translate from one language to another. Models can be described verbally. Let’s go on a throwback to high school physics: Newton’s Laws of Motion. Newton’s Second Law says that the acceleration of any object depends on how much mass it has, and how much force is applied to it in a direction. This statement can be translated into an equation as \\(F=ma\\). We could also represent it graphically.\nIt is important to get comfortable moving between these three modes of thinking about models: verbal or conceptual descriptions, equations, and graphical models. It is also okay to only be comfortable with one of those modes, and to get better as time goes on at expressing models in the other methods. For instance, right now you may be most comfortable with a verbal model describing how you think the world works, and unfamiliar or even intimidated by the others. That’s okay! We’ll get there.\nYou could also add a fourth mode (code), but I would actually caution against that. Many people become too reliant on expressing models in code, which makes them irreproducible in the long run and less easy to translate. Code is ephemeral. Package versions change, languages change, and there are\n2) Crappy sketches are lifesavers\n3) Being vague-ish helps\n4) You’re wrong most of the time\n5) Rules are meant to be broken\n6) Question everything\n7) Picture yourself as a fish\nEquations and math - Thinking in terms of equations - Getting comfortable with equations and math - start with the deterministic bit - translate - learn new languages - interactions, separate effects, multiple effects - forget about the math for now\nGraphs and conceptual models - sketching is good - whiteboards are great - cartoons are excellent - arrows are good - a series of scatterplots goes a long way - story board your hypotheses - starting to draw a line when it might not be linear, placing points - Thinking in terms of graphs - drawing a conceptual model first helps - pictionary - rough sketch before fine details - up / down, not point estimates\nSimplification - vagueness is good - patterns over details - simplifying, what’s important - the exceptions don’t matter; focus on the general, that’s what we explain - ignore the small things - don’t get too complex - gestalt - explain it like a toddler - what is irrelevant? - don’t build an airplane - simplify reality - ignore irrelevant details - understanding is better than precision - precision &lt; approximation (not lazy) - #ish\nIncorrectness - get comfortable with being wrong - get used to being wrong - get used to being kinda right too - intuition goes a long way, but be prepared to justify it - assume you’re wrong - don’t make perfect enemy of the good - okay to get like 80% of the way there - start from first principles, okay not to know, rationally work out possibilities\nNatural history knowledge - what’s the question or hypothesis, not what’s the data - answer the question; not just fancy math - sometimes, the math does come first (but it shouldn’t! and should be rare) - what do you think, as an ecologist/biologist, matters? - keep biological reality in mind - scenario / specific context thinking - picture yourself as a fish - anthropomorphize the problem\nBreaking rules - Rules, not important - relaxing assumptions, duck; doesn’t actually say i can’t do that - you may not use, may not touch (assumptions model will follow) - solving same task in different ways; - no real answers - guidelines - What’s important to forget - What’s possible - What’s been done - What hasn’t been done (and why, or why not?) - What people are doing in other disciplines\nQuestion things - under what conditions would we see this? when would we not see this? - ask yourself what if, be your own devils advocate - do reality checks frequently - be explicit about assumptions - can you answer ‘why’ you think something should be that way? - what happens if we fiddle with this part? - reason with abstraction - what would happen if that weren’t true? what if there was no gravity? - question everything / be skeptical / not confident in models - what happens at zero? does the model fail correctly? - don’t put all your eggs in one basket - not knowing how task will be evaluated, think about what could go wrong - consider the possibilities"
+  },
+  {
+    "objectID": "intro.html#hypothesis-framing-and-asking-questions",
+    "href": "intro.html#hypothesis-framing-and-asking-questions",
+    "title": "2  Thinking like a Modeler",
+    "section": "2.4 Hypothesis framing and asking questions",
+    "text": "2.4 Hypothesis framing and asking questions\n\nhow the world works\nsort of an if/then\nnot a null hypothesis\nnot a testable assumption\nnot a testable prediction\ndifference between hypotheses and predictions\nask questions you think are interesting, not possible\nbased in observation"
+  },
+  {
+    "objectID": "intro.html#what-is-a-model",
+    "href": "intro.html#what-is-a-model",
+    "title": "2  Thinking like a Modeler",
+    "section": "2.5 What is a model",
+    "text": "2.5 What is a model\n\na simplification\nall wrong, all useful\nairplanes\ncore assumptions\nkey characteristics\nparsimony\ncomplexity"
+  },
+  {
+    "objectID": "lessonplans.html#week-1-inference",
+    "href": "lessonplans.html#week-1-inference",
+    "title": "Lesson Plans",
+    "section": "Week 1: Inference",
+    "text": "Week 1: Inference\n\nIntroduction to the course\nSchedule\n\nHow to approach this course (15 min)\nIntroductions (20 min)\nHow to think like a modeler (15 min)\nEcology Fishbowl (25 min)\nGoal setting (15 min)\n\nLearning outcomes\nAfter this lecture, students should know:\n\nThe learning approach for this course will be different from most content-based courses and emphasizes thinking and self-teaching over content mastery\nEveryone is starting from a different place and will progress through their quantitative training journey at different paces\nLearning to code in R is like learning a new language\nMistakes are expected during the modeling process\nModeling requires a mindset that embraces ambiguity, abstraction, relationships, and being wrong\nIt is okay to challenge assumptions and question models\nGoals should be SMART: Specific, Measurable, Achievable, Relevant, and Time-bound\n\nWhy are we playing Ecology Fishbowl? a) because it is fun and we are going to be spending a lot of time together this semester, and b) because it encourages creativity, allows for ambiguity, prioritizes the most important features, and gets us all to communicate vague ideas, consider alternative possibilities, and focus on generalities over precision\nReading(s)\n\nThinking Like a Modeler\n\nAssignment(s)\n\nUsing the SMART framework, identify 5-10 goals you have for this course. What do you aim to achieve by Week 15? What progress would you like to make? What would success look like to you at the end of this course? These could be related to coding,modeling, mathematics, comfort with equations, data management, computer literacy, research progress, statistical literacy, self-confidence, etc. Be ambitious, but realistic in what you can achieve. Your self-assessment of progress towards reaching your self-determined goals counts for 10% of your grade in this course because I want you to decide what you want to get out of the course and what will be most useful to you in your academic career. Due January 22\n\n\n\nHypotheses and models\nSchedule\n\nHypothesis framing (20 min), including workshopping hypotheses\nWhat is a model (15 min)\nRectilinear Pictionary (30 min)\nThe history of statistics and eugenics (15 min)\nApproaches to inference (10 min)\n\nLearning outcomes\nAfter this lecture, students should know:\n\nA hypothesis is a statement about how you think the world works\nA prediction is what you would expect to observe if your hypothesis is true\nPredictions let us test hypotheses to make inference about the world\nResearch questions and hypotheses should be grounded in biological reality, not by data or modeling constraints\nKnowing how to code well enables you to ask, and answer, (almost) any question in ecology and evolutionary biology\nModels are simplified representations of the real world\nModels can be represented verbally, graphically, with equations, and in code; modelers should be able to translate between these different formats\nAdding complexity does not always result in a better model, and parsimonious models are favorable to unnecessarily complex ones\nMuch of modern statistics is rooted in eugenics\n\nWhy are we playing Rectilinear Pictionary? Because it forces abstraction, breaks difficult concepts down into simplified components, requires physically drawing a model, lets us embrace ambiguity, and gets us all more comfortable being terribly wrong\nReading(s)\n\nHypotheses and models\nOptional: Hippopotamus\n\nAssignment(s)\n\nA Badly Broken Code Due January 25\nOptional: listen to Dessa while coding\n\n\n\nLab 1: Getting comfortable in R and RStudio\nObjectives\n\nInstall R and RStudio\nGet comfortable with basics of programming in R\nDevelop enough coding literacy to correct a script littered with errors\n\nActivities and materials\n\nDownloading R and RStudio\nRStudio panes\nCalculation\nAssigning objects\nTypes of objects\nFunctions\nInstalling packages\nFinding help\nBasic coding principles"
+  },
+  {
+    "objectID": "lessonplans.html#week-2-random-variables",
+    "href": "lessonplans.html#week-2-random-variables",
+    "title": "Lesson Plans",
+    "section": "Week 2: Random variables",
+    "text": "Week 2: Random variables\n\nRandom variables\nSchedule\n\nGuillemot chick survival (5 min) video\nSimulating draws from a Bernoulli distribution (15 min)\nActivity: probability of guessing horse or laminator correctly (30 min)\nBinomial distribution (10 min)\nLaw of large numbers (20 min)\nVectors (10 min)\n\nLearning outcomes\nAfter this lecture, students should know:\n\nRandom variables are described by probability distributions\nRandom variables can be described mathematically\nThe Bernoulli distribution simulates one flip of a coin\nThe probability of success is on a per trial basis\nThe Binomial distribution simulates multiple trials\nIncreasing sample sizes towards infinity results in more stable estimates of probability from observations\nR has built-in functions for simulating most probability distributions\n\nReading(s)\n\nRandom variables\nOptional: Horse or Laminator\n\n\n\nSimulation and probability\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\nSimulating data can help us understand what assumptions we’ve made and lets us build and test models when we know the answer\nFunctions are a set of code that take inputs and return outputs based on a set of instructions that the user gives\nProbability distributions can be discrete or continuous\nProbability distributions have different ranges (sets of possible values) and supports (values they can take)\nDiscrete probability distributions have probability mass, and those probabilities must sum to 1\nContinuous probability distributions have probability density under each potential value and the area under the curve must sum to 1\nEmpirical data can be used to estimate probability of observing data\nProbability density or mass functions can be used to estimate the probability of observing data\nA p-value is the probability of observing your data, or data more extreme, if the null is true\nThe normal (Gaussian) distribution has a range of \\(\\in (-\\infty, \\infty)\\) and support of all real numbers\nThe Bernoulli distribution has a range of \\(\\in (0, 1)\\) and a support of \\((0,1)\\)\nThe probability mass function for the Bernoulli distribution is \\(P(X=1) = p, P(X=0) = 1-p\\)\nReal numbers are those found on the number line (rational and irrational numbers) but not imaginary; integers are whole numbers that can be positive, negative, or zero; rational numbers can be expressed as ratio of two integers; irrational numbers cannot\n\nReading(s)\n\nSimulation and Probability\n\nAssignment(s)\n\nProbability of Chonky Guillemots\n\n\n\nLab 2: Data structures"
+  },
+  {
+    "objectID": "lessonplans.html#week-3-linear-models-i",
+    "href": "lessonplans.html#week-3-linear-models-i",
+    "title": "Lesson Plans",
+    "section": "Week 3: Linear models I",
+    "text": "Week 3: Linear models I\n\nComponents of linear models\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nModel fitting\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 3: Functions and for loops"
+  },
+  {
+    "objectID": "lessonplans.html#week-4-linear-models-ii",
+    "href": "lessonplans.html#week-4-linear-models-ii",
+    "title": "Lesson Plans",
+    "section": "Week 4: Linear models II",
+    "text": "Week 4: Linear models II\n\nEvaluating models\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nPrediction and inference\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 4: Data visualization"
+  },
+  {
+    "objectID": "lessonplans.html#week-5-linear-models-ii",
+    "href": "lessonplans.html#week-5-linear-models-ii",
+    "title": "Lesson Plans",
+    "section": "Week 5: Linear models II",
+    "text": "Week 5: Linear models II\n\nUncertainty\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nProbability distributions\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 5: Exam #1"
+  },
+  {
+    "objectID": "lessonplans.html#week-6-generalized-linear-models",
+    "href": "lessonplans.html#week-6-generalized-linear-models",
+    "title": "Lesson Plans",
+    "section": "Week 6: Generalized linear models",
+    "text": "Week 6: Generalized linear models\n\nLink functions\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nDistributions\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 6: Data management"
+  },
+  {
+    "objectID": "lessonplans.html#week-7-mixed-effects-models",
+    "href": "lessonplans.html#week-7-mixed-effects-models",
+    "title": "Lesson Plans",
+    "section": "Week 7: Mixed effects models",
+    "text": "Week 7: Mixed effects models\n\nNon-independence\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nRandom effects\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 7: Dimensionality and data"
+  },
+  {
+    "objectID": "lessonplans.html#week-8-causal-inference",
+    "href": "lessonplans.html#week-8-causal-inference",
+    "title": "Lesson Plans",
+    "section": "Week 8: Causal inference",
+    "text": "Week 8: Causal inference\n\nCorrelation and causation\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nPath analysis\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 8: Reporting standards"
+  },
+  {
+    "objectID": "lessonplans.html#week-9-bayesian-methods",
+    "href": "lessonplans.html#week-9-bayesian-methods",
+    "title": "Lesson Plans",
+    "section": "Week 9: Bayesian methods",
+    "text": "Week 9: Bayesian methods\n\nBayes theorem\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nMCMC estimation\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 9: Handling missing data"
+  },
+  {
+    "objectID": "lessonplans.html#week-10-bayesian-models",
+    "href": "lessonplans.html#week-10-bayesian-models",
+    "title": "Lesson Plans",
+    "section": "Week 10: Bayesian models",
+    "text": "Week 10: Bayesian models\n\nJAGS\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nHierarchical Bayesian models\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 10: Reproducible workflows"
+  },
+  {
+    "objectID": "lessonplans.html#week-11-advanced-bayesian-models",
+    "href": "lessonplans.html#week-11-advanced-bayesian-models",
+    "title": "Lesson Plans",
+    "section": "Week 11: Advanced Bayesian models",
+    "text": "Week 11: Advanced Bayesian models\n\nCustom models\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 11: Exam #2"
+  },
+  {
+    "objectID": "lessonplans.html#week-12-mixture-models",
+    "href": "lessonplans.html#week-12-mixture-models",
+    "title": "Lesson Plans",
+    "section": "Week 12: Mixture models",
+    "text": "Week 12: Mixture models\n\nOverdispersion\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLatent variables\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 12: Archiving data and code"
+  },
+  {
+    "objectID": "lessonplans.html#week-13-multivariate-methods",
+    "href": "lessonplans.html#week-13-multivariate-methods",
+    "title": "Lesson Plans",
+    "section": "Week 13: Multivariate methods",
+    "text": "Week 13: Multivariate methods\n\nDimensionality reduction\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nMultivariate models\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 13: Independent projects"
+  },
+  {
+    "objectID": "lessonplans.html#week-14-cautionary-tales",
+    "href": "lessonplans.html#week-14-cautionary-tales",
+    "title": "Lesson Plans",
+    "section": "Week 14: Cautionary tales",
+    "text": "Week 14: Cautionary tales\n\nInformation theoretic approaches\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nEthics in modeling\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)\n\n\n\n\n\nLab 14: Independent projects"
+  },
+  {
+    "objectID": "lessonplans.html#week-15-emerging-methods",
+    "href": "lessonplans.html#week-15-emerging-methods",
+    "title": "Lesson Plans",
+    "section": "Week 15: Emerging methods",
+    "text": "Week 15: Emerging methods\n\nEmerging methods\nSchedule\n\n\n\nLearning outcomes\nAfter this lecture, students should know:\n\n\n\nReading(s)\n\n\n\nAssignment(s)\n\n\n\nEvaluation(s)"
+  },
+  {
+    "objectID": "intro.html#how-to-approach-this-course-1",
+    "href": "intro.html#how-to-approach-this-course-1",
+    "title": "1  Thinking like a Modeler",
+    "section": "1.3 How to approach this course",
+    "text": "1.3 How to approach this course\nThe goal of this course is to get you to think quantitatively i.e. recognizing that data are generated by deterministic and stochastic processes, both of which are defined by you (or your understanding of the biology of the system that you are modeling or making inference on). No one can really tell you how to model or analyze your data - there is no lookup table for ecological modeling.\nAfter this course, you should know enough to 1) be dangerous on Google / StackOverflow to find analytical / modeling approaches that match your questions and data, and 2) write or adapt code to implement those models and not be reliant on a GUI. The goal is not complete mastery of statistics, modeling, or data analysis.\n\n\n\nThe goal of this course is to get you closer to becoming dangerous."
+  },
+  {
+    "objectID": "intro.html#the-end-goal",
+    "href": "intro.html#the-end-goal",
+    "title": "1  Thinking like a Modeler",
+    "section": "1.3 The end goal",
+    "text": "1.3 The end goal\nThe goal of this course is to get you to think quantitatively i.e. recognizing that data are generated by deterministic and stochastic processes, both of which are defined by you (or your understanding of the biology of the system that you are modeling or making inference on). No one can really tell you how to model or analyze your data - there is no lookup table for ecological modeling.\nAfter this course, you should know enough to 1) be dangerous on Google / StackOverflow to find analytical / modeling approaches that match your questions and data, and 2) write or adapt code to implement those models and not be reliant on a GUI. The goal is not complete mastery of statistics, modeling, or data analysis.\n\n\n\nThe goal of this course is to get you closer to becoming dangerous."
+  },
+  {
+    "objectID": "intro.html#shifting-how-you-think",
+    "href": "intro.html#shifting-how-you-think",
+    "title": "1  Thinking like a Modeler",
+    "section": "1.2 Shifting how you think",
+    "text": "1.2 Shifting how you think\nBecoming ‘quanty’ requires a shift in how you think about the world. For some of us, it is a very intuitive way to approach things. For others, it may be a bit dissimilar to how you usually approach things. There are a few general mindset shifts that I think can be helpful as you embark on your journey of becoming better at quantitative reasoning, modeling, and coding.\n1) You are learning a new language The best predictor of being good at coding is not experience with math, computers, or anything techy - it is being good at learning new languages. I think this applies not just to the coding portion of the course, but really everything with thinking like a modeler. What modelers do, routinely, is translate from one language to another. Models can be described verbally. Let’s go on a throwback to high school physics: Newton’s Laws of Motion. Newton’s Second Law says that the acceleration of any object depends on how much mass it has, and how much force is applied to it in a direction. This statement can be translated into an equation as \\(F=ma\\). We could also represent it graphically.\nIt is important to get comfortable moving between these three modes of thinking about models: verbal or conceptual descriptions, equations, and graphical models. It is also okay to only be comfortable with one of those modes, and to get better as time goes on at expressing models in the other methods. For instance, right now you may be most comfortable with a verbal model describing how you think the world works, and unfamiliar or even intimidated by the others. That’s okay! We’ll get there.\nYou could also add a fourth mode (code), but I would actually caution against that. Many people become too reliant on expressing models in code, which makes them irreproducible in the long run and less easy to translate. Code is ephemeral. Package versions change, languages change, and there are\n2) Crappy sketches are lifesavers\nOne of the best ways to change how you think about models and put yourself in a quantitative mindset is to sketch out some rough ideas. They don’t need to be pretty, they just need to convey what you’re thinking. Whiteboards, a legal pad, a pile of scratch paper, a notebook, or the back of an envelope are all helpful things to keep handy for explaining a model.\nA series of scatterplots can go a long, long way in terms of walking through your thought process and forces you to carefully explain the relationship that you predict to exist between two or more variables, which can help you understand your own thinking about how the world works better. We will talk about this (how the world works) more in the next lecture on hypothesis framing. For now, let’s just think about representing our ideas in terms of sketches. Think of these sketches as a storyboard of your hypotheses. Each individual component tells you a little bit more about the overall model even if each is an incomplete bit.\nYou can tell what a sketch is meant to represent even from pretty incomplete drawings. It is kind of like Pictionary. Similarly, you can tell what a model is even from a really rough representation. Arrows in conceptual models can be especially useful to demonstrate how you are thinking about the causal relationship between variables or what you think the true underlying ecological process is, even if you are not adopting a causal modeling framework.\nHow to start a sketch: 1) Draw an x-axis and a y-axis. 2) Think about what your response variable is - what are you interested in knowing about and how it changes? Label that as your y-axis. 3) What do you think causes changes in your response variable? Label that on your x-axis. 4) Ask yourself, at low values of X, what do I expect to be the relative level of Y? Place a point there. 5) Ask yourself, at high values of X, what do I expect to be the relative level of Y? These don’t need to be precise estimates - just higher, lower, a lot higher, etc. Place a point there. 6) Continue this process for a few intermediate points, especially if you think there may be non-linear relationships. Keep track of any thoughts you have like ’well, it depends on Z…” because that might suggest you’ve got some moderating variables and you might need to introduce a second line, perhaps with a different color. 7) Step back and look at your graph. Does it pass the gut check? If not, maybe revise it. 8) Criticize your graph and question the key assumptions. Under what scenarios does it break down? Are there situations you aren’t considering? When is this relationship not true? Is it generally true though? Are there alternatives you aren’t considering? 9) Add lines or colors to your graph representing hypothesized relationships under different conditions, with different sets of moderator variables, etc. 10) If there are alternative explanations, sketch them out as well. Keep track of which hypotheses go with which graph in your mind (i.e., what is your explanation for why you might see the pattern you predict to observe).\n3) Being vague-ish helps\nGeneral patterns are far, far more important than details. What we are interested in from a modeling standpoint is the patterns we can explain. We are rarely interested in the exception to the rule, because it is extremely difficult to model or predict the exceptions. Instead, we can model the rule, and then those exceptions become interesting challenges either to help us better understand the assumptions we have baked into our model, or to discover some truly interesting ecological phenomena we don’t yet understand. In other words, the exceptions and outliers are interesting and let us ask why, but, when we are developing a model, we should aim to fit the general pattern and not encompass absolutely everything.\nIgnore the small things. Simplifying, sometimes to the extreme of oversimplification, is the best place to start with a model. What are the core things that are most important to include? What is irrelevant or can be ignored, at least for now, to be able to focus on the big picture changes? If you can explain your model to a toddler, you’re on the right track. I like to keep the Up Goer Five in mind as a good model of how a rocket ship works, but in toddler terms. You can even try testing out how you describe your model to make sure it is simple enough with the Simple Writer.\nMy absolute favorite podcast (which I highly recommend students in this class check out!) is Quantitude, which is basically like Car Talk but for quantitative methods. The hosts have a great analogy for models, which is model airplanes. When you’re building a model airplane, it should resemble an airplane, you should be able to tell it is an airplane, and it should have some working parts. But if your model of an airplane is so good that when you finish building it you then fly a load of passengers to France, you haven’t built a model airplane, you’ve just built an entire airplane. So you should think of your models as simplifications of the real world, not accurate representations.\n4) You’re wrong most of the time\nThere’s a classic quote by George Box (who, incidentally, was married to RA Fisher’s daughter Joan) in which he says that “All models are wrong, but some are useful.” The first part is especially true because we’ve simplified reality and cannot capture all the complexities of the real world in a model (if we did, remember that we built an airplane, not a model of an airplane) so they must be incorrect in some ways. It is also useful to remember that all our models are also right, in many ways.\nWhen you’re modeling, intuition goes a long way, but be prepared to justify it. You can of course start from first principles and work your way up to what you suppose to be true, but you can also start from what you suppose to be true and then work backwards from there to figure out your own underlying assumptions. You can then also work from those core assumptions to see if there are other possibilities.\nYou should also be comfortable being good enough. Not great, not perfect, but good enough. Don’t let the perfect be the enemy of the good. If you get like 80% of the way there with a model, either in terms of how much it explains, how satisfied you are with it, or any other metric, that’s pretty good! Much better than 0% or even 10% of the way there. Nothing has to get to 100% because let’s face it, you’re always going to be wrong in some ways and that’s perfectly okay.\n5) Rules are meant to be broken\nThere are a lot of ‘rules’ to follow in statistics, but (and again, stealing this from Quantitude!) similar to the pirate’s code, “they’re more like guidelines” anyway. Just because something has always been done one way, or is done commonly in the literature, doesn’t mean it is the right way to do something. Just because something hasn’t been done also doesn’t mean that it can’t or shouldn’t be done. So hang the rules, and do what makes biological sense.\n6) Question everything\nWe make a lot of assumptions in modeling. It is very important to question those assumptions. Once you’ve expressed a model (verbally, graphically, mathematically, in code, or elsewise), ask yourself under what conditions would we expect this model to hold up? When would we not see this pattern? What happens at zero? Under what conditions does your model fail? If it fails, does it fail correctly? Does it fail when it should?\nBe your own devils advocate and question your model structure, the data generating process, and the assumptions baked into your model. Can you answer why you think something should behave in the way you expect? What would happen if one of your assumptions were not true? What if there was no gravity? If we changed one part, what would happen?\nAlso remember that there could be nearly infinite different models, and you’re likely only considering a few of them. Keep all the possible models in mind, and consider if any of them are better representations of what you’re trying to represent. Don’t put all your eggs in one basket and fully convince yourself that you’ve developed the best model, because let’s face it, your model is definitely wrong, and maybe there are better models. Be okay with being wrong, and interrogate yourself and your model as you do frequent reality checks.\n7) Picture yourself as a fish\nThe single most important “rule” (keeping in mind we just tossed rules out the window) in ecological modeling is that your models must be biologically relevant. Start with the natural history of the system. What do you know about the species, populations, or communities you are modeling? What can and cannot be true in those systems? Don’t let the models lead your thinking, force the models to help you answer the questions you want to answer. Similarly, start with the biological question you want to answer or hypothesis you want to address, not what the data are or what they will allow you to do.\nI say ‘picture yourself as a fish’ because I think it can really help sometimes to anthropomorphize the problem. If you’re trying to figure out how a model should work, draw what you expect or predict to observe, and think about your underlying hypotheses, it can sometimes help to insert yourself into the scenario. Keep the ecological and evolutionary context in mind."
+  },
+  {
+    "objectID": "lab1.html#downloading-r-and-rstudio",
+    "href": "lab1.html#downloading-r-and-rstudio",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.1 Downloading R and RStudio",
+    "text": "2.1 Downloading R and RStudio\nThroughout this course, we will be almost exclusively using R to read and manipulate data, simulate data, fit models, etc. R is a programming language, so we will not access it directly. Instead, we will use RStudio, which is a Graphical User Interface (GUI) for working with R. R also has its own GUI, but it is not nearly as functional as RStudio, which is how the vast majority of R users interact with R. It is worth knowing that the R GUI exists, however, because sometimes people will mistakenly open it, do a lot of work, and then lose that work. The reason for that is because the R GUI is only the console, which we will get to in a minute. First, we will install both R and RStudio.\n\nFirst, install R. Follow the instructions for your operating system here: https://cran.r-project.org/\nInstall RStudio. Note that this needs to be done after installing R. Follow the instructions for your operating system here: https://posit.co/download/rstudio-desktop/\n\nOnce you have both R and RStudio installed, make sure you know how to open RStudio. Depending on your operating system and how you’ve set up your computer, it may add a shortcut icon to access the R GUI. Do not use it. It will pull up an older looking GUI which is only the console (which we are still getting to soon!). Always use RStudio to interact with R (…unless you’re running shell scripts or some other niche purposes, but if you’re doing that, you probably aren’t reading instructions on how to download and access R).\n\n\n\nThe logo on the right is RStudio, which is the one you want."
+  },
+  {
+    "objectID": "lab1.html#rstudio-panes",
+    "href": "lab1.html#rstudio-panes",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.2 RStudio panes",
+    "text": "2.2 RStudio panes\nWhen you open RStudio for the first time, the upper left is the Source pane. This is where you will open scripts, edit code, run analyses, type notes, etc. To use a cooking analogy, the Source pane is your recipe book. You can always come back to it, make little changes, or leave notes about what to fix for next time. But it is not the actual meal, just instructions for making a meal.\nIn the bottom left is the Console. The Console is the process of cooking. It can be done following the recipe by running chunks of code from the Source, or you can wing it. If you decide to ‘cook’ on the fly by running code directly from the Console, you will save no notes on what on earth you put into the meal, you cannot go back and fix things easily, and you cannot share your recipe with anyone else. You also might not remember the order in which you did things. So if what you did worked and your ‘meal’ comes out great, you will not know what you did to make that happen so it is not reproducible. The only real use for the console is for code that you only want to run once, e.g. foundational things like installing packages; to really overcook this analogy (ha), you only install a kitchen counter once, not at the start of every recipe. More on packages later.\nIn the upper right is the Environment (along with a few other tabs that you’ll use far less). This is the current version of your meal, i.e. if you’re making a stew, this is everything that is currently in the pot or mise en place and ready to go. It is objects (think of these as ingredients) that you have created with your cooking and are now available to either eat or combine with other objects (i.e., ingredients).\nIn the bottom right are your Files, Plots, and Help - all of which you will use frequently (and other tabs you will use far less often). Think of these as things that are available to you, but external to your current kitchen counter and stew. The Files tab will let you browse files on your computer; think of it is your kitchen where you can get more resources for your meal if you are in your current working directory (more on directories later), or your house if you browse for other files on your computer. Your Plots tab is the equivalent of taking a picture of the current version of your meal, either to be able to visualize what you’ve currently got, or to share with others. The Help tab is exactly what it sounds like - the person you call to ask how to use the stand mixer (i.e. the function) and what to put into it (i.e., the arguments passed to the function) to make the perfect waffle. It’s up to you to know that you want to use the stand mixer to make waffles in the first place.\n\n2.2.1 Some terms and definitions\nSince that analogy is now burnt to a crisp, let’s unpack some of the extra terms in there and what they are because you will use them frequently in this course.\n\n2.2.1.1 Packages\nPackages are a collection of functions designed to work together to accomplish some specific outcome. Many packages are hosted on CRAN, however, you can also find R packages on repositories like GitHub. One way to find packages is through CRAN Task Views (e.g. these are all packages associated with meta-analysis https://cran.r-project.org/web/views/MetaAnalysis.html), but more often you’ll just Google what you want to do and find a package that way.\n\n\n2.2.1.2 Objects\nObjects are what are in your environment. They can take lots of different forms, have different classes, etc. Most objects are created by using the assignment operator &lt;- to pass the output of some code to a named object. We will talk about different types of objects more during the semester as we encounter them.\n\n\n2.2.1.3 Working directory\nYour Files tab lets you see two things: files, and directories. Directories are the organizational structure for how you store data on your computer; you can think of them as folders for the most part, though folders are GUI ways to visualize directories and directories have a clear nested structure.\nYou working directory is very important when coding. File paths are relative to your current working directory, so when you read files in you must know both what your current working directory is; most of the time if you get an error reading in a file, it is because the path to the file is incorrect. In the cooking analogy, you are cooking on the kitchen countertop, which is nested within the kitchen, which is nested within your house. You could move directories within the kitchen, such as moving to the sink, or you could move up several levels to go to the living room. If you try to call a file that is not in your current working directory, you will get an error. For example, if you are in the living room and tell R to pick up your cutting board, it will say it does not exist.\nRelative file paths are extremely useful in coding. Relative file paths begin in your current working directory. To load a file from your current directory, begin the file path with ./. To load a file from the working directory above you (i.e. if you’re working at the kitchen counter, the kitchen is the next hierarchical level above you), use ../. One way to remember the difference between one dot and two is that if the dots represent your feet, one shows where you are standing - but two means you’ve hopped somewhere new. Since directories are nested within each other, you can also combine these into longer relative paths. So, for example, if I am in the living room but I want R to go into the kitchen, then into the cabinet, and take out a cutting board, the path would be something like: ../kitchen/cabinet/cutting_board.txt.\nSetting your working directory. There are two ways to set your Working Directory. One is the click-and-point way, where you can go to Session &gt; Set Working Directory &gt; Choose Location which will open up your normal file browser application and you can navigate around to find where you want to set as your current working directory. This is easier when you’re starting out and getting used to directory structure and how you have your files organized, but is not reproducible so can cause headaches if you think you’re in a different directory than you are later on when running a script. A better option is to use the function setwd() with an absolute path to a directory. An absolute path is one that starts at your home directory (e.g. on Linux or Mac, ~/, on Windows typically something like C:/). For example, I might run something like setwd(\"~/Desktop/BIOL431\") at the start of my script, and then use relative paths throughout once I am in the directory where I have my files for analysis and where I want to save my output.\n\n\n2.2.1.4 Functions\nFunctions take input as arguments, and return output. To see what arguments can be passed to a function, and also what its output will be, you can use the Help tab to search for a function. Or, much more quickly, use a ? followed by the function name if it is in a package that is currently loaded (e.g. ?rbinom). If it is in a package that is not currently loaded, use ?? instead (e.g. ??glmer).\n\n\n\n2.2.2 Customizing RStudio\nThere are three modifications many people will want to make to RStudio:\n\nTo change the theme, go to Tools &gt; Global Options. For example, you may prefer a dark theme if you’re coding frequently.\nRearrange the panes. There is a window-like icon to the left of ‘Addins’ in the tool bar; select the drop down and you can customize which panes are in which corners. For example, I prefer to move my Console to the right so I can see my code in parallel and make the Environment tab really small because I do not need to check it frequently.\nYou can change the font and font size, which can be helpful depending on your screen size and eyesight."
+  },
+  {
+    "objectID": "lab1.html#calculation",
+    "href": "lab1.html#calculation",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.3 Calculation",
+    "text": "2.3 Calculation\n\n42/3\n\n[1] 14\n\n1.2*2\n\n[1] 2.4\n\n4 + 7\n\n[1] 11\n\n1 - 0.2\n\n[1] 0.8\n\n(11-2)/3\n\n[1] 3"
+  },
+  {
+    "objectID": "lab1.html#assigning-objects",
+    "href": "lab1.html#assigning-objects",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.4 Assigning objects",
+    "text": "2.4 Assigning objects\n\nx &lt;- 42\ny &lt;- 3\nx/y\n\n[1] 14"
+  },
+  {
+    "objectID": "lab1.html#types-of-objects",
+    "href": "lab1.html#types-of-objects",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.5 Types of objects",
+    "text": "2.5 Types of objects\n\nclass(\"words\")\n\n[1] \"character\"\n\nclass(4.2)\n\n[1] \"numeric\"\n\nclass(1:10)\n\n[1] \"integer\"\n\nclass(TRUE)\n\n[1] \"logical\"\n\nclass(x)\n\n[1] \"numeric\"\n\nclass(factor(letters[1:5]))\n\n[1] \"factor\"\n\na &lt;- 1:10\nb &lt;- 11:20\n\ndat &lt;- data.frame(a, b)\n\nas.numeric(\"two\")\n\nWarning: NAs introduced by coercion\n\n\n[1] NA\n\nsqrt(-1)\n\nWarning in sqrt(-1): NaNs produced\n\n\n[1] NaN"
+  },
+  {
+    "objectID": "lab1.html#functions-1",
+    "href": "lab1.html#functions-1",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.6 Functions",
+    "text": "2.6 Functions\n\nseq(1, 10, by=0.5)\n\n [1]  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5  8.0\n[16]  8.5  9.0  9.5 10.0\n\nseq(1, 10, l=30)\n\n [1]  1.000000  1.310345  1.620690  1.931034  2.241379  2.551724  2.862069\n [8]  3.172414  3.482759  3.793103  4.103448  4.413793  4.724138  5.034483\n[15]  5.344828  5.655172  5.965517  6.275862  6.586207  6.896552  7.206897\n[22]  7.517241  7.827586  8.137931  8.448276  8.758621  9.068966  9.379310\n[29]  9.689655 10.000000"
+  },
+  {
+    "objectID": "lab1.html#installing-packages",
+    "href": "lab1.html#installing-packages",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.7 Installing packages",
+    "text": "2.7 Installing packages\nTo install a package from CRAN, you can use the install.packages() function with the name of the package inside the open parentheses in quotes (e.g. install.packages(\"lme4\")) to install the lme4 package which is useful for linear models. To install packages from other sources, follow the package developer’s instructions.\n\n# install.packages(\"lme4\")\n# install.packages(\"remotes\")\n# remotes::install_github(\"/MetBrewer\")"
+  },
+  {
+    "objectID": "lab1.html#finding-help",
+    "href": "lab1.html#finding-help",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.8 Finding help",
+    "text": "2.8 Finding help\n\n?seq\n??plot"
+  },
+  {
+    "objectID": "lab1.html#basic-coding-principles",
+    "href": "lab1.html#basic-coding-principles",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.9 Basic coding principles",
+    "text": "2.9 Basic coding principles\nVariable names - consistency - informative - not using function names - capitalization - punctuation - numbers\nOverwriting objects Annotation Scripts &gt; console Keeping a neat environment\n\nrm(list=ls())\ndev.off()\n\nnull device \n          1 \n\n\nHardcoding Relative versus absolute paths Length of lines Spacing Using markdown and outlines\nKeyboard Shortcuts Ctrl + Shift + I Ctrl + A Ctrl + Alt + B Ctrl + Shift + N Ctrl + W Ctrl + L"
+  },
+  {
+    "objectID": "lab1.html#base-r-and-the-tidyverse",
+    "href": "lab1.html#base-r-and-the-tidyverse",
+    "title": "2  Lab 1: Getting comfortable in R and RStudio",
+    "section": "2.10 Base R and the tidyverse",
+    "text": "2.10 Base R and the tidyverse"
+  }
+]
