@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BIOL 431/531: Ecological Modeling - 2&nbsp; Lab 1: Getting comfortable in R and RStudio</title>
+<title>BIOL 431/531: Ecological Modeling - Lab 1: Getting comfortable in R and RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab1.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab 1: Getting comfortable in R and RStudio</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab1.html">Lab 1: Getting comfortable in R and RStudio</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab 1: Getting comfortable in R and RStudio</span></span></a>
+ <span class="menu-text">Lab 1: Getting comfortable in R and RStudio</span></a>
   </div>
 </li>
     </ul>
@@ -161,20 +161,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#downloading-r-and-rstudio" id="toc-downloading-r-and-rstudio" class="nav-link active" data-scroll-target="#downloading-r-and-rstudio"><span class="header-section-number">2.1</span> Downloading R and RStudio</a></li>
-  <li><a href="#rstudio-panes" id="toc-rstudio-panes" class="nav-link" data-scroll-target="#rstudio-panes"><span class="header-section-number">2.2</span> RStudio panes</a>
+  <li><a href="#downloading-r-and-rstudio" id="toc-downloading-r-and-rstudio" class="nav-link active" data-scroll-target="#downloading-r-and-rstudio">Downloading R and RStudio</a></li>
+  <li><a href="#rstudio-panes" id="toc-rstudio-panes" class="nav-link" data-scroll-target="#rstudio-panes">RStudio panes</a>
   <ul class="collapse">
-  <li><a href="#some-terms-and-definitions" id="toc-some-terms-and-definitions" class="nav-link" data-scroll-target="#some-terms-and-definitions"><span class="header-section-number">2.2.1</span> Some terms and definitions</a></li>
-  <li><a href="#customizing-rstudio" id="toc-customizing-rstudio" class="nav-link" data-scroll-target="#customizing-rstudio"><span class="header-section-number">2.2.2</span> Customizing RStudio</a></li>
+  <li><a href="#some-terms-and-definitions" id="toc-some-terms-and-definitions" class="nav-link" data-scroll-target="#some-terms-and-definitions">Some terms and definitions</a></li>
+  <li><a href="#customizing-rstudio" id="toc-customizing-rstudio" class="nav-link" data-scroll-target="#customizing-rstudio">Customizing RStudio</a></li>
   </ul></li>
-  <li><a href="#calculation" id="toc-calculation" class="nav-link" data-scroll-target="#calculation"><span class="header-section-number">2.3</span> Calculation</a></li>
-  <li><a href="#assigning-objects" id="toc-assigning-objects" class="nav-link" data-scroll-target="#assigning-objects"><span class="header-section-number">2.4</span> Assigning objects</a></li>
-  <li><a href="#types-of-objects" id="toc-types-of-objects" class="nav-link" data-scroll-target="#types-of-objects"><span class="header-section-number">2.5</span> Types of objects</a></li>
-  <li><a href="#functions-1" id="toc-functions-1" class="nav-link" data-scroll-target="#functions-1"><span class="header-section-number">2.6</span> Functions</a></li>
-  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages"><span class="header-section-number">2.7</span> Installing packages</a></li>
-  <li><a href="#finding-help" id="toc-finding-help" class="nav-link" data-scroll-target="#finding-help"><span class="header-section-number">2.8</span> Finding help</a></li>
-  <li><a href="#basic-coding-principles" id="toc-basic-coding-principles" class="nav-link" data-scroll-target="#basic-coding-principles"><span class="header-section-number">2.9</span> Basic coding principles</a></li>
-  <li><a href="#base-r-and-the-tidyverse" id="toc-base-r-and-the-tidyverse" class="nav-link" data-scroll-target="#base-r-and-the-tidyverse"><span class="header-section-number">2.10</span> Base R and the tidyverse</a></li>
+  <li><a href="#calculation" id="toc-calculation" class="nav-link" data-scroll-target="#calculation">Calculation</a></li>
+  <li><a href="#assigning-objects" id="toc-assigning-objects" class="nav-link" data-scroll-target="#assigning-objects">Assigning objects</a></li>
+  <li><a href="#types-of-objects" id="toc-types-of-objects" class="nav-link" data-scroll-target="#types-of-objects">Types of objects</a></li>
+  <li><a href="#functions-1" id="toc-functions-1" class="nav-link" data-scroll-target="#functions-1">Functions</a></li>
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages">Installing packages</a></li>
+  <li><a href="#finding-help" id="toc-finding-help" class="nav-link" data-scroll-target="#finding-help">Finding help</a></li>
+  <li><a href="#basic-coding-principles" id="toc-basic-coding-principles" class="nav-link" data-scroll-target="#basic-coding-principles">Basic coding principles</a>
+  <ul class="collapse">
+  <li><a href="#variable-names" id="toc-variable-names" class="nav-link" data-scroll-target="#variable-names">Variable names</a></li>
+  <li><a href="#overwriting-objects" id="toc-overwriting-objects" class="nav-link" data-scroll-target="#overwriting-objects">Overwriting objects</a></li>
+  <li><a href="#annotation" id="toc-annotation" class="nav-link" data-scroll-target="#annotation">Annotation</a></li>
+  <li><a href="#cleanliness" id="toc-cleanliness" class="nav-link" data-scroll-target="#cleanliness">Cleanliness</a></li>
+  <li><a href="#keyboard-shortcuts" id="toc-keyboard-shortcuts" class="nav-link" data-scroll-target="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+  <li><a href="#do-this-not-that" id="toc-do-this-not-that" class="nav-link" data-scroll-target="#do-this-not-that">Do this not that</a></li>
+  </ul></li>
+  <li><a href="#base-r-and-the-tidyverse" id="toc-base-r-and-the-tidyverse" class="nav-link" data-scroll-target="#base-r-and-the-tidyverse">Base R and the tidyverse</a></li>
+  <li><a href="#assignment" id="toc-assignment" class="nav-link" data-scroll-target="#assignment">Assignment</a></li>
   </ul>
 </nav>
     </div>
@@ -183,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab 1: Getting comfortable in R and RStudio</span></h1>
+<h1 class="title">Lab 1: Getting comfortable in R and RStudio</h1>
 </div>
 
 
@@ -204,8 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Get comfortable with basics of programming in R</li>
 <li>Develop enough coding literacy to correct a script littered with errors</li>
 </ul>
-<section id="downloading-r-and-rstudio" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="downloading-r-and-rstudio"><span class="header-section-number">2.1</span> Downloading R and RStudio</h2>
+<section id="downloading-r-and-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-r-and-rstudio">Downloading R and RStudio</h2>
 <p>Throughout this course, we will be almost exclusively using R to read and manipulate data, simulate data, fit models, etc. R is a programming language, so we will not access it directly. Instead, we will use RStudio, which is a Graphical User Interface (GUI) for working with R. R also has its own GUI, but it is not nearly as functional as RStudio, which is how the vast majority of R users interact with R. It is worth knowing that the R GUI exists, however, because sometimes people will mistakenly open it, do a lot of work, and then lose that work. The reason for that is because the R GUI is <em>only</em> the console, which we will get to in a minute. First, we will install both R and RStudio.</p>
 <ol type="1">
 <li>First, install R. Follow the instructions for your operating system here: https://cran.r-project.org/</li>
@@ -219,37 +228,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="rstudio-panes" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="rstudio-panes"><span class="header-section-number">2.2</span> RStudio panes</h2>
+<section id="rstudio-panes" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio-panes">RStudio panes</h2>
 <p>When you open RStudio for the first time, the upper left is the Source pane. This is where you will open scripts, edit code, run analyses, type notes, etc. To use a cooking analogy, the Source pane is your recipe book. You can always come back to it, make little changes, or leave notes about what to fix for next time. But it is not the actual meal, just instructions for making a meal.</p>
 <p>In the bottom left is the Console. The Console is the process of cooking. It can be done following the recipe by running chunks of code from the Source, or you can wing it. If you decide to ‘cook’ on the fly by running code directly from the Console, you will save no notes on what on earth you put into the meal, you cannot go back and fix things easily, and you cannot share your recipe with anyone else. You also might not remember the order in which you did things. So if what you did worked and your ‘meal’ comes out great, you will not know what you did to make that happen so it is not reproducible. The only real use for the console is for code that you only <em>want</em> to run once, e.g.&nbsp;foundational things like installing packages; to really overcook this analogy (ha), you only install a kitchen counter once, not at the start of every recipe. More on packages later.</p>
 <p>In the upper right is the Environment (along with a few other tabs that you’ll use far less). This is the current version of your meal, i.e.&nbsp;if you’re making a stew, this is everything that is currently in the pot or mise en place and ready to go. It is objects (think of these as ingredients) that you have created with your cooking and are now available to either eat or combine with other objects (i.e., ingredients).</p>
 <p>In the bottom right are your Files, Plots, and Help - all of which you will use frequently (and other tabs you will use far less often). Think of these as things that are available to you, but external to your current kitchen counter and stew. The Files tab will let you browse files on your computer; think of it is your kitchen where you can get more resources for your meal if you are in your current working directory (more on directories later), or your house if you browse for other files on your computer. Your Plots tab is the equivalent of taking a picture of the current version of your meal, either to be able to visualize what you’ve currently got, or to share with others. The Help tab is exactly what it sounds like - the person you call to ask how to use the stand mixer (i.e.&nbsp;the function) and what to put into it (i.e., the arguments passed to the function) to make the perfect waffle. It’s up to you to know that you want to use the stand mixer to make waffles in the first place.</p>
-<section id="some-terms-and-definitions" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="some-terms-and-definitions"><span class="header-section-number">2.2.1</span> Some terms and definitions</h3>
+<section id="some-terms-and-definitions" class="level3">
+<h3 class="anchored" data-anchor-id="some-terms-and-definitions">Some terms and definitions</h3>
 <p>Since that analogy is now burnt to a crisp, let’s unpack some of the extra terms in there and what they are because you will use them frequently in this course.</p>
-<section id="packages" class="level4" data-number="2.2.1.1">
-<h4 data-number="2.2.1.1" class="anchored" data-anchor-id="packages"><span class="header-section-number">2.2.1.1</span> Packages</h4>
+<section id="packages" class="level4">
+<h4 class="anchored" data-anchor-id="packages">Packages</h4>
 <p>Packages are a collection of functions designed to work together to accomplish some specific outcome. Many packages are hosted on CRAN, however, you can also find R packages on repositories like GitHub. One way to find packages is through CRAN Task Views (e.g.&nbsp;these are all packages associated with meta-analysis https://cran.r-project.org/web/views/MetaAnalysis.html), but more often you’ll just Google what you want to do and find a package that way.</p>
 </section>
-<section id="objects" class="level4" data-number="2.2.1.2">
-<h4 data-number="2.2.1.2" class="anchored" data-anchor-id="objects"><span class="header-section-number">2.2.1.2</span> Objects</h4>
+<section id="objects" class="level4">
+<h4 class="anchored" data-anchor-id="objects">Objects</h4>
 <p>Objects are what are in your environment. They can take lots of different forms, have different classes, etc. Most objects are created by using the assignment operator <code>&lt;-</code> to pass the output of some code to a named object. We will talk about different types of objects more during the semester as we encounter them.</p>
 </section>
-<section id="working-directory" class="level4" data-number="2.2.1.3">
-<h4 data-number="2.2.1.3" class="anchored" data-anchor-id="working-directory"><span class="header-section-number">2.2.1.3</span> Working directory</h4>
+<section id="working-directory" class="level4">
+<h4 class="anchored" data-anchor-id="working-directory">Working directory</h4>
 <p>Your Files tab lets you see two things: files, and directories. Directories are the organizational structure for how you store data on your computer; you can think of them as folders for the most part, though folders are GUI ways to visualize directories and directories have a clear nested structure.</p>
 <p>You <em>working directory</em> is very important when coding. File paths are relative to your current working directory, so when you read files in you must know both what your current working directory is; most of the time if you get an error reading in a file, it is because the path to the file is incorrect. In the cooking analogy, you are cooking on the kitchen countertop, which is nested within the kitchen, which is nested within your house. You could move directories within the kitchen, such as moving to the sink, or you could move up several levels to go to the living room. If you try to call a file that is not in your current working directory, you will get an error. For example, if you are in the living room and tell R to pick up your cutting board, it will say it does not exist.</p>
 <p>Relative file paths are extremely useful in coding. Relative file paths begin in your current working directory. To load a file from your current directory, begin the file path with <code>./</code>. To load a file from the working directory above you (i.e.&nbsp;if you’re working at the kitchen counter, the kitchen is the next hierarchical level above you), use <code>../</code>. One way to remember the difference between one dot and two is that if the dots represent your feet, one shows where you are standing - but two means you’ve hopped somewhere new. Since directories are nested within each other, you can also combine these into longer relative paths. So, for example, if I am in the living room but I want R to go into the kitchen, then into the cabinet, and take out a cutting board, the path would be something like: <code>../kitchen/cabinet/cutting_board.txt</code>.</p>
 <p>Setting your working directory. There are two ways to set your Working Directory. One is the click-and-point way, where you can go to Session &gt; Set Working Directory &gt; Choose Location which will open up your normal file browser application and you can navigate around to find where you want to set as your current working directory. This is easier when you’re starting out and getting used to directory structure and how you have your files organized, but is not reproducible so can cause headaches if you think you’re in a different directory than you are later on when running a script. A better option is to use the function <code>setwd()</code> with an absolute path to a directory. An absolute path is one that starts at your home directory (e.g.&nbsp;on Linux or Mac, ~/, on Windows typically something like C:/). For example, I might run something like <code>setwd("~/Desktop/BIOL431")</code> at the start of my script, and then use relative paths throughout once I am in the directory where I have my files for analysis and where I want to save my output.</p>
 </section>
-<section id="functions" class="level4" data-number="2.2.1.4">
-<h4 data-number="2.2.1.4" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.2.1.4</span> Functions</h4>
+<section id="functions" class="level4">
+<h4 class="anchored" data-anchor-id="functions">Functions</h4>
 <p>Functions take input as arguments, and return output. To see what arguments can be passed to a function, and also what its output will be, you can use the Help tab to search for a function. Or, much more quickly, use a <code>?</code> followed by the function name if it is in a package that is currently loaded (e.g.&nbsp;<code>?rbinom</code>). If it is in a package that is not currently loaded, use <code>??</code> instead (e.g.&nbsp;<code>??glmer</code>).</p>
 </section>
 </section>
-<section id="customizing-rstudio" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="customizing-rstudio"><span class="header-section-number">2.2.2</span> Customizing RStudio</h3>
+<section id="customizing-rstudio" class="level3">
+<h3 class="anchored" data-anchor-id="customizing-rstudio">Customizing RStudio</h3>
 <p>There are three modifications many people will want to make to RStudio:</p>
 <ol type="1">
 <li><p>To change the theme, go to Tools &gt; Global Options. For example, you may prefer a dark theme if you’re coding frequently.</p></li>
@@ -258,8 +267,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 </section>
-<section id="calculation" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="calculation"><span class="header-section-number">2.3</span> Calculation</h2>
+<section id="calculation" class="level2">
+<h2 class="anchored" data-anchor-id="calculation">Calculation</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">42</span><span class="sc">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -283,8 +292,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="assigning-objects" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="assigning-objects"><span class="header-section-number">2.4</span> Assigning objects</h2>
+<section id="assigning-objects" class="level2">
+<h2 class="anchored" data-anchor-id="assigning-objects">Assigning objects</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">42</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span></span>
@@ -294,8 +303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="types-of-objects" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="types-of-objects"><span class="header-section-number">2.5</span> Types of objects</h2>
+<section id="types-of-objects" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-objects">Types of objects</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="st">"words"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -342,8 +351,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="functions-1" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="functions-1"><span class="header-section-number">2.6</span> Functions</h2>
+<section id="functions-1" class="level2">
+<h2 class="anchored" data-anchor-id="functions-1">Functions</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -360,8 +369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="installing-packages" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">2.7</span> Installing packages</h2>
+<section id="installing-packages" class="level2">
+<h2 class="anchored" data-anchor-id="installing-packages">Installing packages</h2>
 <p>To install a package from CRAN, you can use the <code>install.packages()</code> function with the name of the package inside the open parentheses in quotes (e.g.&nbsp;<code>install.packages("lme4")</code>) to install the <code>lme4</code> package which is useful for linear models. To install packages from other sources, follow the package developer’s instructions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("lme4")</span></span>
@@ -369,17 +378,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("/MetBrewer") </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="finding-help" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="finding-help"><span class="header-section-number">2.8</span> Finding help</h2>
+<section id="finding-help" class="level2">
+<h2 class="anchored" data-anchor-id="finding-help">Finding help</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>?seq</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>??plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="basic-coding-principles" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="basic-coding-principles"><span class="header-section-number">2.9</span> Basic coding principles</h2>
-<p>Variable names - consistency - informative - not using function names - capitalization - punctuation - numbers</p>
-<p>Overwriting objects Annotation Scripts &gt; console Keeping a neat environment</p>
+<section id="basic-coding-principles" class="level2">
+<h2 class="anchored" data-anchor-id="basic-coding-principles">Basic coding principles</h2>
+<section id="variable-names" class="level3">
+<h3 class="anchored" data-anchor-id="variable-names">Variable names</h3>
+<p>It is important to choose good variable names when coding. This is one of the many, many times where you should do as I say, not as I do, to quote my mom. I have terrible variable naming conventions. Please do better than me.</p>
+<p>Pick something informative. If your object is a vector of temperatures for the month of January, probably don’t call it <code>var1</code> for example. Call it something like <code>Jtemp</code> or <code>JanT</code> or something you’ll remember what it is.</p>
+<p>When selecting a variable name, go for consistency. Choose a formatting and naming convention that makes sense to you so that you don’t have to repeatedly look at your environment to see what you named something. You’ll also be able to code more quickly if you know what your variable name most likely is rather than having to look it up.</p>
+<p>Pick something easy to type. In general, it is good to avoid capitalization, especially when you use a combination of capitalization and not. Why? Because then we forget which letter(s) are capitalized. In the January temperature example, <code>JanT</code> is actually a pretty bad name because we have to remember we capitalized the J and the T. A better name might be something like <code>jan</code> if we’ve got a lot of months of temperature data, or if everything is from the same month, then just <code>temp</code>.</p>
+<p>For similar reasons, I think it’s a good idea to mostly omit punctuation from a variable name. Some people will do stuff like <code>jan_temp</code> or <code>jan.temp</code> but then I at least can’t remember if I used an underscore or a period. If you go the punctuation route, be consistent about what you use.</p>
+<p>You can use numbers in variable names, but only if they are not the start of the object name. <code>2b</code> is not a valid name and R will yell at you for it, but <code>not2b</code> is valid. So if the question is if <code>2b</code> or <code>not2b</code> is an allowed object name in R, the answer is <code>not2b</code>.</p>
+<p>Lastly, do not use function names as object names. The absolute worst thing you could name an object that contains a plot, for example, is <code>plot</code>. Why? Because that’s the function that you use to generate a plot, i.e.&nbsp;<code>plot()</code> and you’ve just overwritten that very basic function with an object name.</p>
+</section>
+<section id="overwriting-objects" class="level3">
+<h3 class="anchored" data-anchor-id="overwriting-objects">Overwriting objects</h3>
+<p>Once you create an object, it is typically best to leave it alone. You might overwrite the object for a few lines of code as you’re getting it set up, but don’t overwrite the object later in the script. You will sometimes forget you did that and then think you’re working with a different object that has a different format or structure and it can lead to a lot of confusion especially if you run lines of your script out of order.</p>
+</section>
+<section id="annotation" class="level3">
+<h3 class="anchored" data-anchor-id="annotation">Annotation</h3>
+<p>Do your future self a favor and annotate your code. You can use the pound symbol <code>#</code> at the start of a line to add a comment or note. You can also add it at the end of a line. Anything following <code>#</code> will not be evaluated (i.e., run) by R.</p>
+<p>You should take notes on what you tried, what worked, what didn’t work, where you looked for information, why you ran things the way you did, what a particular line of code or function does, etc. That way, when you set down a script and come back to it six months from now, you don’t have to re-learn everything, because past you left helpful notes.</p>
+</section>
+<section id="cleanliness" class="level3">
+<h3 class="anchored" data-anchor-id="cleanliness">Cleanliness</h3>
+<p>Try to keep your coding environment nice and neat. What I mean by this is to tidy up now and then, remove objects you aren’t currently using, don’t display plots that aren’t part of your current project, and also to have nice, neat, readable scripts.</p>
+<p>I will often use <code>rm(list=ls)</code> at the start of a coding session to remove all objects from my environment. I also like to run <code>dev.off()</code> every now and then to kill the plotting window.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -388,11 +418,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           1 </code></pre>
 </div>
 </div>
-<p>Hardcoding Relative versus absolute paths Length of lines Spacing Using markdown and outlines</p>
-<p>Keyboard Shortcuts Ctrl + Shift + I Ctrl + A Ctrl + Alt + B Ctrl + Shift + N Ctrl + W Ctrl + L</p>
+<p>For coding, try to keep your lines of code fairly narrow and not let them extend so far right that you have to scroll to read them. A good rule of thumb is to keep your lines of code under 80 lines. You can even set a little margin for yourself in RStudio as a visual reminder of this. Go to Tools &gt; Global Options &gt; Code &gt; Display and then tick the box to show a margin and how many characters you want it to be. This helps with reading code quickly.</p>
+<p>If you feel like your code is getting messy, RStudio has a built-in feature to clean it up. The keyboard shortcut <code>Ctrl + Shift + I</code> will clean up the formatting and spacing for messy code, though only within reason.</p>
+<p>It can be really useful to structure your code as an outline, because then you can quickly navigate through it. To insert a new section, start a line with a <code>#</code> and then end it with five or more <code>-----</code> and it will be a section header. To add a subsection within that, use two <code>##</code> in a row, and a subsubsection is <code>###</code>, and so on. You can navigate through these sections by clicking the ‘outline’ tab in the upper right corner of your script pane.</p>
 </section>
-<section id="base-r-and-the-tidyverse" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="base-r-and-the-tidyverse"><span class="header-section-number">2.10</span> Base R and the tidyverse</h2>
+<section id="keyboard-shortcuts" class="level3">
+<h3 class="anchored" data-anchor-id="keyboard-shortcuts">Keyboard shortcuts</h3>
+<p>There are a lot of keyboard shortcuts in RStudio, which you can find under Tools &gt; Keyboard Shortcuts Help. The ones I use most frequently are <code>Ctrl + A</code> to select all, <code>Crtl + Alt + B</code> to run all lines of code above my current position, <code>Ctrl + Shift + N</code> for a new script, and <code>Ctrl + L</code> to clear my console.</p>
+</section>
+<section id="do-this-not-that" class="level3">
+<h3 class="anchored" data-anchor-id="do-this-not-that">Do this not that</h3>
+<p>Instead of hardcoding, always aim for softcoding. What I mean by that is to assign values you intend to use to an object and reference that object, rather than manually plugging in numbers. It will make your life so much easier and make it way faster to reuse code in the future if you softcode things. As an example of this, let’s simulate a bit of data. We can force R to use the same starting point for a random number generator (essentially) with <code>set.seed()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hard coding</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>) <span class="co"># the answer to life, the universe, and everythign</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.370958</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fl">1.3709584</span> <span class="sc">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.741917</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># soft coding</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">lambda =</span> <span class="dv">3</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>x<span class="sc">*</span>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.741917</code></pre>
+</div>
+</div>
+<p>For similar reasons, try to always use relative, not absolute, paths when referring to files on your computer. This helps us maintain good working directory structures which are neat and tidy, and not a chaotic mess (…again, do as I say, not as I do, and don’t judge my poor file organization on my computer).</p>
+</section>
+</section>
+<section id="base-r-and-the-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="base-r-and-the-tidyverse">Base R and the tidyverse</h2>
+<p>There are two main coding camps when it comes to R: base R, and the tidyverse. Typically, people end up coding in one of these two styles, and the style you choose is what you stick with. In some ways, people stick with the way they first learn, but also I’m convinced some people’s brains are just more suited to one or the other. I code almost exclusively in base R because I like to see every single step laid out and I need to be able to have the concrete changes visualized in front of me so I can see what happens when I change something. In my much belabored cooking analogy, I am tasting that soup each and every single time I add something to it because I cannot process more than one thing at a time and I can’t picture what would happen if I added salt and pepper at the same time. I want to add the salt first, taste the soup, then decide how much pepper to add. Tidyverse people, on the other hand, tend to think in pipes which means they pass the output of one operation right on to the next one sort of like an assembly line. If they are making soup, they say take this soup, add some salt, add some pepper, then give me that to taste. I’m not quite as much of a hater as <a href="https://matloff.github.io/TidyverseSkeptic/Skeptic.html">the guy who wrote this blog post about why students should not start with tidyverse</a> but I do tend to think people who code in base R have a better understanding of what they are doing, can troubleshoot things more quickly and more easily, and have more potential to become much more adept at programming and teaching themselves new skills.</p>
+</section>
+<section id="assignment" class="level2">
+<h2 class="anchored" data-anchor-id="assignment">Assignment</h2>
+<p><a href="https://raw.githubusercontent.com/BIOL431/BIOL431.github.io/refs/heads/main/assignments/Assignment1_badlybroken.R">Assignment 1: A Badly Broken Code</a></p>
+<p>Optional: listen to <a href="https://dessa.bandcamp.com/album/a-badly-broken-code">Dessa</a> while coding</p>
 
 
 </section>
