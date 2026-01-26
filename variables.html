@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./simulation.html" rel="next">
 <link href="./hypotheses.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -62,10 +95,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
 <body class="nav-sidebar floating">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -107,14 +143,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessonplans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lesson Plans</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Thinking like a Modeler</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Thinking like a Modeler</span></span></a>
+  <a href="./lab1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Getting comfortable in R and RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -129,163 +165,24 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Random Variables</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./linearmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modelfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Fitting</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evaluating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prediction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prediction and Inference</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Uncertainty</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability Distributions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./linkfunctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Link Functions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./glms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixedeffects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pathanalysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Path Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayes Theorem</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mcmc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Markov Chain Monte Carlo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./jags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Fitting Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hierarchical.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Advanced Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixturemodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Mixture Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./overdispersion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Overdispersion and Zero-inflation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./latent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Latent Variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dimensionality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Dimensionality Reduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./multivariate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Multivariate Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./aic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Information Theoretic Approaches</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Ethics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./frontiers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Emerging Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#horse-or-laminator" id="toc-horse-or-laminator" class="nav-link active" data-scroll-target="#horse-or-laminator"><span class="header-section-number">3.1</span> Horse or Laminator</a></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">3.2</span> Binomial distribution</a>
+  <ul class="collapse">
+  <li><a href="#guillemot-example" id="toc-guillemot-example" class="nav-link" data-scroll-target="#guillemot-example"><span class="header-section-number">3.2.1</span> Guillemot example</a></li>
+  <li><a href="#coral-example" id="toc-coral-example" class="nav-link" data-scroll-target="#coral-example"><span class="header-section-number">3.2.2</span> Coral example</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -307,29 +204,356 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Katie: HHHHL(L) Ed: L(H) David: (L) Rose: H(H) Jo: HLHHLLHHLHHLL(H)</p>
-<p><strong>Schedule</strong></p>
-<ul>
-<li>Guillemot chick survival (5 min) <a href="https://www.youtube.com/embed/5EYXdEsW6xw?si=i0bLMJkvHFG-v_Qf">video</a></li>
-<li>Simulating draws from a Bernoulli distribution (15 min)</li>
-<li>Activity: probability of guessing horse or laminator correctly (30 min)</li>
-<li>Binomial distribution (10 min)</li>
-<li>Law of large numbers (20 min)</li>
-<li>Vectors (10 min)</li>
-</ul>
-<p><strong>Learning outcomes</strong></p>
-<p>After this lecture, students should know:</p>
-<ul>
-<li>Random variables are described by probability distributions</li>
-<li>Random variables can be described mathematically</li>
-<li>The Bernoulli distribution simulates one flip of a coin</li>
-<li>The probability of success is on a per trial basis</li>
-<li>The Binomial distribution simulates multiple trials</li>
-<li>Increasing sample sizes towards infinity results in more stable estimates of probability from observations</li>
-<li>R has built-in functions for simulating most probability distributions</li>
-</ul>
+<section id="horse-or-laminator" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="horse-or-laminator"><span class="header-section-number">3.1</span> Horse or Laminator</h2>
+<p>Today we are talking about random variables. There is a classic scene in the absurdist play <em>Rosencrantz and Guildenstern are Dead</em> by Tom Stoppard in which they improbably flip a coin and it turns up heads 92 times in a row. If you flip a coin, what is the probability that it lands up heads? There is a 0.50 probability, or 50% chance, of flipping heads. There is also a 0.5 probability that the outcome is tails. These two probabilities have to sum to 1 because there is no chance of any other outcome. Put another way, if <span class="math inline">\(p_h = 0.5\)</span>, then <span class="math inline">\(p_t = 1 - p_h = 0.5\)</span>, where <span class="math inline">\(p_h\)</span> is probability of heads and <span class="math inline">\(p_t\)</span> is probability of tails.</p>
+<p>Now, instead of thinking about flipping a coin as a 50/50 shot at heads or tails, think about it only in terms of succeeding at flipping heads. Each successful attempt you get a ‘1’ for a success, and each time the coin is not heads, we call it a ‘0’ for failure. Put another way, we ask the question ‘Did we flip heads?’ and if the answer is TRUE, and we use a 1 to denote that. This is actually how R encodes TRUE (T = 1) and FALSE (F = 0).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to leave notes to yourself in R scripts, start with a #</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>?rbinom <span class="co"># look up the Help file to find out about the arguments to the function</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rbinom wants:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># n, the number of observations / replicates</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># size, the number of draws</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># p the probability of success</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># to simulate a single coin flip, we want to take one replicate (n=1) of </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># one draw (size=1) from a binomial distribution  with a probability of </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># success (heads) of 0.5</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we could keep running this line over and over</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or we could increase n, the number of replicates</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this gives us a vector of 100 observations of a coin flip</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 0 1 0 1 1 0 0 0 0 0 1 1 0 0 1 0 1 1 0 1 0 1 1 0 0 1 1 0 0 1 0 0 0 0 0 0 1
+ [38] 1 0 0 0 0 0 0 0 1 0 1 1 1 1 0 1 0 1 1 1 0 0 0 1 0 1 1 0 0 1 0 0 0 1 0 1 1
+ [75] 0 0 0 0 1 0 1 0 0 1 1 1 1 1 0 0 0 1 1 0 1 1 1 1 1 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to visualize the outcome, we can create a histogram plotting the results</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the function hist()</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># because the function is drawing from a probability distribution, outcomes will</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># be a little different every single time. If you need them to be the same, you </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can set the seed with set.seed(42), or any other number</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The outcome we are observing, successfully flipping heads, is a <strong>random variable</strong>. A random variable is one that is drawn from a probability distribution (not in the colloquial sense of the word random). Our observed response (heads = TRUE) is drawn from a Bernoulli distribution with a probability of success of 0.5. We can write this mathematically as: <span class="math display">\[heads \sim Bernoulli(p=0.5)\]</span></p>
+<p>The Bernoulli distribution is a probability distribution that only yields success (1) or failure (0) based on the probability of success <span class="math inline">\(p\)</span>. The probability can vary depending on the process you are modeling, but the outcome will always be 0 or 1.</p>
+<p>While we could be very high-brow in this course and simulate the probability of that series of events, instead we will consider the remarkable case of Jo Brand’s performance in a game of ‘Horse or Laminator’ on Taskmaster. In this task, five comedians have to guess correctly whether the taskmaster has selected a card with a horse on it, or a laminator on it. For the sake of this exercise, we will assume that the taskmaster is random in his selections, and that the only thing we need to be concerned with is the probability of a comedian correctly guessing if he has selected a horse or a laminator (i.e., he is not more or less likely to choose a horse or a laminator, and there is no higher chance of a comedian being correct in the case of him selecting one or the other).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.youtube.com/embed/o_Nc5j2xGg8?si=sYWcEWtPQ9KS2rxV&amp;start=2221.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Horse or Laminator</figcaption>
+</figure>
+</div>
+<p>There are only two options, so we assume that comedians have a 50/50 shot at being correct, meaning they have a 0.5 probability of successfully guessing if the taskmaster has chosen a horse or a laminator. We can represent ‘success’ with a 1 and ‘failure’ with a 0. If the taskmaster chooses a horse and they select horse, that’s a 1; if he selects a horse and they select a laminator, that’s a 0; if he selects a laminator and they select a laminator, that’s a 1; and if he selects a laminator and they select a horse, that’s a 0. It does not matter what is selected, so long as their answers match.</p>
+<p>In R, we can represent this scenario as arising from a binomial distribution. We’ve encountered the function <code>rbinom</code> before when playing around with code, and that is the way to randomly draw from a binomial distribution in R. For a single guess, we will make one draw from a binomial distribution of size 1, and a probability of 0.5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>Note that the value we get from this can only ever be 0 or 1, but, the value returned is random. We don’t always get a 1, and we don’t always get a 0, but every single time we have a 0.5 probability of getting a 1 (i.e., a ‘success’).</p>
+<p>Now let’s assume that each comedian has 10 guesses. That’s not actually what happens on the show, but let’s run with it for a minute. We can adjust our code so that instead of drawing one number from the distribution once, we draw one number ten times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take ten draws of size 1 from the distribution</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 0 1 1 1 0 1 0 1 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take 1 draw (for one comedian) who gets 10 guesses, and report the number of successes in those 10 attempts</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>We could now tally up the number of times a comedian was successful based on this random draw. Over the long-run, this number should balance out to roughly 50/50, but on any given draw it is random. The reason it starts to balance out when we take enough draws is due to the law of large numbers. If we make enough draws from a probability distribution, eventually it will start to resemble the expected value. Let’s try still letting our comedian guess 10 times, but now we will iterate that for 1000 attempts. So in our simulated world, you could think of it like 1000 comedians all get a shot to guess horse or laminator 10 times each, and we want to know the average number of times they were correct. We would expect it to stabilize probably somewhere around five out of 10 times.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will give us 1000 simulations of 10 draws from binomial</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   [1]  7  4  3  5  4  3  4  6  5  5  6  4  4  4  4  5  4  5  5  4  6  4  4  4
+  [25]  5  5  4  6  3  4  2  8  3  6  7  7  6  5  3  4  3  6  5  3  4  5  3  2
+  [49]  4  4  6  4  3  3  6  2  5  6  3  5  7  7  5  4  3  6  3  6  7  5  7  5
+  [73]  5  6  8  3  3  5  4  7  7  5  5  4  6  4  5  6  6  4  7  4  2  6  7  3
+  [97]  7  5  3  4  7  6  6  7  7  8  7  5  6  3  7  5  6  5  5  3  2  8  6  3
+ [121]  5  4  5  5  3  6  6  5  6 10  8  4  3  5  5  6  6  6  6  6  4  7  6  3
+ [145]  6  5  3  5  3  6  5  8  8  4  4  7  4  5  4  3  6  6  5  5  5  6  3  6
+ [169]  4  4  7  8  4  7  7  3  3  7  7  7  4  6  4  6  6  3  8  7  3  5  4  5
+ [193]  8  2  3  2  3  3  2  5  4  2  7  3  7  6  4  5  5  6  2  4  4  4  9  4
+ [217]  7  7  4  6  5  3  5  4  3  6  6  3  7  3  5  6  5  6  6  6  3  6  5  5
+ [241]  5  5  6  6  4  3  3  7  5  5  4  5  2  3  4  3  6  5  4  9  5  6  4  4
+ [265]  6  4  5  7  4  4  3  5  3  4  5  4  5  5  5  2  5  4  6  4  4  5  6  5
+ [289]  3  6  8  7  5  5  6  2  4  4  7  7  6  3  4  6  7  4  7  5  0  6  4  3
+ [313]  4  5  4  8  6  6  5  7  4  6  4  6  6 10  5  5  4  6  5  4  5  6  3  4
+ [337]  0  6  3  4  5  5  7  6  3  4  4  4  4  8  4  5  7  4  6  5  7  2  4  5
+ [361]  7  5  4  5  6  2  5  5  2  4  4  4  6  2  4  4  4  8  7  4  4  4  7  8
+ [385]  3  5  6  4  8  6  4  3  5  4  3  6  4  3  6  4  5  3  4  3  5  7  6  7
+ [409]  5  3  8  6  3  5  4  6  4  6  4  4  5  4  6  3  6  8  6  4  5  7  7  4
+ [433]  7  5  6  6  3  3  6  7  7  8  1  7  5  6  6  5  4  7  7  5  3  5  5  5
+ [457]  5  4  7  3  4  5  7  6  5  6  5  5  5  5  4  2  6  5  5  4  7  7  2  4
+ [481]  5  6  4  5  7  3  7  7  6  7  6  6  6  2  6  6  6  4  5  6  5  5  4  3
+ [505]  5  5  3  5  4  5  3  3  4  6  3  3  6  6  6  5  7  8  3  6  4  4  1  7
+ [529]  5  2  6  7  6  5  4  3  4  4  4  6  7  6  5  7  7  6  4  4  7  2  5  5
+ [553]  4  5  5  3  6  4  7  3  4  3  5  8  6  4  5  5  5  5  4  6  4  6  4  8
+ [577]  5  4  6  7  9  4  5  9  4  7  7  5  6  5  2  2  5  6  5  4  3  7  4  5
+ [601]  4  4  6  5  9  5  5  4  5  6  6  6  4  7  2  7  5  4  4  5  4  2  3  3
+ [625]  3  2  6  5  5  3  5  4  7  1  4  8  5  6  5  5  2  4  6  6  6  8  6  2
+ [649]  6  5  5  6  4  6  5  5  8  9  6  4  5  6  5  6  4  5  6  4  9  6  5  5
+ [673]  7  6  3  3  6  3  7  6  6  7  7  6  6  5  4  7  6  5  5  7  5  3  3  5
+ [697]  9  4  8  6  6  6  4  8  8  6  4  4  4  5  5  6  5  4  5  6  7  5  5  7
+ [721]  5  4  8  5  5  6  5  6  4  6  4  5  6  4  2  6  8  2  3  4  4  6  7  6
+ [745]  4  6  2  6  4  5  2  3  4  6  4  7  3  5  5  5  7  6  5  4  3  5  4  5
+ [769]  3  4  5  8  3  9  8  4  3  6  4  5  4  6  7  4  7  3  3  3  5  5  5  1
+ [793]  4  7  3  3  6  5  3  6  2  3  4  7  6  6  5  4  9  6  5  6  3  5  4  6
+ [817]  5  6  2  6  8  6  4  7  6  6  4  6  6  4  6  5  6  4  5  3  6  3  6  6
+ [841]  7  6  3  7  4  8  5  5  3  4  3  5  3  6  4  5  7  4  4  8  6  6  8  6
+ [865]  6  4  5  5  8  3  5  5  4  4  5  6  6  5  6  3  8  5  2  7  8  5  7  7
+ [889]  3  5  4  3  7  3  5  6  8  7  6  6  2  4  4  1  7  7  7  6  6  5  4  6
+ [913]  5  4  7  7  4  2  6  5  5  5  4  5  4  4  4  4  6  5  8  2  5  3  5  5
+ [937]  2  4  7  4  5  7  6  7  7  4  5  3  6  3  6  8  7  7  5  6  5  7  4  4
+ [961]  6  5  3  6  4  6  2  5  3  7  4  4  3  2  4  6  5  5  5  7  4  2  7  4
+ [985]  5  6  7  5  7  2  5  4  5  3  6  5  6  3  4  6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we should save this to an object so it is easier to work with</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ten_attempts <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ten_attempts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ten_attempts
+  1   2   3   4   5   6   7   8   9  10 
+ 11  41 119 207 242 200 122  49   7   2 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ten_attempts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now, what actually happens on Taskmaster is that the first comedian gets five correct in a row (horse, horse, horse, horse, laminator). The second gets one correct. The third gets zero correct, the fourth gets one, and the final comedian, Jo Brand, guesses horse or laminator correct <em>13 times in a row</em>. Using the <code>rbinom</code> function, work out what the probability of each of these events is. Keep in mind that now instead of getting a certain number of guesses and tallying success across all those, as soon as a comedian guesses incorrectly, they are out. So we are looking only for that number of successful events <em>in a row</em> to calculate the probability.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># recode david's as 1, because otherwise length doesn't work correctly; you can't guess 0 times</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># there are many other solutions possible</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># you could subset stuff, for example</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or use logical vectors to find true and false, etc.</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">13</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> scores){</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">prop.table</span>(<span class="fu">table</span>(<span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000000</span>, <span class="at">size =</span> i, <span class="at">prob=</span><span class="fl">0.5</span>)<span class="sc">==</span>i)))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   FALSE     TRUE 
+0.968634 0.031366 
+
+   FALSE     TRUE 
+0.500333 0.499667 
+
+   FALSE     TRUE 
+0.499739 0.500261 
+
+   FALSE     TRUE 
+0.499226 0.500774 
+
+   FALSE     TRUE 
+0.999878 0.000122 </code></pre>
+</div>
+</div>
+<p>## Guillemot chick survival</p>
+<p>To move on to a slightly more ecological example than coin flips or horses and laminators, let’s think about guillemots. Guillemots are seabirds that nest on steep cliffsides to escape predators. They spend most of their life on the ocean, however, and as such are very awkward on land and also not great at flying. To get from the cliffside nest to the ocean for the first time, guillemot chicks have to jump and then glide/fly. If they do not make it all the way, they can attempt to run, but are vulnerable to predation. The only option for chicks is to survive or fail - making it 70% of the way to the ocean will result in failure (and, in this case, death). Thus the probability of success does not equate to the actual rate of success - it is the probability per trial (i.e., each attempt).</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5EYXdEsW6xw?si=8Rh_0NsMZuT4kock" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's assume chicks have a 40% chance of making it to the ocean, and there are</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 chicks jumping from the cliff hoping to make it to the ocean so we have </span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 observations, each with one draw from the Bernoulli distribution</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 0 1 1 0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 1 0 1 1 0 1 0 0 0 0 1 0 0
+ [38] 1 1 0 0 1 1 1 0 1 1 0 0 1 1 1 0 0 1 0 0 0 0 1 0 1 0 0 0 1 1 0 0 0 0 0 0 0
+ [75] 1 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 0 0 0 0 1 0 0 1 1 0</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so far, we have just been running functions and the output is shown in the console</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># but we don't have anything in our environment</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># can save to an object with the &lt;- assignment operator</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>survival <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># we can then do things with that saved object, like plot it</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(survival)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="binomial-distribution" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">3.2</span> Binomial distribution</h2>
+<section id="guillemot-example" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="guillemot-example"><span class="header-section-number">3.2.1</span> Guillemot example</h3>
+<p>Guillemots typically only lay 1-2 eggs, but for the sake of our example code, let’s pretend that each pair has 3 chicks that are attempting to make it to the ocean. Each individual chick’s attempt could be modeled with a Bernoulli distribution, but if we consider it from the perspective of the breeding pair, the total number of surviving offspring is what matters. We can think of the number of chicks from each nest that make it to the ocean as the sum of their individual attempts for a single nest. This is the Binomial distribution, which is a more generalized version of the Bernoulli distribution (more accurately, the Bernoulli distribution is a special case of the Binomial distribution with one draw) in which each observation has multiple draws.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for one nest with 3 chicks and a probability of success of 0.4</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we could also think about a colony with let's say 100 nests</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># how many chicks from each nest will make it?</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>nest_offspring <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(nest_offspring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>nest_offspring</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] 0 1 1 2 1 1 2 1 2 2 1 1 1 0 2 1 0 0 2 2 1 0 3 1 0 1 0 1 0 2 0 1 1 0 1 2 2
+ [38] 2 1 1 1 1 2 1 2 3 2 3 1 1 0 1 0 2 0 1 2 1 0 1 1 1 2 3 1 1 2 0 0 2 1 2 1 1
+ [75] 2 1 0 3 1 1 0 1 2 3 2 1 1 1 1 2 2 2 1 0 1 2 2 2 0 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability that all three chicks from a nest make it?</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because we know what we fixed p to, we could multiply the probabilities</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fl">0.4</span><span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.064</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability that none make it?</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.4</span>)<span class="sc">^</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.216</code></pre>
+</div>
+</div>
+<p>We are able to calculate what the probability of these outcomes are because we fixed the probability of success at 0.4 and then simulated outcomes. In the real world, we rarely know what the probability of success truly is, and instead we are working backwards from our observed outcomes (i.e.&nbsp;our data) to estimate the probability of survival. One of the beautiful things about working with simulated data is that we know the input value, so we can test assumptions, see if we recapture our input, and play around with different model structures and know that anything that is unexpected is most likely a problem with our code or model, not the data.</p>
+<p>With discrete distributions like the Binomial, we can convert the frequency of outcomes to a proportion of the total as an estimate of probability. Dividing the frequencies by the total sample size makes it so that the total probability sums to 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># table is a function that tallies up all the items in a vector</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a vector is a type of object that is one dimension, i.e. nest_offspring is a </span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># vector with length = 100</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nest_offspring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>nest_offspring
+ 0  1  2  3 
+20 45 29  6 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proportions will convert the table into proportions instead of counts</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># so will prop.table and I often use that function because I learned it first</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># there are many different ways to accomplish the same goal in R</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>survival_prob <span class="ot">&lt;-</span> <span class="fu">proportions</span>(<span class="fu">table</span>(nest_offspring))</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># How do these values compare to the calculated probability of all three chicks</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># surviving? What about of none surviving?</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># With the values calculated from the simulated data (i.e. not the parameter</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># value that we fixed), what is the probability that *at least* one chick </span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co"># from a nest survives?</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="fl">0.47</span> <span class="sc">+</span> <span class="fl">0.27</span> <span class="sc">+</span> <span class="fl">0.06</span> <span class="co"># note: numbers might be different because we didn't set.seed()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8</code></pre>
+</div>
+</div>
+<p>In general with coding, you want to avoid hard coding like this where you put in fixed values. It is much better to use code that is flexible if the input data changes (e.g.&nbsp;we are using a randomly generated dataset, so it will change every time), or if you want to change some parameter across a lot of different parts of the code. For example, instead of repeatedly typing p=0.4, we could have created an object in our environment with the probability of success such as <code>p.surv &lt;- 0.4</code> and then specifying p=p.surv throughout the script, which would make it really easy to change the simulations for a new scenario (e.g.&nbsp;if the guillemot chicks were given little hang-gliders, we might increase p.surv and would only have to type it out once as <code>p.surv &lt;- 0.8</code>.</p>
+<p>Subsetting vectors in R is a really useful tool when you want to apply a function to only part of a vector, inspect part of an object, etc. We use the square brackets <code>[]</code> for subsetting, and within them specify which elements to return. The elements to return can be a numeric vector (e.g.&nbsp;<code>c(1,2,4)</code>) to return the first, second, and fourth elements, or a logical vector indicating if an element should or should not be returned (e.g.&nbsp;<code>c(TRUE TRUE FALSE TRUE)</code>). If subsetting a range of consecutive elements, the <code>:</code> operator can also be used (e.g.&nbsp;<code>1:4</code> is the same as <code>c(1,2,3,4)</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To avoid hard coding our estimated percent, we can use sum() on a subset of</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the table of proportions to estimate the probability at least one survives?</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability at least two survive?</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.35</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># side note: if you're not sure which indices to subset, it can help to look at</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># your object; you can easily do this in RStudio by highlighting just the bit of</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># code with your object name and using Ctrl + Enter (or Cmd + Enter) to print</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="co"># just that object to the console, i.e. if you highlight part of a line, you will</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># only run the highlighted bit, not the entire line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="coral-example" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="coral-example"><span class="header-section-number">3.2.2</span> Coral example</h3>
+<p>With the guillemots, we were assuming that each pair had three potential offspring surviving. What happens if we vastly increase the number of draws from the binomial distribution? Take corals as an example. Some broadcast spawning corals have mass synchronized spawning events where individual corals on a reef all release bundles of sperm and eggs at the same time. The reproductive success of each individual coral can still be modeled as a binomial distribution, i.e.&nbsp;how many of those released sperm and eggs will actually encounter a bundle of the same species and be a successful mating attempt is a random variable drawn from a Binomial distribution with a number of draws <span class="math inline">\(N\)</span> equal to the number of released sperm and eggs and a probability of success <span class="math inline">\(p\)</span> for each of those. <span class="math display">\[ offspring \sim Binomial(N, p)\]</span>.</p>
+<p>Note: the <span class="math inline">\(N\)</span> for denoting the number of draws from the Binomial is distinct from the <code>n =</code> argument in the <code>rbinom()</code> function. Don’t let this confuse you! <span class="math inline">\(N\)</span> equates to the <code>size =</code> argument, while <code>n =</code> is the number of observations of the random variable, i.e.&nbsp;the total number of individual corals on the reef.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wsaZ8-I7akg?si=WFGkMdCDz_PCJgpq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's assume now the coral reef has 100,00 individual corals (I have no </span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co"># clue if this is an accurate number, but let's roll with it)</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># let's also assume each individual coral releases 10,000 sperm and eggs</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and the probability for each of those resulting in a successful mating event </span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 0.0002 (i.e. 0.002%)</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>gametes <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100000</span>, <span class="at">size=</span><span class="dv">10000</span>, <span class="at">p=</span><span class="fl">0.0002</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(gametes, <span class="at">breaks =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability of reproductive failure?</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>gametes
+      0       1       2       3       4       5       6       7       8       9 
+0.13325 0.27077 0.27168 0.18012 0.09020 0.03723 0.01194 0.00361 0.00082 0.00029 
+     10 
+0.00009 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what's the probability of more than 5 offspring?</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes<span class="sc">&gt;</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  FALSE    TRUE 
+0.98325 0.01675 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now let's increase the number of individual corals to 1 million, and also increase</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability of success to 0.001 </span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>gametes2 <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1000000</span>, <span class="at">size=</span><span class="dv">10000</span>, <span class="at">p=</span><span class="fl">0.001</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(gametes2, <span class="at">breaks=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now what is the probability of reproductive failure?</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes2<span class="sc">==</span><span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   FALSE     TRUE 
+0.999955 0.000045 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and what is the probability of more than 15 offspring?</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes2<span class="sc">&gt;</span><span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   FALSE     TRUE 
+0.951431 0.048569 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's visualize the data as a histogram again, but add a vertical bar using </span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the abline() function at 15; note there are other plotting options to make </span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co"># your plots slightly more aesthetic</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(gametes2, </span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks=</span><span class="dv">100</span>,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">border=</span>F, <span class="co"># i just don't like borders on bars</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"turquoise4"</span>, </span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">""</span>, <span class="co"># removes the 'title'</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Number of successful mating attempts"</span>, <span class="co"># changes x axis label</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span> <span class="co"># rotates the axis labels the right way</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">15</span>, </span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, <span class="co"># width of line</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="st">"tomato2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -572,9 +796,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./simulation.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
