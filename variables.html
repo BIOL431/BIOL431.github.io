@@ -181,6 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#guillemot-example" id="toc-guillemot-example" class="nav-link" data-scroll-target="#guillemot-example"><span class="header-section-number">3.2.1</span> Guillemot example</a></li>
   <li><a href="#coral-example" id="toc-coral-example" class="nav-link" data-scroll-target="#coral-example"><span class="header-section-number">3.2.2</span> Coral example</a></li>
   </ul></li>
+  <li><a href="#probability-mass" id="toc-probability-mass" class="nav-link" data-scroll-target="#probability-mass"><span class="header-section-number">3.3</span> Probability mass</a></li>
   </ul>
 </nav>
     </div>
@@ -229,9 +230,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this gives us a vector of 100 observations of a coin flip</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 0 1 0 1 1 0 0 0 0 0 1 1 0 0 1 0 1 1 0 1 0 1 1 0 0 1 1 0 0 1 0 0 0 0 0 0 1
- [38] 1 0 0 0 0 0 0 0 1 0 1 1 1 1 0 1 0 1 1 1 0 0 0 1 0 1 1 0 0 1 0 0 0 1 0 1 1
- [75] 0 0 0 0 1 0 1 0 0 1 1 1 1 1 0 0 0 1 1 0 1 1 1 1 1 0</code></pre>
+<pre><code>  [1] 1 1 1 0 1 1 1 0 0 0 0 1 1 0 1 0 1 0 0 1 0 1 1 1 0 1 0 1 0 1 1 1 0 1 0 0 1
+ [38] 1 1 0 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 0 0 1 0 1 1 0 0 0 1 1 1 0 0 1 1 0 1 1
+ [75] 1 1 1 1 1 1 1 0 0 1 1 0 0 1 0 0 1 0 1 1 1 0 1 0 1 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to visualize the outcome, we can create a histogram plotting the results</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the function hist()</span></span>
@@ -257,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>Note that the value we get from this can only ever be 0 or 1, but, the value returned is random. We don’t always get a 1, and we don’t always get a 0, but every single time we have a 0.5 probability of getting a 1 (i.e., a ‘success’).</p>
@@ -266,12 +267,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take ten draws of size 1 from the distribution</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 1 1 1 0 1 0 1 1</code></pre>
+<pre><code> [1] 1 0 1 1 1 0 1 0 0 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take 1 draw (for one comedian) who gets 10 guesses, and report the number of successes in those 10 attempts</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>We could now tally up the number of times a comedian was successful based on this random draw. Over the long-run, this number should balance out to roughly 50/50, but on any given draw it is random. The reason it starts to balance out when we take enough draws is due to the law of large numbers. If we make enough draws from a probability distribution, eventually it will start to resemble the expected value. Let’s try still letting our comedian guess 10 times, but now we will iterate that for 1000 attempts. So in our simulated world, you could think of it like 1000 comedians all get a shot to guess horse or laminator 10 times each, and we want to know the average number of times they were correct. We would expect it to stabilize probably somewhere around five out of 10 times.</p>
@@ -279,56 +280,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will give us 1000 simulations of 10 draws from binomial</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   [1]  7  4  3  5  4  3  4  6  5  5  6  4  4  4  4  5  4  5  5  4  6  4  4  4
-  [25]  5  5  4  6  3  4  2  8  3  6  7  7  6  5  3  4  3  6  5  3  4  5  3  2
-  [49]  4  4  6  4  3  3  6  2  5  6  3  5  7  7  5  4  3  6  3  6  7  5  7  5
-  [73]  5  6  8  3  3  5  4  7  7  5  5  4  6  4  5  6  6  4  7  4  2  6  7  3
-  [97]  7  5  3  4  7  6  6  7  7  8  7  5  6  3  7  5  6  5  5  3  2  8  6  3
- [121]  5  4  5  5  3  6  6  5  6 10  8  4  3  5  5  6  6  6  6  6  4  7  6  3
- [145]  6  5  3  5  3  6  5  8  8  4  4  7  4  5  4  3  6  6  5  5  5  6  3  6
- [169]  4  4  7  8  4  7  7  3  3  7  7  7  4  6  4  6  6  3  8  7  3  5  4  5
- [193]  8  2  3  2  3  3  2  5  4  2  7  3  7  6  4  5  5  6  2  4  4  4  9  4
- [217]  7  7  4  6  5  3  5  4  3  6  6  3  7  3  5  6  5  6  6  6  3  6  5  5
- [241]  5  5  6  6  4  3  3  7  5  5  4  5  2  3  4  3  6  5  4  9  5  6  4  4
- [265]  6  4  5  7  4  4  3  5  3  4  5  4  5  5  5  2  5  4  6  4  4  5  6  5
- [289]  3  6  8  7  5  5  6  2  4  4  7  7  6  3  4  6  7  4  7  5  0  6  4  3
- [313]  4  5  4  8  6  6  5  7  4  6  4  6  6 10  5  5  4  6  5  4  5  6  3  4
- [337]  0  6  3  4  5  5  7  6  3  4  4  4  4  8  4  5  7  4  6  5  7  2  4  5
- [361]  7  5  4  5  6  2  5  5  2  4  4  4  6  2  4  4  4  8  7  4  4  4  7  8
- [385]  3  5  6  4  8  6  4  3  5  4  3  6  4  3  6  4  5  3  4  3  5  7  6  7
- [409]  5  3  8  6  3  5  4  6  4  6  4  4  5  4  6  3  6  8  6  4  5  7  7  4
- [433]  7  5  6  6  3  3  6  7  7  8  1  7  5  6  6  5  4  7  7  5  3  5  5  5
- [457]  5  4  7  3  4  5  7  6  5  6  5  5  5  5  4  2  6  5  5  4  7  7  2  4
- [481]  5  6  4  5  7  3  7  7  6  7  6  6  6  2  6  6  6  4  5  6  5  5  4  3
- [505]  5  5  3  5  4  5  3  3  4  6  3  3  6  6  6  5  7  8  3  6  4  4  1  7
- [529]  5  2  6  7  6  5  4  3  4  4  4  6  7  6  5  7  7  6  4  4  7  2  5  5
- [553]  4  5  5  3  6  4  7  3  4  3  5  8  6  4  5  5  5  5  4  6  4  6  4  8
- [577]  5  4  6  7  9  4  5  9  4  7  7  5  6  5  2  2  5  6  5  4  3  7  4  5
- [601]  4  4  6  5  9  5  5  4  5  6  6  6  4  7  2  7  5  4  4  5  4  2  3  3
- [625]  3  2  6  5  5  3  5  4  7  1  4  8  5  6  5  5  2  4  6  6  6  8  6  2
- [649]  6  5  5  6  4  6  5  5  8  9  6  4  5  6  5  6  4  5  6  4  9  6  5  5
- [673]  7  6  3  3  6  3  7  6  6  7  7  6  6  5  4  7  6  5  5  7  5  3  3  5
- [697]  9  4  8  6  6  6  4  8  8  6  4  4  4  5  5  6  5  4  5  6  7  5  5  7
- [721]  5  4  8  5  5  6  5  6  4  6  4  5  6  4  2  6  8  2  3  4  4  6  7  6
- [745]  4  6  2  6  4  5  2  3  4  6  4  7  3  5  5  5  7  6  5  4  3  5  4  5
- [769]  3  4  5  8  3  9  8  4  3  6  4  5  4  6  7  4  7  3  3  3  5  5  5  1
- [793]  4  7  3  3  6  5  3  6  2  3  4  7  6  6  5  4  9  6  5  6  3  5  4  6
- [817]  5  6  2  6  8  6  4  7  6  6  4  6  6  4  6  5  6  4  5  3  6  3  6  6
- [841]  7  6  3  7  4  8  5  5  3  4  3  5  3  6  4  5  7  4  4  8  6  6  8  6
- [865]  6  4  5  5  8  3  5  5  4  4  5  6  6  5  6  3  8  5  2  7  8  5  7  7
- [889]  3  5  4  3  7  3  5  6  8  7  6  6  2  4  4  1  7  7  7  6  6  5  4  6
- [913]  5  4  7  7  4  2  6  5  5  5  4  5  4  4  4  4  6  5  8  2  5  3  5  5
- [937]  2  4  7  4  5  7  6  7  7  4  5  3  6  3  6  8  7  7  5  6  5  7  4  4
- [961]  6  5  3  6  4  6  2  5  3  7  4  4  3  2  4  6  5  5  5  7  4  2  7  4
- [985]  5  6  7  5  7  2  5  4  5  3  6  5  6  3  4  6</code></pre>
+<pre><code>   [1]  5  2  5  2  4  5  5  4  2  3  2  5  1  3  7  7  3  5  7  3  2  5  7  6
+  [25]  3  5  5  4  4  6  5  4  7  9  5  7  6  3  4  7  5  3  4  3  4  7  6  2
+  [49]  4  6  7  6  6  5  8  4  6  5  6  3  6  4  5  6  4  5  5  6  8  6  5  5
+  [73]  9  7  6  6  4  3  1  4  4  7  6  6  7  5  7  5  6  6  4  6  3  4  6  6
+  [97]  4  5  4  2  6  6  3  7  3  7  3  6  6  5  6  4  6  7  2  6  6  6  2  6
+ [121]  7  8  7  4  3  4  4  8  2  5  5  2  4  4  5  5  6  4  2  6  6  4  7  3
+ [145]  4  4  6  8  6  5  7  5  3  5  5  3  5  8  6  5  4  4  4  6  4  6  5  5
+ [169]  5  2  4  6  2  7  4  4  6  6  4  5  7  5  4  4  5  3  8  3  3  3  4  4
+ [193]  5  4  6  3  6  8  5  7  5  7  6  7  4  3  7  4  3  5  3  8  3  4  6  4
+ [217]  4  5  5  4  5  6  5  6  5  5  6  3  4  2  2  6  7  4  3  6  3  7  5  5
+ [241]  2  6  4  4  5  5  5  5  6  7  7  4  5  6  6  5  7  7  7  5  4  5  8  4
+ [265]  4  7  6  4  4  7  5  4  2  6  3  3  7  6  7  4  4  7  6  1  6  5  8  5
+ [289]  7  4  3  6  6  5  2  7  6  4  3  5  4  4  7  3  4  4  7  1  6  5  6  5
+ [313]  2  5  2  4  5  6  6  5  5  5  3  4  6  7  8  4  6  9  4  6  7  6  6  6
+ [337]  7  4  5  5  4  5  4  5  5  2  5  7  5  5  3  4  4  8  8  5  6  4  4  4
+ [361]  6  8  4  5  7  5  6  3  7  4  4  5  8  2  5  5  6  4  3  5  6  5  6  5
+ [385]  6  4  1  6  4  4  5  6  6  5  6  5  3  5  4  4  6  4  8  5  6  5  6  2
+ [409]  6  4  4  5  4  5  8  6  5  5  4  4  9  7  3  5  5  4  6  3  4  3  7  4
+ [433]  6  5  6  7  3  4  8  8  8  7  5  0  6  3  3  6  7  5  4  4  4  5  4  4
+ [457]  7  4  4  2  6  3  3  2  6  9  6  6  7  4  7  6  5  6  7 10  4  3  5  3
+ [481]  5  8  6  4  3  9  1  4  2  6  5  5  3  5  4  5  3  5  5  5  7  3  5  6
+ [505]  6  4  7  7  7  3  6  4  5  6  6  5  5  7  4  5  6  4  6  5  4  3  2  6
+ [529]  7  4  5  7  4  4  5  5  4  5  6  3  5  7  4  3  7  4  4  5  2  6  3  4
+ [553]  5  1  4  7  4  3  4  7  6  6  5  3  7  5  4  7  6  5  5  4  6  7  4  6
+ [577]  3  4  6  9  4  6  4  6  4  7  4  5  5  5  5  4  6  4  6  6  5  3  6  3
+ [601]  4  4  5  5  4  3  6  6  6  3  5  6  8  3  6  6  8  6  7  2  5  7  3  5
+ [625]  7  5  5  6  4  6  3  3  2  5  4  5  4  4  3  5  5  8  6  4  7  5  7  6
+ [649]  3  4  4  4  6  4  7  7  8  7  4  6  3  5  2  6  6  6  4  6  6  6  2  5
+ [673]  4  6  4  4  6  3  5  3  3  5  3  7  6  7  5  5  6  5  3  5  5  4  5  6
+ [697]  4  5  7  5  5  6  6  5  6  7  7  5  5  4  4  5  3  4  4  4  3  4  4  3
+ [721]  4  3  4  5  6  5  6  7  3  7  4  5  5  8  3  4  6  5  5  7  7  5  6  5
+ [745]  5  6  8  5  5  4  2  4  8  3  4  6  6  6  7  3  6  3  4  5  5  4  6  8
+ [769]  5  4  9  5  4  4  2  5  3  5  6  2  7  4  3  7  7  4  5  5  4  6  3  8
+ [793]  3  9  4  6  7  7  4  7  6  3  7  5  4  7  3  3  4  6  5  4  2  6  5  5
+ [817]  5  3  6  5  5  6  5  7  5  7  4  3  4  2  6  5  7  6  5  5  5  4  4  5
+ [841]  3  6  3  6  5  4  6  6  3  5  6  6  5  7  5  6  5  5  3  6  8  4  3  8
+ [865]  2  2  5  6  6  5  6  2  3  3  3  8  3  4  6  8  5  7  4  4  6  5  3  8
+ [889]  4  4  5  4  4  3  3  6  5  8  6  3  6  5  8  4  1  5  5  2  4  2  3  6
+ [913]  6  2  6  5  9  6  5  2  6  4  5  4  8  7  5  6  7  2  8  2  2  7  6  1
+ [937]  3  2  6  6  7  4  6  5  4  4  6  3  4  7  6  5  8  8  6  6  6  6  5  4
+ [961]  4  5  5  2  4  4  4  5  6  5  6  6  8  8  3  6  4  6  5  7  5  4  5  5
+ [985]  5  4  3  5  4  2  2  6  5  6  5  5  5  6  6  6</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we should save this to an object so it is easier to work with</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ten_attempts <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ten_attempts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ten_attempts
-  1   2   3   4   5   6   7   8   9  10 
- 11  41 119 207 242 200 122  49   7   2 </code></pre>
+  0   1   2   3   4   5   6   7   8   9 
+  2  15  53 105 221 242 214  96  45   7 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ten_attempts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -348,20 +349,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-   FALSE     TRUE 
-0.968634 0.031366 
+  FALSE    TRUE 
+0.96852 0.03148 
 
    FALSE     TRUE 
-0.500333 0.499667 
+0.500291 0.499709 
+
+  FALSE    TRUE 
+0.50067 0.49933 
 
    FALSE     TRUE 
-0.499739 0.500261 
+0.500441 0.499559 
 
    FALSE     TRUE 
-0.499226 0.500774 
-
-   FALSE     TRUE 
-0.999878 0.000122 </code></pre>
+0.999883 0.000117 </code></pre>
 </div>
 </div>
 <p>## Guillemot chick survival</p>
@@ -374,9 +375,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 observations, each with one draw from the Bernoulli distribution</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 0 1 1 0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 1 1 0 1 1 0 1 0 0 0 0 1 0 0
- [38] 1 1 0 0 1 1 1 0 1 1 0 0 1 1 1 0 0 1 0 0 0 0 1 0 1 0 0 0 1 1 0 0 0 0 0 0 0
- [75] 1 1 0 0 0 0 1 0 1 1 0 0 0 0 1 1 0 0 0 0 1 0 0 1 1 0</code></pre>
+<pre><code>  [1] 1 0 1 0 1 0 1 0 1 1 1 0 0 1 1 1 0 0 0 0 1 1 0 1 1 0 0 1 1 0 0 0 0 0 1 1 0
+ [38] 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 0 1 1 1 0 1 1 1 1 0
+ [75] 1 0 0 1 0 0 0 0 1 1 0 0 0 1 1 0 1 0 0 0 1 1 0 0 0 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so far, we have just been running functions and the output is shown in the console</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># but we don't have anything in our environment</span></span>
@@ -400,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for one nest with 3 chicks and a probability of success of 0.4</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we could also think about a colony with let's say 100 nests</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># how many chicks from each nest will make it?</span></span>
@@ -411,9 +412,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>nest_offspring</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 0 1 1 2 1 1 2 1 2 2 1 1 1 0 2 1 0 0 2 2 1 0 3 1 0 1 0 1 0 2 0 1 1 0 1 2 2
- [38] 2 1 1 1 1 2 1 2 3 2 3 1 1 0 1 0 2 0 1 2 1 0 1 1 1 2 3 1 1 2 0 0 2 1 2 1 1
- [75] 2 1 0 3 1 1 0 1 2 3 2 1 1 1 1 2 2 2 1 0 1 2 2 2 0 1</code></pre>
+<pre><code>  [1] 1 2 1 1 2 3 0 0 0 1 1 1 1 2 1 1 1 2 0 0 2 0 2 2 1 2 1 1 1 1 0 2 1 2 2 1 0
+ [38] 3 1 3 2 2 1 1 1 0 0 2 1 1 2 0 2 1 3 1 3 1 1 0 0 1 1 2 1 1 1 2 3 0 2 1 2 2
+ [75] 0 0 0 2 1 1 2 2 1 1 2 1 2 2 0 0 1 2 2 0 1 2 1 0 2 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability that all three chicks from a nest make it?</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because we know what we fixed p to, we could multiply the probabilities</span></span>
@@ -437,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>nest_offspring
  0  1  2  3 
-20 45 29  6 </code></pre>
+21 42 31  6 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proportions will convert the table into proportions instead of counts</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># so will prop.table and I often use that function because I learned it first</span></span>
@@ -462,12 +463,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the table of proportions to estimate the probability at least one survives?</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8</code></pre>
+<pre><code>[1] 0.79</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability at least two survive?</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.35</code></pre>
+<pre><code>[1] 0.37</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># side note: if you're not sure which indices to subset, it can help to look at</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># your object; you can easily do this in RStudio by highlighting just the bit of</span></span>
@@ -499,16 +500,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>gametes
       0       1       2       3       4       5       6       7       8       9 
-0.13325 0.27077 0.27168 0.18012 0.09020 0.03723 0.01194 0.00361 0.00082 0.00029 
+0.13653 0.27109 0.26849 0.18160 0.08974 0.03591 0.01228 0.00334 0.00082 0.00017 
      10 
-0.00009 </code></pre>
+0.00003 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what's the probability of more than 5 offspring?</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes<span class="sc">&gt;</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   FALSE    TRUE 
-0.98325 0.01675 </code></pre>
+0.98336 0.01664 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now let's increase the number of individual corals to 1 million, and also increase</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability of success to 0.001 </span></span>
@@ -530,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
    FALSE     TRUE 
-0.951431 0.048569 </code></pre>
+0.951396 0.048604 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's visualize the data as a histogram again, but add a vertical bar using </span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the abline() function at 15; note there are other plotting options to make </span></span>
@@ -550,9 +551,3090 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="variables_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="probability-mass" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="probability-mass"><span class="header-section-number">3.3</span> Probability mass</h2>
+<p>In the example above, you can see that there is very low probability of being in the tails of the distribution. So far, we have only been thinking about discrete distributions where the outcome will fall into a ‘bin’ of some kind. With the Bernoulli distribution, the outcome could only be 0 or 1. With the Binomial distribution, the outcome could only be an integer, including zero, and can only be positive. There are no numbers in between; you either make it to the ocean, or you don’t, and you never end up with 1.5 surviving offspring.</p>
+<p>Discrete distributions have a probability mass function, which you can think of as the amount of probability associated with each bar in the histogram (including potential ‘bars’ that are never observed and their probability mass is 0).</p>
+<p>We can visualize the probability mass associated with different outcomes using the <code>dbinom</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5 0.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what if we tried for a non-possible outcome?</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>check_me <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dbinom</span>(check_me, <span class="dv">1</span>, <span class="fl">0.5</span>), <span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.001000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.002000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.003000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.004000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.005000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.006000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.007000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.008000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.009000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.010000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.011000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.012000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.013000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.014000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.015000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.016000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.017000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.018000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.019000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.020000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.021000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.022000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.023000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.024000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.025000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.026000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.027000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.028000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.029000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.030000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.031000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.032000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.033000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.034000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.035000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.036000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.037000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.038000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.039000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.040000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.041000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.042000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.043000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.044000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.045000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.046000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.047000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.048000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.049000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.050000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.051000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.052000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.053000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.054000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.055000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.056000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.057000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.058000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.059000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.060000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.061000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.062000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.063000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.064000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.065000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.066000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.067000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.068000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.069000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.070000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.071000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.072000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.073000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.074000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.075000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.076000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.077000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.078000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.079000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.080000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.081000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.082000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.083000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.084000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.085000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.086000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.087000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.088000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.089000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.090000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.091000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.092000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.093000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.094000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.095000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.096000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.097000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.098000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.099000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.100000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.101000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.102000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.103000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.104000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.105000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.106000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.107000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.108000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.109000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.110000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.111000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.112000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.113000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.114000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.115000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.116000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.117000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.118000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.119000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.120000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.121000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.122000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.123000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.124000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.125000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.126000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.127000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.128000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.129000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.130000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.131000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.132000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.133000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.134000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.135000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.136000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.137000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.138000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.139000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.140000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.141000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.142000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.143000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.144000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.145000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.146000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.147000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.148000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.149000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.150000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.151000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.152000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.153000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.154000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.155000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.156000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.157000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.158000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.159000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.160000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.161000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.162000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.163000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.164000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.165000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.166000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.167000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.168000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.169000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.170000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.171000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.172000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.173000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.174000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.175000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.176000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.177000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.178000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.179000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.180000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.181000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.182000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.183000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.184000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.185000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.186000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.187000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.188000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.189000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.190000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.191000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.192000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.193000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.194000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.195000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.196000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.197000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.198000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.199000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.200000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.201000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.202000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.203000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.204000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.205000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.206000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.207000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.208000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.209000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.210000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.211000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.212000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.213000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.214000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.215000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.216000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.217000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.218000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.219000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.220000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.221000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.222000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.223000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.224000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.225000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.226000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.227000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.228000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.229000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.230000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.231000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.232000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.233000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.234000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.235000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.236000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.237000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.238000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.239000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.240000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.241000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.242000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.243000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.244000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.245000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.246000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.247000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.248000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.249000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.250000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.251000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.252000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.253000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.254000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.255000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.256000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.257000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.258000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.259000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.260000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.261000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.262000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.263000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.264000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.265000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.266000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.267000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.268000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.269000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.270000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.271000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.272000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.273000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.274000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.275000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.276000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.277000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.278000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.279000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.280000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.281000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.282000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.283000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.284000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.285000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.286000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.287000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.288000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.289000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.290000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.291000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.292000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.293000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.294000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.295000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.296000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.297000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.298000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.299000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.300000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.301000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.302000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.303000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.304000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.305000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.306000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.307000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.308000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.309000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.310000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.311000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.312000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.313000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.314000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.315000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.316000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.317000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.318000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.319000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.320000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.321000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.322000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.323000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.324000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.325000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.326000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.327000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.328000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.329000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.330000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.331000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.332000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.333000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.334000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.335000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.336000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.337000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.338000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.339000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.340000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.341000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.342000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.343000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.344000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.345000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.346000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.347000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.348000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.349000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.350000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.351000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.352000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.353000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.354000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.355000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.356000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.357000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.358000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.359000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.360000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.361000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.362000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.363000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.364000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.365000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.366000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.367000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.368000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.369000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.370000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.371000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.372000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.373000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.374000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.375000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.376000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.377000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.378000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.379000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.380000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.381000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.382000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.383000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.384000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.385000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.386000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.387000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.388000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.389000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.390000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.391000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.392000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.393000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.394000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.395000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.396000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.397000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.398000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.399000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.400000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.401000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.402000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.403000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.404000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.405000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.406000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.407000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.408000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.409000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.410000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.411000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.412000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.413000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.414000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.415000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.416000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.417000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.418000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.419000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.420000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.421000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.422000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.423000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.424000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.425000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.426000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.427000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.428000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.429000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.430000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.431000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.432000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.433000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.434000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.435000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.436000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.437000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.438000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.439000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.440000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.441000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.442000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.443000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.444000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.445000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.446000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.447000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.448000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.449000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.450000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.451000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.452000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.453000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.454000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.455000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.456000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.457000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.458000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.459000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.460000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.461000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.462000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.463000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.464000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.465000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.466000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.467000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.468000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.469000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.470000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.471000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.472000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.473000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.474000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.475000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.476000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.477000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.478000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.479000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.480000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.481000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.482000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.483000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.484000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.485000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.486000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.487000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.488000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.489000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.490000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.491000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.492000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.493000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.494000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.495000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.496000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.497000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.498000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.499000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.501000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.502000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.503000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.504000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.505000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.506000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.507000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.508000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.509000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.510000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.511000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.512000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.513000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.514000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.515000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.516000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.517000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.518000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.519000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.520000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.521000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.522000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.523000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.524000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.525000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.526000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.527000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.528000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.529000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.530000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.531000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.532000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.533000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.534000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.535000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.536000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.537000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.538000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.539000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.540000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.541000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.542000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.543000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.544000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.545000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.546000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.547000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.548000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.549000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.550000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.551000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.552000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.553000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.554000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.555000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.556000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.557000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.558000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.559000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.560000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.561000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.562000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.563000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.564000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.565000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.566000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.567000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.568000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.569000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.570000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.571000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.572000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.573000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.574000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.575000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.576000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.577000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.578000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.579000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.580000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.581000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.582000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.583000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.584000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.585000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.586000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.587000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.588000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.589000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.590000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.591000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.592000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.593000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.594000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.595000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.596000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.597000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.598000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.599000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.600000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.601000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.602000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.603000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.604000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.605000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.606000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.607000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.608000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.609000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.610000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.611000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.612000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.613000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.614000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.615000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.616000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.617000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.618000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.619000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.620000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.621000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.622000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.623000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.624000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.625000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.626000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.627000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.628000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.629000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.630000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.631000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.632000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.633000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.634000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.635000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.636000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.637000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.638000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.639000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.640000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.641000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.642000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.643000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.644000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.645000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.646000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.647000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.648000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.649000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.650000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.651000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.652000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.653000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.654000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.655000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.656000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.657000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.658000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.659000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.660000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.661000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.662000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.663000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.664000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.665000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.666000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.667000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.668000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.669000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.670000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.671000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.672000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.673000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.674000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.675000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.676000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.677000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.678000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.679000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.680000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.681000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.682000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.683000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.684000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.685000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.686000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.687000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.688000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.689000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.690000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.691000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.692000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.693000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.694000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.695000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.696000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.697000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.698000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.699000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.700000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.701000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.702000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.703000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.704000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.705000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.706000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.707000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.708000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.709000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.710000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.711000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.712000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.713000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.714000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.715000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.716000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.717000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.718000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.719000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.720000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.721000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.722000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.723000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.724000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.725000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.726000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.727000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.728000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.729000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.730000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.731000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.732000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.733000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.734000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.735000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.736000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.737000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.738000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.739000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.740000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.741000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.742000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.743000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.744000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.745000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.746000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.747000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.748000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.749000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.750000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.751000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.752000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.753000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.754000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.755000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.756000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.757000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.758000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.759000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.760000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.761000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.762000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.763000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.764000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.765000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.766000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.767000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.768000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.769000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.770000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.771000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.772000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.773000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.774000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.775000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.776000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.777000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.778000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.779000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.780000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.781000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.782000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.783000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.784000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.785000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.786000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.787000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.788000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.789000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.790000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.791000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.792000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.793000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.794000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.795000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.796000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.797000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.798000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.799000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.800000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.801000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.802000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.803000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.804000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.805000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.806000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.807000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.808000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.809000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.810000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.811000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.812000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.813000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.814000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.815000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.816000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.817000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.818000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.819000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.820000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.821000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.822000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.823000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.824000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.825000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.826000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.827000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.828000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.829000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.830000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.831000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.832000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.833000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.834000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.835000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.836000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.837000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.838000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.839000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.840000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.841000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.842000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.843000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.844000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.845000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.846000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.847000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.848000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.849000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.850000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.851000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.852000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.853000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.854000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.855000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.856000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.857000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.858000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.859000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.860000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.861000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.862000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.863000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.864000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.865000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.866000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.867000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.868000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.869000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.870000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.871000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.872000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.873000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.874000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.875000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.876000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.877000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.878000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.879000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.880000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.881000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.882000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.883000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.884000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.885000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.886000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.887000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.888000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.889000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.890000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.891000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.892000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.893000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.894000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.895000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.896000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.897000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.898000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.899000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.900000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.901000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.902000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.903000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.904000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.905000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.906000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.907000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.908000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.909000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.910000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.911000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.912000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.913000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.914000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.915000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.916000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.917000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.918000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.919000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.920000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.921000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.922000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.923000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.924000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.925000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.926000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.927000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.928000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.929000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.930000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.931000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.932000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.933000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.934000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.935000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.936000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.937000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.938000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.939000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.940000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.941000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.942000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.943000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.944000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.945000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.946000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.947000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.948000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.949000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.950000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.951000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.952000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.953000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.954000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.955000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.956000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.957000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.958000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.959000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.960000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.961000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.962000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.963000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.964000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.965000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.966000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.967000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.968000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.969000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.970000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.971000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.972000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.973000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.974000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.975000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.976000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.977000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.978000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.979000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.980000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.981000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.982000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.983000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.984000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.985000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.986000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.987000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.988000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.989000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.990000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.991000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.992000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.993000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.994000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.995000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.996000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.997000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.998000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(check_me, 1, 0.5): non-integer x = 0.999000</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb1054"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1054-1"><a href="#cb1054-1" aria-hidden="true" tabindex="-1"></a><span class="co"># why do we get little spikes?</span></span>
+<span id="cb1054-2"><a href="#cb1054-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.5</span>), <span class="dv">10</span>, <span class="fl">0.5</span>), <span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 0.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 1.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 2.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 3.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 4.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 5.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 6.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 7.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 8.500000</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in dbinom(seq(0, 10, 0.5), 10, 0.5): non-integer x = 9.500000</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb1065"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1065-1"><a href="#cb1065-1" aria-hidden="true" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="dv">1</span>)</span>
+<span id="cb1065-2"><a href="#cb1065-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">dbinom</span>(xvals, <span class="dv">10</span>, <span class="fl">0.5</span>) <span class="sc">~</span> xvals, <span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb1066"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1066-1"><a href="#cb1066-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(xvals, <span class="dv">10</span>, <span class="fl">0.5</span>), <span class="at">names.arg =</span> xvals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-11-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb1067"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1067-1"><a href="#cb1067-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how closely does that match when we draw from the distribution?</span></span>
+<span id="cb1067-2"><a href="#cb1067-2" aria-hidden="true" tabindex="-1"></a><span class="co"># at low sample size?</span></span>
+<span id="cb1067-3"><a href="#cb1067-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">12</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-11-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb1068"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1068-1"><a href="#cb1068-1" aria-hidden="true" tabindex="-1"></a><span class="co"># at high sample size?</span></span>
+<span id="cb1068-2"><a href="#cb1068-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="variables_files/figure-html/unnamed-chunk-11-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb1069"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1069-1"><a href="#cb1069-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability of getting at least 8?</span></span>
+<span id="cb1069-2"><a href="#cb1069-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">8</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0546875</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb1071"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1071-1"><a href="#cb1071-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what if we did the same calculation with simulated data?</span></span>
+<span id="cb1071-2"><a href="#cb1071-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)<span class="sc">&gt;=</span><span class="dv">8</span>)<span class="sc">/</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02</code></pre>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
