@@ -1,0 +1,330 @@
+# Lab 2: Data structures
+
+For today's lab, we are going over some of the most common types of data structures that you will encounter when working with data in R. There are many, many other types of data structures, many of which are highly specific to certain disciplines or within different coding and/or analysis worlds. For example, in evolution researchers frequently work with phylogenetic trees which are stored in specific formats to use with phylogenetic tree packages like `ape`, for example saved as nexus files. In ecology, many people work with spatial data that is often stored in raster files (e.g., .tiff) or in shapefiles (e.g., .shp, .kml). We won't go into every possible type of data storage format in this class because it would be nigh on infinite, but just be aware that there are always ways to read different types of data into R which you will just have to Google. 
+
+We are going to start with the basics, which are data structures created within the R environment, before we move on to reading in from external files. 
+
+## Vectors
+
+Vectors are one-dimensional objects that consist of items of the same type. We can create them in R using the `c` function, which stands for 'combine'. You will use this function so frequently in R that you will forget it is a function because it is incredibly useful any time you need to manually create data, combine objects into a vector, set up objects in your environment, etc. 
+
+```{r}
+
+# vectors can only contain objects of the same class
+my_vec <- c(1, 4, 42, 17)
+class(my_vec)
+
+# if you enter any items from a different class, everything will be coerced
+my_vec2 <- c("word", 14, 8.2)
+class(my_vec2)
+
+```
+
+By default, vectors in R are treated as columns. Why? Because in typical data storage practices, columns include all the values for one variable, while rows contain all the variables for one observation. So we would expect all the values in a column to likely be of the same object type because they are measuring the same thing, but not necessarily in a row. But, we can transpose a column vector into a row vector in R with the function `t`. 
+
+```{r}
+trans_vec <- t(my_vec)
+trans_vec
+
+# note that now there are dimensions that appear, i.e. we can see column numbers across the top
+# whereas when we print a column vector, it just displays objects in order
+
+```
+
+
+## Matrices
+
+A matrix is a 2-dimensional array with rows and columns. Think of it sort of like a spreadsheet, where each row represents one observation, and each column represents one variable that we have measured. We can create matrices in R by combining multiple vectors. If we have our variables stored as vectors, we could `cbind` them together, which stands for column bind. 
+
+```{r}
+
+var1 <- c(1, 0, 1, 0, 0)
+var2 <- c(4.2, 2.2, 2.8, 1.7, 9.0)
+
+mat <- cbind(var1, var2)
+mat
+
+```
+
+Alternatively, perhaps we have our data stored in rows for each observation. Note: this is not good data storage practice! But, sometimes it is inevitable because we don't always make the best choices, and that's okay.
+
+```{r}
+
+obs1 <- c(1, 4.2)
+obs2 <- c(0, 2.2)
+obs3 <- c(1, 2.8)
+
+mat2 <- rbind(obs1, obs2, obs3)
+mat2
+
+```
+
+There is another function which will create a matrix for us out of data, rather than us having to specify the rows and columns. 
+
+```{r}
+
+# ick, it feels unnatural to enter data this way, and it should!
+mydat <- c(1, 4.2, 0, 2.2, 1, 2.8)
+
+# look at some of the options here when we create a matrix
+# what happens if we mix up the number of rows or number of columns?
+# or set byrow to F?
+mat3 <- matrix(data=mydat, nrow=3, ncol=2, byrow=T)
+
+# be careful with matrix if you're creating data structures from scratch!
+# but, I use it all the time to set up placeholder matrices, e.g.
+
+placeholder <- matrix(data=NA, nrow=10, ncol=20)
+
+```
+
+Sometimes, but not always, matrices have identical upper and lower triangles. Think about a correlation matrix, for example. Because the variables along the rows and columns are identical, you have a square matrix, meaning that the number of rows and the number of columns are identical. The correlation between x and y is going to be the same as the correlation between y and x. So the two triangles are mirror images of each other. Because we often run into things like correlation or covariance matrices, it is worth knowing how to subset them. 
+
+Lab activity: fruit similarity. 
+
+```{r}
+
+# upper triangle returns TRUE/FALSE as to whether a cell in a matrix is part of the upper triangle
+
+sqmat <- matrix(data=seq(1, 100, 1), ncol=10)
+upper.tri(sqmat)
+
+# it can be useful for subsetting, over overriding
+sqmat[upper.tri(sqmat)]
+sqmat[upper.tri(sqmat)] <- NA
+print(sqmat)
+
+# lower.tri() does the same thing, but for the lower triangle
+
+# we can also pull out the diagonal. this is often useful because e.g. in a correlation matrix, the diagonal is typically 1 because each item is perfectly correlated with itself
+diag(sqmat)
+sqmat[diag(sqmat)] <- 1
+sqmat
+```
+## Indexing 
+
+*Lab activity* practicing entering data from a birding trip some great women of American history took to Ireland into a matrix. Why? Because this gives us something tangible to look at as we interact with data in R to ground it in the real world, and also we will expand on it when we get to arrays below. Instructions: take three great women from american history, four locations in Ireland, and one deck of birds. 
+
+When working with matrices, it is common to use notation to identify which elements of a matrix you are referring to. Conventionally, we use $i$ to indicate row indices, and $j$ to indicate column indices (because $i$ stands for index, I think). We use capital letters to indicate different matrices. For today, we will call the front table matrix $A$ and the back table matrix $B$. What card is $A_{14}$? $B_{22}$? What about $A_{.2}$? 
+
+We can also run these commands in R to inspect the data. Let's create a matrix representing the data for each table, respectively.
+
+```{r}
+
+A <- matrix(nrow=3, ncol=4)
+
+```
+
+
+## Interacting with data 
+
+### Data structure
+
+It is a good idea to inspect your data before working with it, whether you have created it or read it in from somewhere else. There are a couple base R functions that can be useful for that. 
+
+
+```{r}
+
+# look at the structure of your data, tells you class of each vector
+str(A)
+
+# get a summary by variable
+summary(A)
+
+# look at the first few rows of data
+head(A) # default is six
+
+# lok at the last few rows of data
+tail(A) # default is six
+
+# we can subset our data using the square brackets []
+
+A[1,4]
+
+
+```
+
+It can also be a good idea to visualize your data to make sure it is what you expect. More on this towards the end of lab.
+
+## Data.frames
+
+Data frames are similar to matrices in that they are 2-dimensional data structures. A matrix is limited to one type of data. If we put both character and numeric data in a matrix, the data will be coerced to whatever can represent both of them, kind of like when we combine objects of different classes in a vector. A data frame, on the other hand, can contain different types of data in different columns. So more similar to a spreadsheet where we expect to have a mix of perhaps strings and numbers. 
+
+```{r}
+
+Adat <- as.data.frame(A)
+Adat
+
+# we can also create a data.frame from scratch
+women <- c("Addams", "Tubman", "Earhart")
+suit <- c("club", "spade", "spade")
+numb <- c(2, 9, 5)
+mydat <- data.frame(women, suit, numb)
+
+# we can also change the column names when we create a data.frame
+mydat2 <- data.frame(people=women, suits=suit, value=numb)
+mydat2
+
+```
+
+## Reading data
+
+Pretty much all the time we are working with data in R, we are reading in external data and not creating it from scratch because it is quite tedious otherwise. There are many different ways to import data depending on the type of file you are reading. 
+
+> **Future proofing your data files: **When you can use .csv, it is highly, highly recommended because it is future proofed meaning it can be opened by any text editor (unlike e.g. .xlsx). There are of course other options for reading in things like tab-delimited files with `read.delim()` or Excel spreadsheets with `readxl::read.xlsx()` and so on, but a simple .csv is the way to go when possible.
+
+First, we should read in the data into our environment. Then, it is generally a good idea to explore your data to see what you are working with. The function `head` will show you, by default, the first six elements of an object (in this case, the first six rows because our object is of the class `data.frame`). The function `colnames` will give you the column names (`rownames` will give you the names of rows). It is also a good idea to look at the structure of your data with the `str` function which gives you a quick overview of what is contained in the object. For example, with this data, it will tell us we have 2501 observations (i.e. rows of data) of 19 variables (i.e. our columns). It will also tell us all the column names, what type of data are contained in the column (e.g. year is an integer, species is a character, etc.), and give a preview of the first few items in each column.
+
+Today we are going to use data from Macri et al. (2024) because they have archived three different types of files in their Dryad repository, which is good practice for us! We will download three of their files: "Dataset_Macri_et_al_One_earth.xlsx", "LearningScore_Data.csv", and "README_Macri_et_al.txt". 
+
+First, we will use `read.csv` to load the learning score data. Note: if you run `read.csv` without saving it to an object name, it will quite literally just read it to you in the console. If you read in a very, very large file this way, it can sometimes lead to your R environment crashing! And you won't have any data to work with. We have to save it to an object to have it be available in our R environment.
+
+```{r}
+
+learning <- read.csv("~/Downloads/LearningScore_Data.csv")
+str(learning)
+head(learning) # interesting! this is not what we expected
+
+# perhaps this is not actually a comma-separated values spreadsheet
+# could be tab-delimited? let's use a more flexible file reading function
+learningT <- read.delim("~/Downloads/LearningScore_Data.csv")
+str(learningT) # nope
+head(learningT)
+
+# ah, what about semicolons?
+learning2 <- read.delim("~/Downloads/LearningScore_Data.csv", sep=";")
+str(learning2)
+head(learning2)
+
+# this is why it is good to look at your data after you read it in! 
+
+```
+
+Let's now also read in the .xlsx spreadsheet. First, we will install the `readxl` package, or load the library if it is already installed.
+
+```{r}
+# install.packages("readxl")
+library(readxl)
+
+# by default, it will read the first sheet
+alldat <- readxl::read_xlsx("~/Downloads/Dataset_Macri_et_al_One_earth.xlsx")
+head(alldat)
+str(alldat)
+
+# note that now we have a tibble instead of a data.frame
+# they are basically the same structure, but a tibble is the tidyverse equivalent
+# tibbles have some defaults baked in for how many rows print at a time, and other more relaxed rules
+
+# but, i can't stand them, so i almost always coerce to a data.frame
+alldat <- as.data.frame(alldat)
+head(alldat)
+str(alldat)
+
+# if we want to read a different tab from the spreadsheet, we need to specify which sheet
+
+# if we aren't sure what the order is, we can check
+# return the names, and order, of sheets in the file
+readxl::excel_sheets("~/Downloads/Dataset_Macri_et_al_One_earth.xlsx")
+
+gustat <- readxl::read_xlsx("~/Downloads/Dataset_Macri_et_al_One_earth.xlsx", sheet=5)
+
+# alternatively
+gustat <- readxl::read_xlsx("~/Downloads/Dataset_Macri_et_al_One_earth.xlsx", sheet="Gustatory resp.")
+
+head(gustat)
+str(gustat)
+
+# convert to a data.frame just because we (okay I - you do whatever you want) don't like tidyverse
+gustat <- as.data.frame(gustat)
+
+```
+
+
+Finally, we can read plain text files into R. This can be useful if you're doing e.g. text mining.
+
+```{r}
+
+readme <- readLines("~/Downloads/README_Macri_et_al.txt")
+head(readme)
+
+```
+
+If you are working with large, like *really* large datasets which several people in the class have indicated interest in, you may also want to look into the R package `data.table` and specifically the `fread()` function which reads in big data files fast. Really useful if you've got like 12 million observations of butterflies or something like that where other functions fail. Also, it is worth reiterating that there are a bajillion and one ways to read data into R - the functions we've looked at today are just some of the most basic ones. There are tons and tons of packages dedicated to reading in data, including other packages for reading from Excel, specialized data structures, etc. 
+
+## Dimensionality and arrays
+
+### Great women of American history go birding.
+
+Data can have more than two dimensions (whoa!). In fact, you can have $n-$dimensional data structures which have as many dimensions as you want! If they consist of one data type, we can represent them in an array, which is sort of like a matrix with extra slices in it. Let's assume that our great women of American history go on a birding trip to Ireland every year, because why not. It's a nice annual tradition. If we represent one annual trip as a matrix, we can add more matrices for the other years and sort of stack them together. Now we have an array $A_{ijk}$ where $k$ represents each time step. So we could subset to the $i$th observer, at the $j$th site on the $k$th visit. Let's say they go three years in a row. What are the dimensions of the array?
+
+
+```{r}
+
+# set up an empty placeholder array (note: you don't always have to do this, i just am not sure yet which cards we will flip in the lab activity)
+birding <- array(dim=c(3,4,3))
+birding
+
+# inspect the dimensions of an object
+dim(birding)
+
+```
+
+## Lists
+
+Lists are some of the most chaotic data structures. The elements contained in a list are R objects, but they can be whatever you want. You could have a list that has vectors in it, of all sorts of different types, or data.frames, or data.frames and vectors, or matrices, or a list of lists. Lists are basically the wild west of data structures because anything goes. It also makes them a huge pain to work with unless you remember exactly what the structure is and why you're using it. It also means they are *extremely* flexible and can be super handy. I use them all the time when I want to do something mildly chaotic with lots of different types of data, or data of the same type with different dimensions. 
+
+```{r}
+
+people <- c("Bethune", "Cady Stanton", "Roosevelt")
+numbers <- rbinom(n = 1491, size=4, prob=0.2)
+mat <- matrix(rbinom(n = 10000, size=14, prob=0.7), ncol=100, nrow=100)
+words <- readLines("~/Downloads/README_Macri_et_al.txt")
+
+chaos_list <- list(people, numbers, words, mat)
+
+print(chaos_list)
+
+# we can also give our list elements names
+chaos_list <- list(women=people, binom=numbers, macri=words, binom2=mat)
+
+# to subset a list, we can either call the list item number
+# or use the names
+
+chaos_list$women
+
+# note that we use two square brackets for the top-level element in a list
+chaos_list[[1]] 
+
+# and regular square brackets to subset within that
+chaos_list[[1]][3]
+
+```
+
+## Vectorizing operations
+
+Vectorizing stuff means we go across the whole of a data structure and do the same thing to every item. It is really efficient for batch operations. The main functions to do this in base R are the `apply` family, though tbh, I never use `tapply` or `sapply` and only ever use `apply` and `lapply` because I like data.frames and lists. `do.call` is also really useful for lists and worth looking into if you have some reallllly repetitive tasks to do. 
+
+```{r}
+
+lapply(chaos_list, head)
+
+apply(chaos_list$binom2, 1, FUN = max)
+
+apply(chaos_list$binom2, 1, FUN = mean)
+rowMeans(chaos_list$binom2)
+
+apply(chaos_list$binom2, 2, FUN = mean)
+colMeans(chaos_list$binom2)
+
+```
+
+### Data visualization (briefly)
+
+For the last part of lab today, we are going to practice some data visualization. With the Macri et al. data, let's recreate [Figure 2A and 2B](https://ars.els-cdn.com/content/image/1-s2.0-S259033222400366X-gr2_lrg.jpg). I'm not 100% certain we can recreate them perfectly because I'm not sure if 2A is showing a modeled response or the raw data, but we'll make an attempt! 
+
+```{r}
+
+
+
+```
+
