@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BIOL 431/531: Ecological Modeling - 4&nbsp; Simulation and Probability</title>
+<title>BIOL 431/531: Ecological Modeling - 5&nbsp; Simulation and Probability</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./linearmodels.html" rel="next">
-<link href="./variables.html" rel="prev">
+<link href="./lab2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <body class="nav-sidebar floating">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simulation.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./simulation.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -143,14 +143,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lessonplans.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lesson Plans</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Thinking like a Modeler</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Thinking like a Modeler</span></span></a>
+  <a href="./lab1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Getting comfortable in R and RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -167,152 +167,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab 2: Data structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./simulation.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./linearmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./modelfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Fitting</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evaluating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prediction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prediction and Inference</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./uncertainty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Uncertainty</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability Distributions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./linkfunctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Link Functions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./glms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixedeffects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pathanalysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Path Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayes Theorem</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mcmc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Markov Chain Monte Carlo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./jags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Fitting Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hierarchical.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Advanced Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixturemodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Mixture Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./overdispersion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Overdispersion and Zero-inflation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./latent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Latent Variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dimensionality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Dimensionality Reduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./multivariate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Multivariate Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./aic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Information Theoretic Approaches</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Ethics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./frontiers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Emerging Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
   </div>
 </li>
     </ul>
@@ -325,13 +187,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#why-simulate-data" id="toc-why-simulate-data" class="nav-link active" data-scroll-target="#why-simulate-data"><span class="header-section-number">5</span> Why simulate data</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">6</span> Functions</a></li>
-  <li><a href="#probability-distributions" id="toc-probability-distributions" class="nav-link" data-scroll-target="#probability-distributions"><span class="header-section-number">7</span> Probability distributions</a></li>
-  <li><a href="#discrete" id="toc-discrete" class="nav-link" data-scroll-target="#discrete"><span class="header-section-number">8</span> Discrete</a></li>
-  <li><a href="#continuous" id="toc-continuous" class="nav-link" data-scroll-target="#continuous"><span class="header-section-number">9</span> Continuous</a></li>
-  <li><a href="#probability-mass" id="toc-probability-mass" class="nav-link" data-scroll-target="#probability-mass"><span class="header-section-number">10</span> Probability mass</a></li>
-  <li><a href="#probability-density" id="toc-probability-density" class="nav-link" data-scroll-target="#probability-density"><span class="header-section-number">11</span> Probability density</a></li>
+  <li><a href="#why-simulate-data" id="toc-why-simulate-data" class="nav-link active" data-scroll-target="#why-simulate-data"><span class="header-section-number">6</span> Why simulate data</a></li>
+  <li><a href="#probability-distributions" id="toc-probability-distributions" class="nav-link" data-scroll-target="#probability-distributions"><span class="header-section-number">7</span> Probability distributions</a>
+  <ul class="collapse">
+  <li><a href="#describing-probability-distributions" id="toc-describing-probability-distributions" class="nav-link" data-scroll-target="#describing-probability-distributions"><span class="header-section-number">7.1</span> Describing probability distributions</a></li>
+  <li><a href="#the-normal-gaussian-distribution" id="toc-the-normal-gaussian-distribution" class="nav-link" data-scroll-target="#the-normal-gaussian-distribution"><span class="header-section-number">7.2</span> The Normal (Gaussian) distribution</a></li>
+  <li><a href="#smol-cats" id="toc-smol-cats" class="nav-link" data-scroll-target="#smol-cats"><span class="header-section-number">7.3</span> smol cats</a></li>
+  <li><a href="#probability-density" id="toc-probability-density" class="nav-link" data-scroll-target="#probability-density"><span class="header-section-number">7.4</span> Probability density</a></li>
+  <li><a href="#simulating-relationships-between-multiple-variables" id="toc-simulating-relationships-between-multiple-variables" class="nav-link" data-scroll-target="#simulating-relationships-between-multiple-variables"><span class="header-section-number">7.5</span> Simulating relationships between multiple variables</a></li>
+  <li><a href="#the-standard-normal-distribution" id="toc-the-standard-normal-distribution" class="nav-link" data-scroll-target="#the-standard-normal-distribution"><span class="header-section-number">7.6</span> The Standard Normal Distribution</a>
+  <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">7.6.1</span> Functions</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -340,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></h1>
 </div>
 
 
@@ -355,77 +223,286 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><strong>Schedule</strong></p>
-<ul>
-<li>Simulating data (15 min)</li>
-<li>Functions (10 min)</li>
-<li>Writing functions (25 min)</li>
-<li>Basics of probability distributions (20 min)</li>
-<li>p-values (20 min)</li>
-</ul>
-<p><strong>Learning outcomes</strong></p>
-<p>After this lecture, students should know:</p>
-<ul>
-<li>Simulating data can help us understand what assumptions we’ve made and lets us build and test models when we know the answer</li>
-<li>Functions are a set of code that take inputs and return outputs based on a set of instructions that the user gives</li>
-<li>Probability distributions can be discrete or continuous</li>
-<li>Probability distributions have different ranges (sets of possible values) and supports (values they can take)</li>
-<li>Discrete probability distributions have probability mass, and those probabilities must sum to 1</li>
-<li>Continuous probability distributions have probability density under each potential value and the area under the curve must sum to 1</li>
-<li>The normal (Gaussian) distribution has a range of <span class="math inline">\(\in (-\infty, \infty)\)</span> and support of all real numbers</li>
-<li>The Bernoulli distribution has a range of <span class="math inline">\(\in (0, 1)\)</span> and a support of <span class="math inline">\((0,1)\)</span></li>
-<li>The probability mass function for the Bernoulli distribution is <span class="math inline">\(P(X=1) = p, P(X=0) = 1-p\)</span></li>
-<li>Real numbers are those found on the number line (rational and irrational numbers) but not imaginary; integers are whole numbers that can be positive, negative, or zero; rational numbers can be expressed as ratio of two integers; irrational numbers cannot</li>
-<li>Empirical data can be used to estimate probability of observing data</li>
-<li>Probability density or mass functions can be used to estimate the probability of observing data</li>
-<li>A p-value is the probability of observing your data, or data more extreme, if the null is true</li>
-</ul>
-<section id="why-simulate-data" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Why simulate data</h1>
-</section>
-<section id="functions" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Functions</h1>
+<section id="why-simulate-data" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Why simulate data</h1>
+<p>Simulating data can be a great way to understand what the assumptions are that we are baking into our models. It also lets us build and test models without having any data, which is lovely from a time perspective! We can generate data just for toying around, to figure out if a model could possibly work or if it has any weird behavior.</p>
+<p>It also lets us visualize relationships, get a feel for what data would look like if our assumptions are correct, and in general get a better intuitive sense of what different parameter combinations look like and how they might show up in our data.</p>
+<p>Lastly, simulating data helps us confirm if we did our coding correctly and can be very reassuring when we are new to coding that we haven’t botched anything too badly! For example, if we think we simulated data with a mean of 2.2 and then we look at it and we’ve got values in the hundreds, we probably did something wrong… and since the data are all made up, it is an easy fix!</p>
 </section>
 <section id="probability-distributions" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Probability distributions</h1>
+<p>Probability distributions can be either discrete or continuous. Discrete probability distributions only return values that fall within bins, typically whole numbers (e.g., integers) though I’m sure there must be some discrete distributions that return other responses which can be pinpointed. The binomial distribution, and the Bernoulli (which is a special case of the binomial when the number of trials is 1, i.e.&nbsp;<span class="math inline">\(x \sim Binomial(N=1, p)\)</span> is equivalent to <span class="math inline">\(x \sim Bernoulli(p)\)</span>), are both discrete probability distributions that we have already seen. Conversely, continuous probability distributions can return any value within their support and range (more on this below) and are not limited to discrete values. The most familiar version of a continuous probability distribution is the normal, or Gaussian, distribution which is sometimes called the ‘bell curve’ (and which eugenicists absolutely <em>loved</em> trying to force data to match because it supported their agenda to find differences among races or social classes).</p>
+<p>Discrete probability distributions have probability mass functions. Probability mass refers to the probability of any discrete outcome being drawn from the distribution. For example, in the case of <span class="math inline">\(y \sim Bernoulli(0.6)\)</span>, the probability mass associated with the outcome of <span class="math inline">\(1\)</span> is 0.6, and the probability mass associated with an outcome of <span class="math inline">\(0\)</span> is 0.4 (or <span class="math inline">\(p-1\)</span>). The probability mass function for the Bernoulli distribution is <span class="math inline">\(P(X=1) = p, P(X=0) = 1-p\)</span>. The total probability described by the probability mass function must sum to 1, because the total realm of possible outcomes is 1 (you can’t have values of probability <span class="math inline">\(&gt;1\)</span> or <span class="math inline">\(&lt;0\)</span> because at 1, the outcome is guaranteed, and at 0 the outcome is also guaranteed).</p>
+<p>Continuous probability distributions cannot be neatly visualized as bins. Because any point on the number line within their range and support can be returned, we cannot actually associate a probability with any given value. If you think back to calculus, there are basically infinitely smaller points we could go to along a line and can’t actually stop at one. That’s why when we take the integral to get the area under a curve, we can sort of visualize stacking a bunch of increasingly small bars underneath the curve and calculating their area to approximate the area, but it won’t be precise. And we can’t actually visualize infinitely smaller and smaller bars, hence integration. Similarly, with a continuous probability distribution we cannot actually have a mass of probability associated with any given point, so instead we have probability density. At any point, we can ask what the localized density of probability for any given value. The total area under the curve represented by a probability distribution must sum to 1, rather than these individual values.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb3mixP0J2LWeQsK3VWxL8RM0tFg5-8KBLLMYSPfjzZrGw60PCyknoxmqJqyvn6yR2lS4J_8sblZs3blNsagoCq9JHxjSPhtv8PH3DnBZEmPl7zcNZaSjPwCoMQ1j6Cu8tFGULP8uZQmfV/s1600/horst+discrete+continuous.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Discrete vs continuous data by Alison Horst</figcaption>
+</figure>
+</div>
+<section id="describing-probability-distributions" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="describing-probability-distributions"><span class="header-section-number">7.1</span> Describing probability distributions</h2>
+<p>As mentioned above, probability distributions can only return values within their range and support. The range refers to the span of values that could be returned (i.e., the min and max). The Bernoulli distribution has a range of 0 to 1. The support of a distribution refers to the type of numbers that can be returned. Because the Bernoulli distribution can only return 0 or 1, its support is zero or 1.</p>
+<p>The normal distribution can return any values from negative to positive infinity, so its range is <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. The support of the normal distribution is all <em>real numbers</em>, which means any number on the number line including both rational (can be expressed as a fraction of two integers) and irrational (infinite with non-repeating decimals, like <span class="math inline">\(\pi\)</span>), but not imaginary numbers like <span class="math inline">\(\sqrt{-1}\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.researchgate.net/profile/Tiffany-Gerck/post/RG_Blog_TAG/attachment/6804833e4e041854a3e31370/AS%3A11431281111354981%401672938358514/download/chapter-entry-rational-and-irrationals.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Real, irrational, and rational numbers, integers, and natural numbers</figcaption>
+</figure>
+</div>
+<p>Other distributions have different types of range and support, which we will learn as the semester progresses. Keep in mind that there are different types of numbers. Some distributions will only return integers, some only natural numbers, some only positive, real, non-zero numbers, etc. The key thing to keep in mind is what is the biological reality of the data. What values can it take, what values can it not take, and what distribution matches that range and support.</p>
 </section>
-<section id="discrete" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Discrete</h1>
+<section id="the-normal-gaussian-distribution" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-normal-gaussian-distribution"><span class="header-section-number">7.2</span> The Normal (Gaussian) distribution</h2>
+<p>In contrast to discrete distributions, continuous distributions can return any number value (within some constraints, which we will get to later in the semester when we talk about generalized linear models or GLMs). For now, we will just focus on the normal distribution which is one that is likely most familiar. The normal distribution is continuous and can return any value from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. There are two parameters that govern the normal distribution: 1) the mean of the distribution, <span class="math inline">\(\mu\)</span> and the variance, <span class="math inline">\(\sigma^2\)</span>. If we have a response variable <span class="math inline">\(y\)</span> that is a random variable drawn from the normal distribution, we would write this out as: <span class="math display">\[y \sim Normal(\mu, \sigma^2)\]</span></p>
+<p>The mean (<span class="math inline">\(\mu\)</span>) is the central tendency of the distribution; you could also think of it as the expected value. The variance (<span class="math inline">\(\sigma\)</span>) is a measure of spread, i.e.&nbsp;how tightly are values clustered to that central tendency versus more spread out.</p>
+</section>
+<section id="smol-cats" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="smol-cats"><span class="header-section-number">7.3</span> smol cats</h2>
+<p>Rusty spotted cats (Prionailurus rubiginosus) are some of the <a href="https://youtu.be/W86cTIoMv2U?si=CBouTDmLFmwW6cM6">world’s smallest cats</a>, but are similar in size to black-footed cats (Felis nigripes). P. rubiginosus weigh 0.9-1.6kg and are 35-48cm long. F. nigripes females weigh 1.1-1.65kg and males weigh 1.6-2.45kg; the species can vary from 33.7-50cm in length across both sexes. Both species are adorable, but deadly.</p>
+<p>We are going to focus on P. rubiginosus for our simulations. Because these smol cats can weigh anywhere from 0.9-1.6kg, we can assume that their weights can likely be described as a random variable drawn from a normal distribution. A cat could weigh anything in that range, e.g.&nbsp;0.9106kg, 1.278kg, etc. Ballpark, let’s say that the mean weight of a rusty spotted cat is 1250 grams (note the change in units!). We will assume that the variance is something close to 10000. In R, instead of using the variance directly, the function <code>rnorm()</code> takes the standard deviation (<span class="math inline">\(\sigma\)</span>) as input. The standard deviation is simply the square root of the variance. So we can describe rusty spotted cat weight mathematically as: <span class="math display">\[ weight \sim Normal(\mu = 1250, \sigma=100)\]</span></p>
+<p>Using the function <code>rnorm</code>, we will simulate a population of 120 rusty spotted cats and their weights.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>adult_weights <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">120</span>, <span class="co"># population size</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">mean =</span> <span class="dv">1250</span>, <span class="co"># mu, population mean</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">sd =</span> <span class="dv">100</span> <span class="co">#standard deviation, square root of the variance</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                       )</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># plot a histogram of our sample</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(adult_weights, <span class="at">breaks =</span> <span class="dv">20</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># add a vertical line where we set the mean to</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># note: if running these in an R Markdown file, you have to run both lines</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># at the same time or you will get an error that plot.new has not been called</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1250</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">2</span>, </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># based on the sample, what is the probability of an adult guillemot weighing</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># more than 980 grams?</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(adult_weights<span class="sc">&gt;</span><span class="dv">1250</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>
+    FALSE      TRUE 
+0.5166667 0.4833333 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability of an adult weighing exactly 1000 grams? (not 1000.1, 1000.2, etc.)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we could do this empirically, i.e. how many of our 120 adults were exactly 1000 grams?</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(adult_weights<span class="sc">==</span><span class="dv">1000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE 
+    1 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># but this does not make any sense, because we are dealing with continuous data, so why</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># would we treat it like it is in discrete chunks?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="probability-density" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="probability-density"><span class="header-section-number">7.4</span> Probability density</h2>
+<p>Because we are dealing with a continuous distribution, there are no finite points along the distribution that can have a probability associated with them. Instead, we need to think back to calculus and consider the probability of any given value as an integral.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P9dpTTpjymE?si=gQ9jA4zgawehe5SX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p>Imagine that you have a curve, and the area under the curve represents a probability, so it must sum to 1 (i.e.&nbsp;all possible outcomes must be represented). Picture a set of discrete bars underneath that distribution, each representing some portion of the total probability, like we did with the discrete distributions. We will use the function <code>dnorm()</code> for this, which is the density (d for density) of a normal distribution at a vector of values, rather than random draws (r for random). To create our vector of values, we will use the <code>seq()</code> function, which generates a sequence of numbers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now imagine that we make each bin smaller, and smaller, and smaller by changing the increments in our sequence (i.e.&nbsp;we make more bins).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.1</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.05</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dnorm</span>(<span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">3</span>, <span class="at">by=</span><span class="fl">0.01</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As the size of our bins approaches zero, the number of bins approaches infinity. This is essentially what we are doing with an integral. With a continuous distribution, we now have probability density functions, rather than probability mass.</p>
+<p><img src="https://media1.tenor.com/m/FznI6WanGVUAAAAC/mean-girls-lindsay-lohan.gif" class="img-fluid"></p>
+<p>To get back to our original question of the probability of an adult guillemot weighing exactly 990 grams (still a silly question), we can use the <code>dnorm()</code> function to get the probability density at that value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(<span class="at">x=</span><span class="dv">1000</span>, <span class="at">mean=</span><span class="dv">1250</span>, <span class="at">sd=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.000175283</code></pre>
+</div>
+</div>
+<p>What we are likely more interested in, however, is the probability of an adult weighing <em>less than</em> 990 grams. For that, we need the <code>pnorm()</code> function which returns the cumulative density of the normal distribution at a given quantile (for now, think of the quantile as just the cutoff point in adult weights that we are interested in).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability of observing a smol cat that weighs less than 1000 grams?</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">1250</span>, <span class="at">sd =</span> <span class="dv">100</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">lower.tail=</span>T <span class="co"># we need to specify that we are in the lower tail</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>      )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.006209665</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what about less than 900 grams?</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">900</span>, <span class="at">mean =</span> <span class="dv">1250</span>, <span class="at">sd =</span> <span class="dv">100</span>, <span class="at">lower.tail =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0002326291</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what about less than 1200 grams?</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1200</span>, <span class="at">mean =</span> <span class="dv">1250</span>, <span class="at">sd =</span> <span class="dv">100</span>, <span class="at">lower.tail =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3085375</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what about *at least* 1450 grams?</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1450</span>, <span class="at">mean =</span> <span class="dv">1250</span>, <span class="at">sd =</span> <span class="dv">100</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02275013</code></pre>
+</div>
+</div>
+<p>As we get into the tails of the distribution, the probability of observing a smol that is less than, or lighter, gets increasingly less likely, as does a cat that heavy, or heavier. This brings us to the definition of the p-value: the probability of observing your data, <em>or data more extreme</em>, if the null is true. In our case, we are treating the null hypothesis as being that smol cat weights are drawn from a normal distribution with a mean of 1250 and standard deviation of 100. What if instead we our null hypothesis was that the mean was still 1250, but that there was a lot more variability in nature, and the standard deviation was 300? The probability of a smol cat weighing at least 1450 grams or more is now much higher (25.2%, as opposed to 2.3%) because there is more spread around the central tendency.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q =</span> <span class="dv">1450</span>, <span class="at">mean =</span> <span class="dv">1250</span>, <span class="at">sd =</span> <span class="dv">300</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2524925</code></pre>
 </div>
 </div>
 </section>
-<section id="continuous" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Continuous</h1>
+<section id="simulating-relationships-between-multiple-variables" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="simulating-relationships-between-multiple-variables"><span class="header-section-number">7.5</span> Simulating relationships between multiple variables</h2>
+<p>So far, we have simulated a whole lot of univariate data using either <code>rbinom()</code> or <code>rnorm()</code> in different contexts. But most of the time in ecology, especially when it comes to addressing hypotheses, we are thinking about multiple variables at once. And we know, or at the very least suspect, that there are relationships among these variables. For example, if we go out and measure a whole bunch of smol cats for their weight and length, we probably suspect that larger cats also weigh more, and that their weights and lengths may be correlated with their ability to sneak up on prey. If we simulate all three of these variables separately (i.e., each one in a univariate sense) we will be missing that structure. Let’s demonstrate this to ourselves first.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.601442</code></pre>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>cat_wts <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, <span class="dv">1250</span>, <span class="dv">100</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>cat_lngs <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs, <span class="fl">41.5</span>, <span class="dv">5</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cat_wts <span class="sc">~</span> cat_lngs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the correlation between the two variables</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation is a measure of how much two things covary</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cat_wts, cat_lngs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.02970297</code></pre>
+</div>
+</div>
+<p>There is a package called <code>MASS</code> which should already come installed with base R (I think?) which is useful for simulating some simple correlated data. It has a function called <code>mvrnorm()</code> which is for simulating multivariate normal data. We need to pass it <code>n</code> for the number of samples we want to draw, and a vector <code>mu</code> with the means for all the variables we want to simulate, and a covariance matrix <code>Sigma</code> specifying how those variables are related to each other.</p>
+<p>Let’s say we want to simulate 250 smol cat weights and lengths. We already know the means and variances for these two variables we want to simulate, but we need to think about the covariance.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">250</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>mu.wt <span class="ot">&lt;-</span> <span class="dv">1250</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sigma.wt <span class="ot">&lt;-</span> <span class="dv">100</span><span class="sc">^</span><span class="dv">2</span> <span class="co"># because we are passing variances, not standard deviations</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>mu.lng <span class="ot">&lt;-</span> <span class="fl">41.5</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>sigma.lng <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>cov.wt.lng <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>sigma.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(sigma.wt, cov.wt.lng, cov.wt.lng, sigma.lng), <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>sim_dat <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(<span class="at">n=</span>n.obs, <span class="at">mu=</span><span class="fu">c</span>(mu.wt, mu.lng), <span class="at">Sigma=</span>sigma.mat)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sim_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(sim_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]      [,2]
+[1,] 9685.9886 154.61645
+[2,]  154.6164  23.66621</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(sim_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]      [,2]
+[1,] 1.0000000 0.3229382
+[2,] 0.3229382 1.0000000</code></pre>
+</div>
+</div>
+<p>We can also simulate data based on what we expect the effect of one variable is on another. For instance, let’s say we think that for every additional gram of weight, a cat becomes 0.01 units less stealthy (measured in units of sneakiness). I typically use something like <code>b.wt</code> to represent this effect, which stands for <span class="math inline">\(\beta\)</span> weight in my mind, because <span class="math inline">\(\beta\)</span> is the term typically used to describe standardized partial regression coefficients. We’ll get to those when we get to linear models next week, but it is good to build the habit now. Let’s also say that there is no effect of length on being sneaky. We will assume sneakiness is normally distributed and that the expected value of sneakiness is 0.01 times the cat’s weight and increases by 0.01 units for every one unit increase in weight (in this case, grams). We will also assume there is some error surrounding that measure.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>b.wt <span class="ot">&lt;-</span> <span class="fl">0.01</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>b.lng <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>mu.sneak <span class="ot">&lt;-</span> cat_wts<span class="sc">*</span>b.wt</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>sneakiness <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n=</span>n.obs, <span class="at">mean=</span>mu.sneak, <span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sneakiness <span class="sc">~</span> cat_wts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(sneakiness <span class="sc">~</span> cat_lngs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># even though we know cat weights and cat lengths are correlated</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we are assuming the only impact on sneakiness comes from cat weight</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and cats of the same weight, regardless of length, have similar sneakiness</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="probability-mass" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Probability mass</h1>
+<section id="the-standard-normal-distribution" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="the-standard-normal-distribution"><span class="header-section-number">7.6</span> The Standard Normal Distribution</h2>
+<p>In the real world, we typically do not know what the parameters are underlying our distribution (i.e.&nbsp;we would have no way of knowing what the mean and standard deviation of smol cat weights are). We also often work with data that are normally distributed, but could not have negative values. Remember that the support of the normal distribution is all numbers from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>. smol cats, no matter how smol, cannot have negative weight. Thus, we first need to centralize and standardize the data so that we <em>know</em> what the mean and standard deviation are.</p>
+<p>Centralizing data means we subtract the mean value of our sample from every single observation, such that we are left with a mean value of 0. Standardizing data is a way of transforming it so that variables are more comparable across different data sources, and also so that we can easily compare standard deviations. To standardize data, we convert it to Z-scores. For each observation <span class="math inline">\(x\)</span>, we subtract the mean <span class="math inline">\(\bar{x}\)</span> and then divide that value by the standard deviation <span class="math inline">\(\sigma\)</span>. The equations to do this for a sample are below; <span class="math inline">\(SS\)</span> stands for the sum of squared residuals. Note that we divide the sum of squares by n-1, rather than n, because we are dealing with a <em>sample</em> rather than population. The degrees of freedom is the number of observations we have, but we lost one degree of freedom when we calculated the sample mean <span class="math inline">\(\bar{x}\)</span>. <span class="math display">\[Z = (x -\bar{x})/\sigma\]</span> <span class="math display">\[\sigma = \sqrt{\sigma^2}\]</span> <span class="math display">\[\sigma^2 = \frac{SS}{(n-1)}\]</span> <span class="math display">\[SS = \sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
+<section id="functions" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">7.6.1</span> Functions</h3>
+<p>To standardize our data we need to center it (subtract the mean) and standardize (Z transform) the data. We will create functions in R to do this for us quickly. There are many inbuilt functions in R, such as the ones we have been using already (e.g.&nbsp;<code>rnorm</code>, <code>hist</code>, <code>sum</code>, etc.) and you can also install packages that contain functions which other people have written. You can also write your own custom functions. This is extremely useful when you want to repeat an operation many times without using up many lines of code (the more lines of code, the more likely you are to end up with an error, or something difficult to fix later on).</p>
+<p>First, we will create a function that calculates just the sum of the squared residuals. To create a function, we need to name it just like an object, but pass to it a <code>function()</code> containing arguments that the function accepts. In this case, it is a function that will take a vector x. Inside the <code>{}</code> brackets we place the instructions for what to do with <code>x</code> and what to return from the function. Only the object that is specified will be returned (i.e.&nbsp;<code>xbar</code>, <code>res</code>, and <code>squares</code> will not be saved to your environment, only <code>ss</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sum_squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x) <span class="co"># mean of the sample</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> x <span class="sc">-</span> xbar <span class="co"># residuals</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  squares <span class="ot">&lt;-</span> res<span class="sc">^</span><span class="dv">2</span> <span class="co"># squared residuals</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> <span class="fu">sum</span>(squares) <span class="co"># sum of the squared residuals</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ss) <span class="co"># what should the function return</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-<section id="probability-density" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Probability density</h1>
+<p>We can also nest functions inside other functions, which can make it a lot easier to keep your code neat and tidy. Below is a function to standardize data which uses the other function we just created.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8413447</code></pre>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>standardize <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> <span class="fu">sum_squares</span>(x) <span class="co"># note we call our function from earlier</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  s2 <span class="ot">&lt;-</span> ss<span class="sc">/</span>(n <span class="sc">-</span> <span class="dv">1</span>) <span class="co"># variance = sum of squares divided by n - 1</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(s2) <span class="co"># calculate standard deviation from variance</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> (x <span class="sc">-</span> xbar)<span class="sc">/</span>s</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(z)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># use this function to standardize adult guillemot weights that we generated </span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co"># earlier and plot the output. how does it differ from the original?</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>std_weights <span class="ot">&lt;-</span> <span class="fu">standardize</span>(adult_weights)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(std_weights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="simulation_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that we now have negative weights, however, the interpretation is simply</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># that these individuals are below the mean, and positive values are above it</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>One of the nice things about the standard normal distribution is that we know that the mean is 0 and the standard deviation is 1. This means that now, when we ask about the probability of observing a smol cat with a standardized weight of some value or higher and our null is 0, we are asking if that individual significantly differs from the sample mean. We also know the standard deviations, and instead of having to calculate the integral at different cutoffs, this has already been done. Prior to advances in modern computing, this was done manually, and there were huge lookup tables at the back up statistics textbooks that would tell you the p-value associated with different z-scores. Thankfully, now we have R.</p>
+<p><img src="https://www.ztable.net/wp-content/uploads/2020/09/read-negativeztable-intersection.png" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Recap</p>
+</blockquote>
+<ul>
+<li>Random variables can be described with a probability distribution function.</li>
+<li>A Bernoulli random variable can be written as <span class="math inline">\(y \sim Bern(p)\)</span> where <span class="math inline">\(p\)</span> is the probability of success. Only 0 or 1 are possible outcomes.</li>
+<li>The Bernoulli is a special case of the Binomial distribution with a single draw. A Binomial random variable can be written as <span class="math inline">\(y \sim Bin(N, p)\)</span> where <span class="math inline">\(N\)</span> is the number of trials.</li>
+<li>Discrete distributions like the Bernoulli and Binomial have probability mass associated with each potential value and those probabilities must sum to 1.</li>
+<li>Continuous distributions like the Normal (Gaussian) have probability density associated with each potential value and the area under the curve sums to 1.</li>
+<li>If we know the probability distribution function, or even if we have empirical data, we can estimate the probability of observing a value, or of observing a value at least that extreme.</li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -664,14 +741,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./variables.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Random Variables</span></span>
+      <a href="./lab2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab 2: Data structures</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./linearmodels.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Models</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
