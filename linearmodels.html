@@ -204,6 +204,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#assumptions-of-linear-models" id="toc-assumptions-of-linear-models" class="nav-link" data-scroll-target="#assumptions-of-linear-models"><span class="header-section-number">6.2</span> Assumptions of linear models</a></li>
   <li><a href="#deterministic-and-stochastic-processes" id="toc-deterministic-and-stochastic-processes" class="nav-link" data-scroll-target="#deterministic-and-stochastic-processes"><span class="header-section-number">6.3</span> Deterministic and stochastic processes</a></li>
   <li><a href="#ordinary-least-squares" id="toc-ordinary-least-squares" class="nav-link" data-scroll-target="#ordinary-least-squares"><span class="header-section-number">6.4</span> Ordinary least squares</a></li>
+  <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting"><span class="header-section-number">7</span> Model fitting</a>
+  <ul class="collapse">
+  <li><a href="#recap-of-ols-and-residuals" id="toc-recap-of-ols-and-residuals" class="nav-link" data-scroll-target="#recap-of-ols-and-residuals"><span class="header-section-number">7.1</span> Recap of OLS and residuals</a></li>
+  <li><a href="#american-bison-example" id="toc-american-bison-example" class="nav-link" data-scroll-target="#american-bison-example"><span class="header-section-number">7.2</span> American bison example</a></li>
+  <li><a href="#the-design-matrix" id="toc-the-design-matrix" class="nav-link" data-scroll-target="#the-design-matrix"><span class="header-section-number">7.3</span> The Design Matrix</a>
+  <ul class="collapse">
+  <li><a href="#adding-matrices" id="toc-adding-matrices" class="nav-link" data-scroll-target="#adding-matrices"><span class="header-section-number">7.3.1</span> Adding matrices</a></li>
+  <li><a href="#multiplying-vectors-and-matrices" id="toc-multiplying-vectors-and-matrices" class="nav-link" data-scroll-target="#multiplying-vectors-and-matrices"><span class="header-section-number">7.3.2</span> Multiplying vectors and matrices</a></li>
+  </ul></li>
+  <li><a href="#fitting-a-simple-linear-model" id="toc-fitting-a-simple-linear-model" class="nav-link" data-scroll-target="#fitting-a-simple-linear-model"><span class="header-section-number">7.4</span> Fitting a simple linear model</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -496,15 +507,374 @@ F-statistic: 2.925 on 1 and 8 DF,  p-value: 0.1256</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 13.45756</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res.ols) <span class="co"># Not actually zero because of rounding, but, is actually zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res.ols) <span class="co"># Not actually zero because of rounding, but, very very close</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0006278831</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Why doesn't this match what we got in our brute force approach?</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># What would happen if we increased the number of parameters we checked with brute force?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="model-fitting" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Model fitting</h1>
+<section id="recap-of-ols-and-residuals" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="recap-of-ols-and-residuals"><span class="header-section-number">7.1</span> Recap of OLS and residuals</h2>
+<p>Remember from the previous lecture that a simple way to fit a linear model to data is to use ordinary least squares (OLS) regression and minimize the sum of the squared residuals. We did this a brute force approach by trying combinations of parameter values that resulted in a linear model that minimized the sum of the squared residuals <strong>for the parameter values that we tried</strong>. Note that this last point is very important: we did not try all possible combinations of parameters, so even though we may have found a locally optimal solution, we could have missed the actual optimal solution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.researchgate.net/publication/45900660/figure/fig3/AS:667768525443076@1536219831231/A-typical-energy-landscape-depicting-position-of-several-local-minima-which-indicate-the.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Local versus global minimum</figcaption>
+</figure>
+</div>
+<p>For normally distributed errors, OLS is essentially a special case of maximum likelihood estimation (MLE). Maximum likelihood attempts to find the parameter combination that makes our observed data most probable. But, the likelihood function (not in the R function sense, but in the math function sense) can get stuck at local optima. Think of it sort of like a blindfolded person walking around a field trying to find the lowest point. If they keep walking downhill, eventually they will find themselves at the bottom. If any step they take in any direction is uphill, then they should stop where they are. This approach works fine if there is only one low point in the field, but not if there are multiple depressions. What if they’re just stuck in a bison wallow?</p>
+</section>
+<section id="american-bison-example" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="american-bison-example"><span class="header-section-number">7.2</span> American bison example</h2>
+<p>For today’s lecture and next week, we will be using a dataset of bison ages and weights collected at the Konza Prairie LTER site. Let’s start by watching a video of bison to remind ourselves just how massive they are. When watching the video, pay careful attention specifically to the size (and approximate weight) of bison of different ages and different sexes, and anything that might affect an individual’s weight.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3bS6Dz4YVqQ?si=ZhsxZlEi_wgqRMuV&amp;start=4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://tinyurl.com/bigbison"</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  DataCode RecType RecYear RecMonth RecDay AnimalCode AnimalSex AnimalWeight
+1    CBH01       2    1994       11      8        813         F          890
+2    CBH01       2    1994       11      8        834         F         1074
+3    CBH01       2    1994       11      8      B-301         F         1060
+4    CBH01       2    1994       11      8      B-402         F          989
+5    CBH01       2    1994       11      8      B-403         F         1062
+6    CBH01       2    1994       11      8      B-502         F          978
+  AnimalYOB
+1      1981
+2      1983
+3      1983
+4      1984
+5      1984
+6      1985</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate age</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>age <span class="ot">&lt;-</span> dat<span class="sc">$</span>RecYear <span class="sc">-</span> dat<span class="sc">$</span>AnimalYOB <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sort with oldest bison at the top</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[<span class="fu">order</span>(dat<span class="sc">$</span>age, <span class="at">decreasing =</span> T),]</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remove duplicates of the same individual</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># because we sorted by age first, we are keeping the oldest record per individual</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[<span class="sc">!</span><span class="fu">duplicated</span>(dat<span class="sc">$</span>AnimalCode),]</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>AnimalWeight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: NAs introduced by coercion</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat[<span class="sc">!</span><span class="fu">is.na</span>(dat<span class="sc">$</span>AnimalWeight),]</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(dat<span class="sc">$</span>AnimalSex)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>weight <span class="sc">~</span> dat<span class="sc">$</span>age, </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span>dat<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let’s say we are interested in fitting a model of the effect of age and sex on bison weight. We assume that our response variable (weight) is normally distributed. The deterministic and stochastic components of our model can be written as:</p>
+<p><span class="math display">\[y \sim Norm(\mu, sigma)\]</span> <span class="math display">\[\mu = \beta_0 + \beta_{a}*age + \beta_{s}*sex\]</span></p>
+<p>When we perform OLS to find a combination of parameters that makes our observed data the most likely, we are attempting to find the combination of our three coefficients <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_a\)</span> and <span class="math inline">\(\beta_s\)</span>. When fitting the model, our coefficient estimates will now be the best combination of values for all three coefficients (i.e.&nbsp;the intercept, <span class="math inline">\(\beta_0\)</span>, the effect of age, <span class="math inline">\(\beta_{a}\)</span>, and the effect of sex <span class="math inline">\(\beta_{s}\)</span>) that minimizes the sum of the squared residuals.</p>
+</section>
+<section id="the-design-matrix" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="the-design-matrix"><span class="header-section-number">7.3</span> The Design Matrix</h2>
+<p>To understand why we get a combination of three coefficients that collectively minimize the sum of the squared residuals, rather than estimating the effect of each predictor separately, it is important to know just a <em>little</em> bit of matrix algebra. The three coefficient estimates (or ‘betas’ for short) are a <strong>vector</strong>, which has only one dimension and all elements are of the same type (typically, numeric).</p>
+<p>A matrix, while still having elements of the same type, has two dimensions: the number of rows, and the number of columns. In ecological modeling, people typically either describe a matrix as being <span class="math inline">\(n \times p\)</span>, where <span class="math inline">\(n\)</span> is the number of rows or number of observations and <span class="math inline">\(p\)</span> is the number of predictors, or as being <span class="math inline">\(i \times j\)</span> where <span class="math inline">\(i\)</span> is the number of observations and <span class="math inline">\(j\)</span> is the number of predictors. I tend to use <span class="math inline">\(i \times j\)</span> because it matches how I code indices (i.e.&nbsp;<code>x[i]</code>) and because very rarely are biological concepts denoted as <span class="math inline">\(i\)</span> or <span class="math inline">\(j\)</span> but <span class="math inline">\(n\)</span> often is used to describe sample sizes and <span class="math inline">\(p\)</span> is often used for probability, so I find the code is much more readable with <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>.</p>
+<section id="adding-matrices" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="adding-matrices"><span class="header-section-number">7.3.1</span> Adding matrices</h3>
+<p>Let’s say we have the following 2x3 matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. To add the two matrices together, we add the matching elements from each. We can only add the matrices together if they have the same dimensionality, i.e.&nbsp;we could not add a 2x3 matrix to a 2x5 matrix because there will not be matching elements.</p>
+<p><span class="math display">\[A = \begin{bmatrix}
+2 &amp; 4 &amp; 3 \\
+1&amp;6 &amp; 8
+\end{bmatrix} \\
+\\
+B= \begin{bmatrix}
+1 &amp; 2&amp;3\\
+5&amp;8&amp;1
+\end{bmatrix}
+\\ \\
+A+B = \begin{bmatrix}
+(2+1) &amp; (4+2) &amp; (3+3)\\
+(1+5) &amp; (6+8) &amp; (8+1)
+\end{bmatrix}
+\\
+A+B = \begin{bmatrix}
+3 &amp; 6 &amp; 6 \\
+6 &amp; 14 &amp; 9
+\end{bmatrix}\]</span></p>
+<p>We can also do matrix calculations in R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create matrix A</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">8</span>), </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">3</span>,</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span>T <span class="co"># super important! default is to fill by column</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">1</span>),</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">3</span>, </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span>T)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>A<span class="sc">+</span>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]    3    6    6
+[2,]    6   14    9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what if we mad matrices with different dimensions?</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="at">data=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span><span class="dv">2</span>, <span class="co"># note we now have a 3x2 matrix!</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span>T</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    0
+[2,]    1    1
+[3,]    0    1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#A+C # this will result in an error because they have different dimensions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="multiplying-vectors-and-matrices" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="multiplying-vectors-and-matrices"><span class="header-section-number">7.3.2</span> Multiplying vectors and matrices</h3>
+<p>When multiplying matrices and vectors in <code>R</code>, we use the <code>%*%</code> operator, rather than <code>*</code>. When multiplying a vector by a matrix, the vector needs to have the same length as the number of columns in the matrix. One thing that is perhaps counterintuitive here is that vectors are oriented like columns so the length is vertical. But, when viewed in R, they will look horizontal.</p>
+$$ =
+<span class="math display">\[\begin{bmatrix}
+0 \\ 1 \\ 0.5 \\
+\end{bmatrix}\]</span>
+\ A =
+<span class="math display">\[\begin{bmatrix}
+2 &amp; 4 &amp; 3 \\
+1&amp;6 &amp; 8
+\end{bmatrix}\]</span>
+<p>\</p>
+A =
+<span class="math display">\[\begin{bmatrix}
+(0\times2) + (1\times4) + (0.5\times3)\\
+(0\times1) + (1\times6) + (0.5\times8)
+\end{bmatrix}\]</span>
+=
+<span class="math display">\[\begin{bmatrix}
+0 + 4 + 1.5\\
+0 + 6 + 4
+\end{bmatrix}\]</span>
+=
+<span class="math display">\[\begin{bmatrix}
+5.5 \\ 10
+\end{bmatrix}\]</span>
+<p>$$</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.5</span>), <span class="at">ncol=</span><span class="dv">1</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>A<span class="sc">%*%</span>betas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]  5.5
+[2,] 10.0</code></pre>
+</div>
+</div>
+<p>This is where our Design Matrix comes in, where the number of columns needs to be equal to our number of betas, and the number of rows needs to be equal to the number of observations. Don’t forget to add a column of all 1s if you have an intercept! i.e.&nbsp;so that the intercept <span class="math inline">\(\beta_0\)</span> gets multiplied by <span class="math inline">\(1\)</span> and added in each time.</p>
+<p><span class="math display">\[ \begin{bmatrix}
+\beta_0 \\ \beta_1 \\ \beta_2 \\ \vdots \\ \beta_j
+\end{bmatrix} *
+\begin{bmatrix}
+1 &amp; x_{1,1} &amp; x_{1,2} &amp; \dots &amp; x_{1,j} \\
+1 &amp; x_{2,1} &amp; x_{2,2} &amp; \dots &amp; x_{2,j} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+1 &amp; x_{i,1} &amp; x_{i,2} &amp; \dots &amp; x_{i,j} \\\end{bmatrix}
+=
+\begin{bmatrix}
+\mu_1 \\ \mu_2 \\ \vdots \\ \mu_i
+\end{bmatrix}\]</span></p>
+<p><span class="math display">\[ \mu_i = \beta_0*1 + \beta_1*x_{i,1} + \beta_2*x_{i,2} \dots + \beta_j*x_{i,j}\]</span></p>
+</section>
+</section>
+<section id="fitting-a-simple-linear-model" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="fitting-a-simple-linear-model"><span class="header-section-number">7.4</span> Fitting a simple linear model</h2>
+<p>Instead of going through the whole painful process of OLS every time we want to fit a model, R has a built in function called <code>lm</code> which will run a linear model for us.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> sex, <span class="at">data=</span>dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before we get to model fit, we will go over interpreting coefficient estimates for categorical variables. In our dataset, sex is coded as M or F. Behind the scenes, R has automatically dummy-coded these for you. Dummy-coding is when you represent a categorical variable as 0 or 1, so there is a new temporary ‘column’ (not really, but thinking of it like that will be helpful) in our dataset called ‘M’ and it takes the value of 1 when the sex column is M, and 0 when it does not. There is also a new temporary ‘column’ called F that scales the value of 1 when sex is F, and 0 when it is not.</p>
+<p>When dealing with categorical variables, there always has to be a comparison level that other levels are compared to because it is incorporated into the intercept. The default in R is the first value alphabetically. Let’s look at the summary of the model to help with understanding this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = weight ~ age + sex, data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-835.03 -141.93  -19.71  125.43  961.16 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  404.216      9.585   42.17   &lt;2e-16 ***
+age           58.855      1.328   44.32   &lt;2e-16 ***
+sexM         213.787     10.183   21.00   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 235.2 on 2282 degrees of freedom
+  (43 observations deleted due to missingness)
+Multiple R-squared:  0.475, Adjusted R-squared:  0.4745 
+F-statistic:  1032 on 2 and 2282 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>We have a coefficient estimate for the intercept, for age, and for sex = M. There is no coefficient estimate for sex = F. That’s because the intercept now represents the predicted weight for a <em>female</em> bison at age 0. The coefficient estimate for sex = Mrepresents the difference in the intercept for a male bison <em>still at age 0</em>, i.e.&nbsp;it shifts the entire line up the y-axis by that amount.</p>
+<blockquote class="blockquote">
+<p>As a side note that does not apply to this model but will come up in the future: if you have multiple categorical variables, the intercept is the comparison level for all of them. i.e.&nbsp;if we also had bison color morphs that were aqua and chartreuse, the intercept would be the predicted weight for an aqua-colored female bison at age 0 (because aqua alphabetically comes first). You can change what the comparison level is by converting categorical variables into factors with <code>factor</code> and using <code>relevel</code> to specify the order.</p>
+</blockquote>
+<p>Let’s plot the predictions from the model to help with understanding the different coefficient estimates by visualizing the model (we will come back to model fit later!). Now, one obnoxious thing about plotting models fit with dummy variables, is that to predict new values, we need to be able to pass in a 0 or 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(dat<span class="sc">$</span>AnimalSex<span class="sc">==</span><span class="st">"M"</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age <span class="sc">+</span> sex, <span class="at">data=</span>dat)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>des.mat <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, dat<span class="sc">$</span>age, dat<span class="sc">$</span>sex)</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(mod1)</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>est.vals <span class="ot">&lt;-</span> des.mat<span class="sc">%*%</span>betas</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>age.range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">22</span>, <span class="fl">0.1</span>)</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>des.mat.f <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, age.range, <span class="dv">0</span>)</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>des.mat.m <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, age.range, <span class="dv">1</span>)</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>f.ests <span class="ot">&lt;-</span> des.mat.f<span class="sc">%*%</span>betas</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>m.ests <span class="ot">&lt;-</span> des.mat.m<span class="sc">%*%</span>betas</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data =</span> dat, <span class="at">col=</span><span class="fu">factor</span>(dat<span class="sc">$</span>sex))</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(f.ests <span class="sc">~</span> age.range, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(m.ests <span class="sc">~</span> age.range, <span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Okay, so I think we can all agree something seems <strong>very</strong> off about our model. We don’t even need diagnostic plots to know this is not a good representation of our data. In reality, animals do not continue to grow at at the same rate with age (though many fish do have indeterminate growth), and weight will eventually plateau.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.mercurynews.com/wp-content/uploads/2022/11/hypatia-h_43d6427768a315f7d9230a00c8cdd3d3-h_7138ac0ed4cc1e068d401b99c60ec1bb.jpg?w=1024" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Even fish with indeterminate growth do not grow linearly with age</figcaption>
+</figure>
+</div>
+<p>Remember that a linear model does not have to be a straight line! Any linear function of x will do. In this case, we want something that will reach a horizontal asymptote. <span class="math inline">\(x^{1/2}\)</span> should do the trick here. If you’re not sure what linear form of x to use, I recommend setting up a range of x-values from -4 to 4, increasing in increments of 0.1 and then plotting y as different functions of x.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>}</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span>x<span class="sc">^</span>{<span class="dv">2</span>}</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-11-3.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To model weight as a function of the square root of age and sex, we will first create a new variable consisting of the square root of age, and then refit the model with this as a covariate.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>age.sq <span class="ot">&lt;-</span> dat<span class="sc">$</span>age<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>}</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>mod4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age.sq <span class="sc">+</span> sex, <span class="at">data=</span>dat)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = weight ~ age.sq + sex, data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-714.49 -116.32  -12.64  107.33  874.01 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   25.148     12.934   1.944    0.052 .  
+age.sq       331.173      5.638  58.741   &lt;2e-16 ***
+sex          214.140      8.699  24.618   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 202.4 on 2282 degrees of freedom
+  (43 observations deleted due to missingness)
+Multiple R-squared:  0.6111,    Adjusted R-squared:  0.6108 
+F-statistic:  1793 on 2 and 2282 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>betas2 <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(mod4)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>squage.range <span class="ot">&lt;-</span> age.range<span class="sc">^</span>{<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>}</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>des.mat.f <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, squage.range, <span class="dv">0</span>)</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>des.mat.m <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, squage.range, <span class="dv">1</span>)</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>new.pred.f <span class="ot">&lt;-</span> des.mat.f<span class="sc">%*%</span>betas2</span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>new.pred.m <span class="ot">&lt;-</span> des.mat.m<span class="sc">%*%</span>betas2</span>
+<span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-11"><a href="#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">"s"</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb65-12"><a href="#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data =</span> dat, <span class="at">col=</span><span class="fu">factor</span>(dat<span class="sc">$</span>sex))</span>
+<span id="cb65-13"><a href="#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(new.pred.f <span class="sc">~</span> age.range, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb65-14"><a href="#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(new.pred.m <span class="sc">~</span> age.range, <span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This is closer, but we still aren’t capturing that there is a rapid increase at the beginning followed by a tapering off and that the slopes are really different for male and female bison. We can model this with an <strong>interaction</strong> between our categorical predictor (sex) and our continuous predictor (the square root of age).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>mod.int <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age.sq <span class="sc">+</span> sex <span class="sc">+</span> age.sq<span class="sc">*</span>sex, <span class="at">data=</span>dat)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod.int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = weight ~ age.sq + sex + age.sq * sex, data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-677.19  -81.18    2.93   83.82  508.67 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  228.973      9.268   24.71   &lt;2e-16 ***
+age.sq       231.369      4.124   56.10   &lt;2e-16 ***
+sex         -690.224     17.437  -39.59   &lt;2e-16 ***
+age.sq:sex   513.445      9.353   54.89   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 132.9 on 2281 degrees of freedom
+  (43 observations deleted due to missingness)
+Multiple R-squared:  0.8325,    Adjusted R-squared:  0.8322 
+F-statistic:  3778 on 3 and 2281 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>betas3 <span class="ot">&lt;-</span> <span class="fu">coefficients</span>(mod.int)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>des.mat.f <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, squage.range, <span class="dv">0</span>, <span class="dv">0</span><span class="sc">*</span>squage.range)</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>des.mat.m <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, squage.range, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">*</span>squage.range)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>new.pred.f <span class="ot">&lt;-</span> des.mat.f<span class="sc">%*%</span>betas3</span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>new.pred.m <span class="ot">&lt;-</span> des.mat.m<span class="sc">%*%</span>betas3</span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">pty=</span><span class="st">"s"</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data =</span> dat, <span class="at">col=</span><span class="fu">factor</span>(dat<span class="sc">$</span>sex))</span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(new.pred.f <span class="sc">~</span> age.range, <span class="at">col=</span><span class="st">"black"</span>)</span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(new.pred.m <span class="sc">~</span> age.range, <span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
