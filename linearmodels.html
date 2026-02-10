@@ -215,6 +215,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#fitting-a-simple-linear-model" id="toc-fitting-a-simple-linear-model" class="nav-link" data-scroll-target="#fitting-a-simple-linear-model"><span class="header-section-number">7.4</span> Fitting a simple linear model</a></li>
   </ul></li>
+  <li><a href="#evaluating-model-fit" id="toc-evaluating-model-fit" class="nav-link" data-scroll-target="#evaluating-model-fit"><span class="header-section-number">8</span> Evaluating model fit</a>
+  <ul class="collapse">
+  <li><a href="#assumptions-of-linear-models-1" id="toc-assumptions-of-linear-models-1" class="nav-link" data-scroll-target="#assumptions-of-linear-models-1"><span class="header-section-number">8.1</span> Assumptions of linear models</a>
+  <ul class="collapse">
+  <li><a href="#the-model-makes-biological-sense" id="toc-the-model-makes-biological-sense" class="nav-link" data-scroll-target="#the-model-makes-biological-sense"><span class="header-section-number">8.1.1</span> The model makes biological sense</a></li>
+  <li><a href="#the-effects-are-additive" id="toc-the-effects-are-additive" class="nav-link" data-scroll-target="#the-effects-are-additive"><span class="header-section-number">8.1.2</span> The effects are additive</a></li>
+  <li><a href="#effects-are-linear" id="toc-effects-are-linear" class="nav-link" data-scroll-target="#effects-are-linear"><span class="header-section-number">8.1.3</span> Effects are linear</a></li>
+  <li><a href="#errors-are-independent" id="toc-errors-are-independent" class="nav-link" data-scroll-target="#errors-are-independent"><span class="header-section-number">8.1.4</span> Errors are independent</a></li>
+  <li><a href="#errors-have-equal-variance-homoscedasticity" id="toc-errors-have-equal-variance-homoscedasticity" class="nav-link" data-scroll-target="#errors-have-equal-variance-homoscedasticity"><span class="header-section-number">8.1.5</span> Errors have equal variance (homoscedasticity)</a></li>
+  <li><a href="#errors-are-normally-distributed" id="toc-errors-are-normally-distributed" class="nav-link" data-scroll-target="#errors-are-normally-distributed"><span class="header-section-number">8.1.6</span> Errors are normally distributed</a></li>
+  </ul></li>
+  <li><a href="#diagnostic-plots-in-r" id="toc-diagnostic-plots-in-r" class="nav-link" data-scroll-target="#diagnostic-plots-in-r"><span class="header-section-number">8.2</span> Diagnostic plots in R</a></li>
+  <li><a href="#what-about-the-data" id="toc-what-about-the-data" class="nav-link" data-scroll-target="#what-about-the-data"><span class="header-section-number">8.3</span> What about the data?</a></li>
+  <li><a href="#overparameterizing" id="toc-overparameterizing" class="nav-link" data-scroll-target="#overparameterizing"><span class="header-section-number">8.4</span> Overparameterizing</a></li>
+  <li><a href="#within--and-out-of-sample-prediction" id="toc-within--and-out-of-sample-prediction" class="nav-link" data-scroll-target="#within--and-out-of-sample-prediction"><span class="header-section-number">8.5</span> Within- and out-of-sample prediction</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -872,6 +888,181 @@ F-statistic:  3778 on 3 and 2281 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><img src="linearmodels_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+</section>
+<section id="evaluating-model-fit" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Evaluating model fit</h1>
+<p><img src="https://i.pinimg.com/originals/62/75/bd/6275bd308a986cef65b7d85224ee43f8.png" class="img-fluid"></p>
+<p>Just because we can fit a model, doesn’t necessarily mean it is a good model. How do we know if a model is a ‘good’ model? We could approach this in a whole lot of different ways.</p>
+<section id="assumptions-of-linear-models-1" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="assumptions-of-linear-models-1"><span class="header-section-number">8.1</span> Assumptions of linear models</h2>
+<p>First, does our model meet the assumptions of a linear model? If it doesn’t, it might not be a good model. But, how much are we willing to compromise on those assumptions to have any model at all? Remember that all models are going to be wrong and are imperfect representations of the world with a lot of simplifications, but the question is really whether or not we have cut too many corners. Earlier this semester, we played rectilinear pictionary where we were allowed to draw straight lines. What if instead we had played pointilism pictionary? How many guesses would it have taken people to figure out their animals if you were only allowed to draw one point per turn? Is that an assumption we would have been willing to accept was okay? What if, actually, one team had been allowed to draw curved lines while everyone else had to draw straight lines? Is that a rule we would have been okay with breaking? These sorts of questions, as ridiculous as they may seem, are the sort of things you want to consider when evaluating model fit. There is no right or wrong answer (okay, sometimes there are really, really bad models that would count as wrong answers…) but most of the time if you’re fitting a model, it will be somewhere in a grey zone of goodness.</p>
+<section id="the-model-makes-biological-sense" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="the-model-makes-biological-sense"><span class="header-section-number">8.1.1</span> The model makes biological sense</h3>
+<p>Remember that this is the single most important thing to keep in mind when fitting a model. If your model does not make biological sense, then you should not be fitting it, or quite frankly evaluating fit. It should still be in your mental checklist though, because it is very, very important to remind ourselves of this criterion! It can be tempting to consider a few different models, compare them by other metrics of ‘goodness’ and end up selecting a model that by and large is utter nonsense when you consider the biology or ecology of a system.</p>
+<p>We used the sum of the squared residuals earlier when thinking about how to fit the best line through the data in an OLS sense. Let’s use that as a simplistic measure of ‘goodness’ for the two different models below. Remember that when using this as our metric, we want a smaller sum because that means the predicted and observed values are closer together. Let’s fit the model from above, with the square root of age and an interaction between sex and age, and a second model that also includes the day during the month we recorded them and an interaction term with sex. Is there any reason you can think of why, on later days in a 30-day calendar month, there should be some reason that individuals weigh more, and that this effect should be more pronounced (or less pronounced) for male than female bison? Do they perhaps get fed more at the beginning of the month because there was a new food shipment, and then later in the month males are more pushy so they continue to eat the dwindling food supply while females don’t get as much? Do they have monthly check-ins with a vet and are trying to watch their weight towards the end of the month? Is the grass mowed at the start of each calendar month so there is less food available and it is tied to a 12-month calendar? And for some reason this affects one sex more than the other? Most of these explanations seem pretty far-fetched, so even though the SSR is smaller for the model that includes this odd interaction term, it doesn’t really make biological sense, which means it is probably not as good of a model as our much more interpretable one. Sure, there could be better models than our original one that are also biologically interpretable, but the one I’ve proposed likely isn’t one.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>calc_ssr <span class="ot">&lt;-</span> <span class="cf">function</span>(mod){</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">residuals</span>(mod)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>ssr1 <span class="ot">&lt;-</span> <span class="fu">calc_ssr</span>(<span class="fu">lm</span>(weight <span class="sc">~</span> age.sq<span class="sc">*</span>sex, <span class="at">data=</span>dat))</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>ssr2 <span class="ot">&lt;-</span> <span class="fu">calc_ssr</span>(<span class="fu">lm</span>(weight <span class="sc">~</span> age.sq<span class="sc">*</span>sex <span class="sc">+</span> RecDay<span class="sc">*</span>sex, <span class="at">data=</span>dat))</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>ssr1 <span class="sc">-</span> ssr2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1056229</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>ssr1 <span class="sc">&gt;</span> ssr2 <span class="co"># so model two is better?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="the-effects-are-additive" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="the-effects-are-additive"><span class="header-section-number">8.1.2</span> The effects are additive</h3>
+<p>Most of the time, the way you have conceptualized your model will mean you are meeting this assumption. A lot of the times in ecology when we have to deal with non-additive effects, we will have already done this through some sort of data transformation (e.g., things like exponentiation or logarithms) and still fit things in an additive manner. But, sometimes you really just need a model that just <em>fits</em> the data with a somewhat uninterpretable effect (i.e., nothing like a slope that we are used to seeing). For example, maybe you’ve got an effect that you think only kicks in at some point. We talked about drowning baby birds very early in the semester, and the potential for them to exhibit some either adaptive or plastic responses to sea level rise by having chicks climb to the top of nests to survive high tide. If, as has been hypothesized, they cannot actually climb until their bones are fully ossified, this effect may not kick in until say day six or seven. What we are dealing with in that case would be a step function or a hurdle model, where the predictor variable has to exceed some threshold before it has an effect. We could force this into a linear context, but it isn’t immediately clear how ‘additive’ it is (…but you can force most models to conform if you want to, hence however you conceptualize it is typically linear). Similarly, things like splines or local regression will fit different models to different portions of the data, so aren’t really additive in the broad sense but are within smaller areas, so we can kind of force most things to be additive. If you’re interested in this general question of modeling things without additive, linear effects, you should probably venture into GAM (Generalized Additive Model) world, which is something we won’t talk about in this course. Think of them sort of like just chucking all your data in a hat and seeing what comes out. As perhaps a more relatable example, ask any ‘AI’ model how it knows a picture of a cat is a cat, and it would probably tell you something like “it’s, y’know, kinda cat-like” and wave its hands a bit. A lot of ML models are sorta in this realm, and then people will fit post-hoc GAMs to be able to explain how the model eventually got to its conclusion. To be clear: GAMs are still additive, but they are kinda in the realm of “…yeah, but does my model really <em>have</em> to meet all those assumptions?”</p>
+</section>
+<section id="effects-are-linear" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="effects-are-linear"><span class="header-section-number">8.1.3</span> Effects are linear</h3>
+<p>Same general comment as above: if you have conceptualized your model as having linear, additive effects, there is a pretty good chance you’re good to go with modeling your data as if it has linear, additive effects.</p>
+</section>
+<section id="errors-are-independent" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="errors-are-independent"><span class="header-section-number">8.1.4</span> Errors are independent</h3>
+<p>When we talk about errors in this context, we are referring to the residuals of the model (not things like process or observational error). Remember that our ‘errors’ (or residuals) are the differences between the predicted and observed values. Let’s think about some reasons these errors might not be independent. Typically, in ecology this arises from either some sort of hierarchical grouping structure or an unmeasured covariate that would explain why we have ‘groups’ showing up in our errors. For example, what if for some reason we fit our bison model without including sex as a covariate?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>errors <span class="ot">&lt;-</span> <span class="fu">residuals</span>(<span class="fu">lm</span>(weight <span class="sc">~</span> age, <span class="at">data =</span> dat))</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(errors, <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data=</span>dat)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(weight <span class="sc">~</span> age, <span class="at">data=</span>dat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># looks like those big errors are maybe due to some grouping... </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We aren’t going to talk about non-independent errors right now, because we will spend a lot of time on these later in the semester when we get to mixed effects models and hierarchical models. For now, remember that you should think about potential covariate that might explain structure in your errors!</p>
+</section>
+<section id="errors-have-equal-variance-homoscedasticity" class="level3" data-number="8.1.5">
+<h3 data-number="8.1.5" class="anchored" data-anchor-id="errors-have-equal-variance-homoscedasticity"><span class="header-section-number">8.1.5</span> Errors have equal variance (homoscedasticity)</h3>
+<p>What we mean by homoscedasticity is that the spread in the errors is the same across all different values or levels of the predicted value. So if the errors were homoscedastic, they should basically just be a big blob with no trend line across the line of best fit. What would be especially bad here is a trend line, fan shape, or really anything you could draw a discernible shape around. Fish-shaped = bad. Pufferfish-shaped = probably good. If we see variance in the errors showing a pattern over predicted values, we are probably missing a covariate that might explain that trend, or there is something really bad about our overall fit. For example, if we have a fairly flat relationship between predicted values and errors at small values, but a large error at larger values, that might mean our model is just pretty bad at capturing the range of values in our data. If there is a strong trend, maybe we’ve got a missing covariate (or several!). What would indicate that this is probably not a big problem is just having a nice, fluff cloud of residuals with no clear patterns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fitted</span>(mod1) <span class="sc">~</span> <span class="fu">residuals</span>(mod1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="errors-are-normally-distributed" class="level3" data-number="8.1.6">
+<h3 data-number="8.1.6" class="anchored" data-anchor-id="errors-are-normally-distributed"><span class="header-section-number">8.1.6</span> Errors are normally distributed</h3>
+<p>While a straight-up linear model is not often done in ecology (our data typically don’t meet the assumptions - we will get to this soon in the course!), I would guess that this is most likely either the most, or second most, common issue with models. It is either this, or the assumption about independent errors, that are violated most often and lead us to other types of models. So, let’s take a look at our errors. We will go back to the most sensible model we have fit so far for this check. This plot doesn’t look too bad. We’ve got a lot of data, and we do expect our weight response variable to be normally distributed, which often (but not always!) means the errors are also often normally distributed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(mod.int))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(<span class="fu">residuals</span>(mod.int)) <span class="co"># residual quantiles </span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(<span class="fu">residuals</span>(mod.int), <span class="at">col=</span><span class="st">"red"</span>) <span class="co"># theoretical quantiles for normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="diagnostic-plots-in-r" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="diagnostic-plots-in-r"><span class="header-section-number">8.2</span> Diagnostic plots in R</h2>
+<p>By default, R has some diagnostic plots for visually inspecting the goodness of our models to our data, mostly based on residuals and assumptions of linear models. To view them, you can call <code>plot()</code> on your model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>), <span class="at">las=</span><span class="dv">1</span>) <span class="co"># 2 rows, 2 column layout</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>First is the residuals vs fitted plot. The residuals vs fitted plot helps us check if our errors vary with magnitude, i.e.&nbsp;do we have larger errors for larger predicted values? If we see a trend here, that means our model may only be good over some ranges of values. If this relationship is relatively flat, that means we should not be concerned about the model estimates being biased at certain range of our observed data.</p>
+<p>Next is the Normal Q-Q plot. Remember that one of the assumptions of linear models is that the error are normally distributed. If the errors are normally distributed, they should fall along the line matching up with theoretical quantiles. This is just a visual check, so it is not really diagnostic, but can give us a good gut check on whether or nor the errors are normally distributed. There seems to be a fairly long tail in the lower end that deviates from the assumption, which we might have anticipated from our histogram of the response variable.</p>
+<p>The third default diagnostic plot is Scale-Location, which helps us understand if our errors have equal variance (another assumption of linear models: homoscedasticity). Again, a relatively flat line here passes the gut check that model assumptions are met.</p>
+<p>The final visual diagnostic check is residuals versus leverage. If data points have large leverage, you can interpret this as meaning that the estimates would change quite a bit if they were removed from the dataset before fitting the model. If particularly large, or particularly small, data points have high leverage, they would stand out in this plot and could indicate issues with the model fit or data.</p>
+</section>
+<section id="what-about-the-data" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="what-about-the-data"><span class="header-section-number">8.3</span> What about the data?</h2>
+<p>Besides meeting the most basic assumptions of a linear model, we may also want to know if our model actually describes our data well. We can do this via model evaluation.</p>
+<blockquote class="blockquote">
+<p>An aside ramble: a lot of textbooks, papers, etc. will discuss model validation. As a quibble, there is really no such thing as model validation. Validation implies that we can test and validate a model, meaning we can confirm or prove it. The word ‘prove’ should set your hackles up, because never actually ‘prove’ anything in science. We just fail to disprove stuff. I’m personally still not sure the moon <em>isn’t</em> made of green cheese (unlikely, but… I haven’t disproven it; can’t prove it isn’t either). So, when you hear anyone talk about model ‘validaton’ you should pause for a second to think about what they actually mean!</p>
+</blockquote>
+<p>We will start with <span class="math inline">\(R^2\)</span>, which is a measure of how much your model matches the observed data. It is a measure of how much of the total variance in the response is described by the predictor variable(s). It is calculated as the sum of the squared residuals (sounds familiar!) divided by the total sum of squares. In equation form:</p>
+<p><span class="math display">\[ SSR = \sum{(y_i - \hat{y_i})^2} \\ TSS = \sum(y_i - \bar{y_i})^2)\]</span> Let’s calculate <span class="math inline">\(R^2\)</span> for two of the models we fit earlier to see how much of the variance in the response they describe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>ssr <span class="ot">&lt;-</span> <span class="cf">function</span>(mod){</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">sum</span>(<span class="fu">residuals</span>(mod)<span class="sc">^</span><span class="dv">2</span>) </span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>tss <span class="ot">&lt;-</span> <span class="cf">function</span>(yi){</span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>((yi <span class="sc">-</span> <span class="fu">mean</span>(yi))<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>calc_R2 <span class="ot">&lt;-</span> <span class="cf">function</span>(mod, yi){</span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span> <span class="sc">-</span> <span class="fu">ssr</span>(mod)<span class="sc">/</span><span class="fu">tss</span>(yi)</span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a><span class="fu">calc_R2</span>(mod1, mod1<span class="sc">$</span>model<span class="sc">$</span>weight)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4749924</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = weight ~ age + sex, data = dat)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-835.03 -141.93  -19.71  125.43  961.16 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  404.216      9.585   42.17   &lt;2e-16 ***
+age           58.855      1.328   44.32   &lt;2e-16 ***
+sex          213.787     10.183   21.00   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 235.2 on 2282 degrees of freedom
+  (43 observations deleted due to missingness)
+Multiple R-squared:  0.475, Adjusted R-squared:  0.4745 
+F-statistic:  1032 on 2 and 2282 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="overparameterizing" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="overparameterizing"><span class="header-section-number">8.4</span> Overparameterizing</h2>
+<p>The more parameters we add to our model, the more we will be able to describe the data. Even if we just add random noise with a parameter value, we will still be able to describe our response variable better because the model has more to work with. If you take it to the extreme end, let’s imagine we have just as many covariates (or parameters) in our model as we do observations of our response variable. We could perfectly predict every data point because we would have the flexibility to use different parameter combinations for every data point and end up essentially drawing a line to connect all the dots. That’s why we aim to simplify our models so that we can actually make inference on them and explain our results, rather than just adding more and more parameters until we are essentially just building an airplane instead of a model of an airplane.</p>
+<p>When we overparameterize a model, we also often overfit it, but those two concepts are not synonymous. A model that is overfit means that it is overly reliant on the data itself and really describes those data really well but is not generalizable. If you moved it to a new context, it would not perform well.</p>
+</section>
+<section id="within--and-out-of-sample-prediction" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="within--and-out-of-sample-prediction"><span class="header-section-number">8.5</span> Within- and out-of-sample prediction</h2>
+<p>We can use within-sample (WS) and out-of-sample (OOS) prediction as one way of evaluating our model. An overfit model will perform really, really well on within sample data because it is fit to those data, but will perform poorly when confronted with new observations that it was not built with. This brings us to the idea of cross-validation (but remember, we don’t ever really ‘validate’ a model!) in which we set aside some parts of the data to build the model, and then test how well it performs on data that weren’t used to fit it. Let’s start simple and divide our data into training and evaluation datasets.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(<span class="fu">rbinom</span>(<span class="at">n =</span> <span class="fu">nrow</span>(dat), <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.2</span>))</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>modA <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> age.sq <span class="sc">*</span> sex, <span class="at">data=</span>dat[train,])</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>dat.eval <span class="ot">&lt;-</span> dat[<span class="sc">!</span>train, <span class="fu">c</span>(<span class="st">'weight'</span>, <span class="st">'age.sq'</span>, <span class="st">'sex'</span>)]</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>desA <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">cbind</span>(<span class="dv">1</span>, dat.eval[,<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>], dat.eval[,<span class="dv">2</span>]<span class="sc">*</span>dat.eval[,<span class="dv">3</span>]))</span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>y.eval <span class="ot">&lt;-</span> dat.eval[,<span class="dv">1</span>]</span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>y.pred <span class="ot">&lt;-</span> desA<span class="sc">%*%</span><span class="fu">coefficients</span>(modA)</span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y.eval <span class="sc">~</span> y.pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>res.train <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(modA)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>res.eval <span class="ot">&lt;-</span> <span class="fu">sum</span>((y.eval <span class="sc">-</span> y.pred)<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We could then look at a bunch of model evaluation metrics to see how well our model performs on the within versus out of sample data, and maybe consider alternative specifications that make it more generalizable. We can also extend this concept and rather than just doing one training and one evaluation dataset, we could split our data up into three, or five, or 10, or 100 different folds and repeat this process to get a sense of how the model performs on out of sample data. This is called k-fold cross-validation where <span class="math inline">\(k\)</span> is the number of folds. We aren’t going to go into this in any level of detail whatsoever in this course, but it is worth looking into if this is the sort of thing you may need for the types of models you use in your research.</p>
 
 
 </section>
