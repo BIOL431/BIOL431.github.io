@@ -190,6 +190,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 3: Functions and for loops</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Data visualization</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -255,9 +261,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this gives us a vector of 100 observations of a coin flip</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 0 1 1 0 0 0 0 1 0 0 0 1 1 0 1 1 1 0 0 1 1 1 1 0 1 0 0 0 1 0 1 1 0 1 1 1
- [38] 1 1 0 1 1 1 0 1 0 0 1 1 1 0 1 0 1 0 0 0 1 0 1 1 0 0 1 0 1 1 0 0 0 1 1 1 0
- [75] 0 0 0 0 1 0 0 1 1 0 1 0 1 1 0 0 0 1 1 0 0 1 1 0 1 1</code></pre>
+<pre><code>  [1] 1 1 1 1 1 0 1 1 1 1 1 1 0 0 1 0 1 1 1 0 1 1 1 0 1 0 0 1 0 0 1 1 0 0 0 0 1
+ [38] 1 0 0 0 0 0 0 0 0 0 1 0 0 1 1 0 1 0 1 1 1 1 0 0 1 0 1 0 0 0 1 1 1 1 1 1 1
+ [75] 0 1 1 1 1 1 0 0 0 0 0 1 0 1 1 1 0 1 0 0 0 1 1 0 1 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to visualize the outcome, we can create a histogram plotting the results</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the function hist()</span></span>
@@ -278,7 +284,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>Note that the value we get from this can only ever be 0 or 1, but, the value returned is random. We don’t always get a 1, and we don’t always get a 0, but every single time we have a 0.5 probability of getting a 1 (i.e., a ‘success’).</p>
@@ -287,12 +293,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take ten draws of size 1 from the distribution</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 1 1 1 0 0 0 0 1</code></pre>
+<pre><code> [1] 0 1 1 1 1 1 1 1 1 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take 1 draw (for one comedian) who gets 10 guesses, and report the number of successes in those 10 attempts</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 7</code></pre>
 </div>
 </div>
 <p>We could now tally up the number of times a comedian was successful based on this random draw. Over the long-run, this number should balance out to roughly 50/50, but on any given draw it is random. The reason it starts to balance out when we take enough draws is due to the law of large numbers. If we make enough draws from a probability distribution, eventually it will start to resemble the expected value. Let’s try still letting our comedian guess 10 times, but now we will iterate that for 1000 attempts. So in our simulated world, you could think of it like 1000 comedians all get a shot to guess horse or laminator 10 times each, and we want to know the average number of times they were correct. We would expect it to stabilize probably somewhere around five out of 10 times.</p>
@@ -300,42 +306,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will give us 1000 simulations of 10 draws from binomial</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   [1] 8 8 4 8 6 5 6 5 3 4 5 5 6 4 6 4 5 5 6 3 4 7 6 5 3 7 5 7 5 4 4 8 4 5 7 7 6
-  [38] 5 5 5 6 6 3 4 7 3 5 5 1 5 4 4 4 4 6 6 4 5 5 5 7 6 5 5 5 9 5 7 7 3 6 6 3 6
-  [75] 5 4 5 6 3 2 5 6 5 8 6 4 5 8 5 7 8 6 4 4 3 6 6 5 3 4 6 5 6 5 3 3 4 5 5 3 5
- [112] 5 5 6 5 6 9 3 4 3 4 3 8 7 6 6 2 8 5 5 3 8 3 5 4 6 5 4 8 5 6 6 3 7 5 4 2 4
- [149] 5 8 4 3 5 2 6 6 8 5 4 3 7 7 5 7 4 3 5 6 5 9 6 1 7 9 2 5 4 3 7 5 6 6 4 6 3
- [186] 7 6 6 2 4 8 6 3 6 6 7 6 2 7 8 5 5 5 5 2 4 5 2 5 6 4 8 4 6 1 6 7 5 7 5 4 7
- [223] 5 4 5 5 4 5 5 5 5 3 4 6 5 3 2 5 5 4 5 8 8 7 4 3 4 7 5 5 6 6 8 8 7 4 8 6 3
- [260] 6 7 1 6 7 7 6 1 4 4 7 4 4 4 4 2 8 3 3 5 5 5 6 7 9 4 1 3 6 4 6 5 5 3 7 7 7
- [297] 3 4 2 8 7 4 3 5 6 4 7 3 5 5 7 4 5 5 6 6 5 4 5 7 5 7 6 7 9 2 7 3 4 4 3 6 7
- [334] 4 6 4 4 5 7 7 5 7 5 4 6 6 5 4 8 8 8 6 6 3 5 2 4 5 3 7 6 7 4 6 4 3 6 3 5 6
- [371] 7 2 8 8 5 3 6 5 5 7 4 8 2 8 5 7 5 3 8 4 5 4 6 3 8 8 3 4 6 3 8 6 8 4 8 4 5
- [408] 5 6 5 4 7 5 3 6 3 5 3 5 4 7 8 5 7 4 3 5 5 5 4 9 3 4 3 5 7 2 5 4 7 7 7 4 4
- [445] 4 3 7 4 7 4 7 5 8 5 3 1 7 5 3 4 4 4 4 4 7 3 4 5 5 7 6 5 6 3 5 5 6 6 4 5 6
- [482] 4 3 7 0 3 5 5 5 6 5 4 5 5 5 4 4 8 5 6 2 5 4 6 5 7 4 5 7 6 7 3 6 3 3 4 6 6
- [519] 4 5 5 3 6 9 6 6 3 6 2 4 6 9 5 5 4 6 6 6 5 4 5 5 4 5 5 4 3 6 5 8 3 6 5 7 6
- [556] 7 5 5 5 6 5 5 7 9 3 6 7 4 1 4 7 5 3 5 3 5 5 7 1 3 5 7 4 3 9 5 3 4 5 6 3 6
- [593] 6 7 4 6 6 7 3 8 7 6 4 6 4 7 5 2 6 6 3 5 3 5 8 6 6 7 3 5 4 5 6 2 8 5 3 5 5
- [630] 4 4 6 5 3 5 4 6 4 6 5 6 4 5 4 3 4 5 7 3 7 3 6 4 6 2 4 6 4 4 3 5 4 4 4 3 5
- [667] 7 6 4 7 4 5 5 5 6 7 7 3 6 3 3 6 2 4 7 8 3 1 6 5 5 7 6 6 4 7 4 4 4 5 1 4 3
- [704] 8 4 5 4 4 5 4 4 4 6 6 4 5 4 8 7 8 4 2 7 3 5 4 5 4 6 4 4 4 5 4 6 5 5 5 4 4
- [741] 4 7 6 8 4 5 6 6 6 4 8 4 5 5 5 3 3 3 4 4 6 3 2 8 6 6 7 5 5 5 4 3 5 5 4 7 6
- [778] 4 2 4 2 4 6 6 5 5 5 6 6 5 5 8 5 7 4 3 7 6 4 3 5 6 5 7 6 2 4 4 4 5 4 8 2 7
- [815] 7 7 5 5 5 4 4 6 4 7 6 5 4 5 3 6 4 6 3 4 6 7 4 4 3 6 4 5 5 6 3 4 2 5 3 7 3
- [852] 4 3 5 1 5 6 2 5 6 7 6 7 5 3 7 7 6 7 5 5 4 6 4 6 4 3 6 2 4 7 5 7 6 7 4 4 5
- [889] 4 1 5 7 6 7 4 6 4 5 6 8 5 3 9 5 6 9 6 4 5 6 3 4 5 4 7 4 5 5 6 5 4 4 7 2 7
- [926] 4 5 3 8 7 3 5 6 7 5 2 6 3 3 4 3 4 7 9 3 6 4 4 3 4 4 6 7 4 2 6 4 5 6 8 4 5
- [963] 2 6 4 6 5 3 6 6 6 5 2 6 6 8 5 5 3 3 3 5 5 7 5 3 7 5 6 5 8 7 4 2 4 6 3 5 4
-[1000] 3</code></pre>
+<pre><code>   [1]  8  7  6  7  3  6  3  3  6  5  6  3  4  4  6  7  5  5  6  5  5  7  6  7
+  [25]  6  4  6  2  5  6  3  4  8  7  4  6  8  3  6  6  5  4  6 10  4  4  5  4
+  [49]  8  3  7  3  5  7  7  6  5  7  5  5  3  4  4  6  7  4  5  6  4  4  5  7
+  [73]  2  5  4  5  3  6  4  4  7  5  6  4  4  7  5  8  7  6  6  7  8  5  8  5
+  [97]  6  4  7  4  5  7  7  2  5  6  4  6  4  4  9  6  6  5  6  3  3  3  3  8
+ [121]  7  3  8  8  5  5  6  4  6  5  8  3  4  3  3  5  5  5  3  4  4  5  8  6
+ [145]  2  5  5  5  6  6  8  5  7  4  2  4  5  7  3  4  2  4  4  5  6  2  5  4
+ [169]  5  4  5  4  6  5  6  7  6  5  4  3  5  7  5  3  4  5  8  4  7  6  5  5
+ [193]  5  5  4  2  4  5  7  8  5  3  6  4  4  3  5  5  8  4  6  8  7  3  5  4
+ [217]  7  5  1  5  6  5  5  6  6  3  6  3  6  3  4  4  6  8  5  5  7  6  6  5
+ [241]  6  2  6  6  4  2  6  5  2  5  4  3  6  5  4  5  4  7  4  7  5  4  7  6
+ [265]  5  5  4  7  5  5  3  5  1  7  4  8  4  3  6  5  5  6  9  7  4  7  5  4
+ [289]  5  7  6  5  8  2  8  6  4  3  5  5  4  6  6  4  3  6  8  6  3  4  3  7
+ [313]  4  4  5  4  2  7  6  6  6  4  3  6  6  5  5  7  8  5  4  3  6  6  6  3
+ [337]  3  6  5  3  6  5  6  8  5  6  5  4  6  3  4  8  5  5  3  5  4  4  6  5
+ [361]  7  4  5  1  5  4  7  5  6  7  5  6  6  5  5  7  4  5  3  4  6  7  8  8
+ [385]  2  3  6  8  8  5  3  3  4  5  8  7  3  7  8  5  6  6  6  8  7  7  3  5
+ [409]  5  3  6  3  1  9  3  5  5  3  2  2  4  7  5  6  4  6  6  2  1  3  7  6
+ [433]  6  1  9  5  4  6  5  5  4  5  5  4  4  3  4  3  6  5  3  7  4  7  6  8
+ [457]  7  2  4  8  6  7  3  7  6  4  7  5  4  4  6  4  7  6  5  4  5  6  3  5
+ [481]  4  4  4  4  6  4  7  3  7  7  5  7  4  4  2  3  5  5  3  1  3  3  4  3
+ [505]  6  7  4  4  5  5  5  4  4  4  5  1  7  4  6  6  7  4  6  4  4  5  4  5
+ [529]  5  3  4  5  5  4  8  7  6  9  8  5  3  6  8  5  4  5  5  5  7  5  4  4
+ [553]  5  4  6  6  5  5  6  6  4  5  6  4  6  7  5  6  2  6  5  3  6  4  5 10
+ [577]  3  8  5  7  7  5  7  5  6  7  7  5  5  5  6  6  3  4  2  5  1  6  7  8
+ [601]  8  6  5  7  8  3  3  6  6  6  5  6  6  3  3  6  6  2  7  9  6  3  5  5
+ [625]  5  5  4  2  4  7  6  6  5  3  3  4  6  6  4  4  7  6  3  6  6  6  9  7
+ [649]  4  6  4  5  5  5  5  6  6  6  2  5  2  8  2  4  3  6  5  4  5  6  5  4
+ [673]  6  7  5  4  2  6  6  5  6  4  7  2  6  7  5  6  4  2  8  8  7  5  8  7
+ [697]  4  5  9  8  8  6  2  6  2  7  7  4  5  5  2  4  4  3  5  5  6  1  7  5
+ [721]  4  8  5  4  8  6  5  4  6  5  3  2  5  5  5  7  4  3  3  4  7  5  6  7
+ [745]  7  7  5  4  5  7  5  6  6  5  4  5  6  5  6  4  4  2  4  3  5  5  6  8
+ [769]  3  7  4  6  5  6  5  7  6  7  6  5  5  4  3  4  7  6  6  5  4  4  6  6
+ [793]  4  5  8  6  7  3  3  5  5  4  3  4  4  6  5  8  8  5  4  4  6  5  3  4
+ [817]  2  6  5  6  4  6  5  6  5  6  6  6  6  7  4  4  4  5  2  4  5  4  6  4
+ [841]  5  4  3  4  2  5  3  7  5  4  3  6  4  4  6  3  5  4  6  5  6  4  3  6
+ [865]  9  6  5  7  7  4  8  7  4  6  4  4  4  5  4  4  6  5  8  6  5  6  4  6
+ [889]  5  6  7  7  2  5  6  4  5  4  3  7  6  5  9  6  6  6  3  4  6  5  4  6
+ [913]  4  5  7  4  5  4  3  4  4  4  4  7  4  6  8  5  5  5  3  5  4  5  6  6
+ [937]  3  4  5  8  5  6  3  7  6  6  6  2  4  3  6  7  5  4  5  6  5  4  3  5
+ [961]  6  6  5  5  5  5  3  5  4  6  5  8  3  4  3  6  7  5  6  5  6  4  8  5
+ [985]  5  5  2  3  6  5  4  3  9  7  6  7  6  5  7  4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we should save this to an object so it is easier to work with</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ten_attempts <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ten_attempts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ten_attempts
-  0   1   2   3   4   5   6   7   8   9 
-  3   8  41 134 211 246 200 109  40   8 </code></pre>
+  0   1   2   3   4   5   6   7   8   9  10 
+  1  10  38 123 203 242 219 117  38   8   1 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ten_attempts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -356,19 +376,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
    FALSE     TRUE 
-0.968806 0.031194 
+0.968627 0.031373 
 
    FALSE     TRUE 
-0.499984 0.500016 
+0.500763 0.499237 
 
    FALSE     TRUE 
-0.499546 0.500454 
+0.500955 0.499045 
 
-  FALSE    TRUE 
-0.50034 0.49966 
+   FALSE     TRUE 
+0.500544 0.499456 
 
- FALSE   TRUE 
-0.9999 0.0001 </code></pre>
+   FALSE     TRUE 
+0.999878 0.000122 </code></pre>
 </div>
 </div>
 <p>## Guillemot chick survival</p>
@@ -381,9 +401,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 observations, each with one draw from the Bernoulli distribution</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 0 1 1 1 0 0 1 0 1 1 1 0 0 0 1 0 1 0 1 1 0 0 0 0 1 0 0 0 0 1 0 0 1 0 1 1
- [38] 1 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 1 0 1 1 0 1 0 1 0 1 1 0 0 0 0 0 0 0 0 0
- [75] 1 0 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1</code></pre>
+<pre><code>  [1] 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 0 0 1 1 1 1 1 0 1 1 0 0 0 0 1 1 0 0 1 0 0 1
+ [38] 1 1 0 0 1 1 0 1 1 0 1 1 1 0 1 0 1 0 0 0 0 1 1 0 0 0 1 0 1 1 1 0 1 0 0 0 1
+ [75] 0 0 0 0 0 1 0 0 1 1 1 0 1 1 1 1 1 1 1 0 1 0 0 0 0 0</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so far, we have just been running functions and the output is shown in the console</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># but we don't have anything in our environment</span></span>
@@ -407,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for one nest with 3 chicks and a probability of success of 0.4</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we could also think about a colony with let's say 100 nests</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># how many chicks from each nest will make it?</span></span>
@@ -418,9 +438,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>nest_offspring</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 0 2 3 2 1 2 2 2 3 2 1 1 1 0 1 0 0 2 1 1 1 1 2 0 1 0 0 0 2 2 2 0 2 1 2 0 2
- [38] 0 1 2 1 0 2 1 2 1 1 2 2 1 0 0 1 1 3 2 2 1 1 2 2 2 0 1 2 2 0 1 2 0 3 2 0 1
- [75] 1 0 2 1 1 1 2 2 2 1 0 1 1 1 1 2 1 3 1 3 2 2 0 1 1 1</code></pre>
+<pre><code>  [1] 3 1 1 1 0 0 1 1 1 0 1 0 2 2 0 1 0 2 2 1 1 2 0 1 1 1 1 2 3 0 0 2 0 0 0 1 1
+ [38] 0 0 2 0 0 1 0 1 3 0 1 1 2 1 0 2 0 1 2 0 1 2 1 1 1 0 1 1 3 1 1 0 0 2 1 2 2
+ [75] 0 1 0 1 2 2 0 1 1 1 1 2 2 1 1 1 0 1 1 0 0 2 2 0 1 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability that all three chicks from a nest make it?</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because we know what we fixed p to, we could multiply the probabilities</span></span>
@@ -444,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>nest_offspring
  0  1  2  3 
-21 38 35  6 </code></pre>
+31 43 22  4 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proportions will convert the table into proportions instead of counts</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># so will prop.table and I often use that function because I learned it first</span></span>
@@ -469,12 +489,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the table of proportions to estimate the probability at least one survives?</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.79</code></pre>
+<pre><code>[1] 0.69</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability at least two survive?</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.41</code></pre>
+<pre><code>[1] 0.26</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># side note: if you're not sure which indices to subset, it can help to look at</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># your object; you can easily do this in RStudio by highlighting just the bit of</span></span>
@@ -506,16 +526,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>gametes
       0       1       2       3       4       5       6       7       8       9 
-0.13628 0.26922 0.27007 0.18027 0.09109 0.03628 0.01228 0.00324 0.00103 0.00017 
-     10 
-0.00007 </code></pre>
+0.13642 0.26944 0.27048 0.18051 0.09091 0.03531 0.01231 0.00351 0.00083 0.00021 
+     10      11      12 
+0.00005 0.00001 0.00001 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what's the probability of more than 5 offspring?</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes<span class="sc">&gt;</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
   FALSE    TRUE 
-0.98321 0.01679 </code></pre>
+0.98307 0.01693 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now let's increase the number of individual corals to 1 million, and also increase</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the probability of success to 0.001 </span></span>
@@ -530,14 +550,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
    FALSE     TRUE 
-0.999946 0.000054 </code></pre>
+0.999951 0.000049 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and what is the probability of more than 15 offspring?</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(gametes2<span class="sc">&gt;</span><span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    FALSE     TRUE 
-0.951647 0.048353 </code></pre>
+0.951166 0.048834 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># let's visualize the data as a histogram again, but add a vertical bar using </span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the abline() function at 15; note there are other plotting options to make </span></span>
@@ -3636,7 +3656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb1071"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1071-1"><a href="#cb1071-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what if we did the same calculation with simulated data?</span></span>
 <span id="cb1071-2"><a href="#cb1071-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)<span class="sc">&gt;=</span><span class="dv">8</span>)<span class="sc">/</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.05</code></pre>
+<pre><code>[1] 0.03</code></pre>
 </div>
 </div>
 
