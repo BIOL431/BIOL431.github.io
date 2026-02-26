@@ -196,6 +196,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Data visualization</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Uncertainty</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -240,14 +246,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#prediction-and-inference" id="toc-prediction-and-inference" class="nav-link" data-scroll-target="#prediction-and-inference"><span class="header-section-number">9</span> Prediction and inference</a>
   <ul class="collapse">
   <li><a href="#interpreting-coefficients" id="toc-interpreting-coefficients" class="nav-link" data-scroll-target="#interpreting-coefficients"><span class="header-section-number">9.1</span> Interpreting coefficients</a></li>
-  <li><a href="#predicting" id="toc-predicting" class="nav-link" data-scroll-target="#predicting"><span class="header-section-number">9.2</span> Predicting</a></li>
-  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals"><span class="header-section-number">9.3</span> Confidence intervals</a>
+  <li><a href="#predicting" id="toc-predicting" class="nav-link" data-scroll-target="#predicting"><span class="header-section-number">9.2</span> Predicting</a>
   <ul class="collapse">
-  <li><a href="#predicting-with-se" id="toc-predicting-with-se" class="nav-link" data-scroll-target="#predicting-with-se"><span class="header-section-number">9.3.1</span> Predicting with SE</a></li>
+  <li><a href="#predicting-with-se" id="toc-predicting-with-se" class="nav-link" data-scroll-target="#predicting-with-se"><span class="header-section-number">9.2.1</span> Predicting with SE</a></li>
   </ul></li>
-  <li><a href="#extrapolating" id="toc-extrapolating" class="nav-link" data-scroll-target="#extrapolating"><span class="header-section-number">9.4</span> Extrapolating</a></li>
+  <li><a href="#extrapolating" id="toc-extrapolating" class="nav-link" data-scroll-target="#extrapolating"><span class="header-section-number">9.3</span> Extrapolating</a></li>
   </ul></li>
-  <li><a href="#bringing-it-all-together" id="toc-bringing-it-all-together" class="nav-link" data-scroll-target="#bringing-it-all-together"><span class="header-section-number">10</span> Bringing it all together</a></li>
   </ul>
 </nav>
     </div>
@@ -1776,142 +1780,70 @@ Coefficients:
 <p><img src="linearmodels_files/figure-html/unnamed-chunk-23-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-<section id="confidence-intervals" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">9.3</span> Confidence intervals</h2>
-<p>We can never really know the <em>exact</em> value for something, and our parameter estimates have some degree of uncertainty to them. In frequentist statistics, we are assuming that the parameters are fixed and the data are random variables. When we estimate parameters, we are assuming that there is some truth out there in the world, and we are imperfectly estimating it from our observed data. Our data are a random draw from the ‘truth’. We will talk about this in much, much more detail next week. In the meantime, let’s just stick with the general understanding that our estimates aren’t precise, and there is some wobbly room around our predicted values because we aren’t 100% confident in our estimate of the parameter values.</p>
-<p>Let’s step back for a bit to thinking about just a single parameter estimate, not a whole bunch of them. To help keep our brain compartmentalized, let’s go to a rather far-fetched example. I have a castle filled with 500 salamanders. I know every salamander by name, and I know exactly how aggressive each salamander is, because I have perfectly curated my population of salamanders to have a mean aggression of 5, and to fit perfectly into a standard normal distribution with a standard deviation of 1 because apparently when I was curating my salamander population I was a little too influenced by Galton.</p>
-<p>I have trapped 25 BIOL 431 students in my castle filled with aggressive salamanders, and you can only escape if you can accurately guess how aggressive the average salamander in my population is. Each student can only check the aggressiveness of 15 salamanders before you get too beat up by them, and you aren’t allowed to share your raw data with each other. Because Joe is the TA, you send him out first to battle the salamanders. He comes back and reports that the average salamander he encountered was 5.48 aggressive.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>true_mean <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>true_sd <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>true_N <span class="ot">&lt;-</span> <span class="dv">500</span></span>
-<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>sample_N <span class="ot">&lt;-</span> <span class="dv">15</span></span>
-<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a>joe <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(sample_N, true_mean, true_sd)</span>
-<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(joe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.484234</code></pre>
-</div>
-</div>
-<p>But, there is of course variation in the individual salamanders that Joe measured. We are assuming that the sample he has taken of the salamanders is a random sample of the entire population in the castle. Based on the mean and the standard deviation of the sample he has taken, we want to make inference about the population mean. There is a measure called the standard error, which is equal to <span class="math inline">\(\sigma / \sqrt n\)</span> where <span class="math inline">\(\sigma\)</span> is the standard deviation (the square root of the variance) and <span class="math inline">\(n\)</span> is the sample size.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="cf">function</span>(sigma, n){</span>
-<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>  sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a><span class="fu">se</span>(<span class="fu">sd</span>(joe), sample_N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2647167</code></pre>
-</div>
-</div>
-<p>Often, this gets reported as the mean plus or minus the SE. We can also convert the SE to a 95% confidence interval. What a 95% confidence interval tells us is that, 95 times out of 100, if we calculated the mean and standard deviation from our sample size it would contain the <em>true</em> population mean (the one that I so perfectly curated in my population of salamanders). To convert from an SE to a 95% confidence interval, we multiply it by 1.96 (going back to Pearson and the convenience of 1.96 being nearly two standard deviations in the standard normal distribution). So, Joe could take the standard deviation and sample size from his adventure into the castle to calculate the 95% confidence interval surrounding his estimate of the population mean.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>joe_se <span class="ot">&lt;-</span> <span class="fu">se</span>(<span class="fu">sd</span>(joe), sample_N)</span>
-<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(joe) <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>joe_se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.003079</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(joe) <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>joe_se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.965389</code></pre>
-</div>
-</div>
-<p>This means that if there were 100 BIOL 431 students trapped in the castle and they each calculated things the same way, 95 of their confidence intervals would include the <em>true</em> population mean. Let’s run this in a for-loop to see how it pans out for them, keeping in mind that we are randomly drawing from a distribution so it may be a bit higher or lower on any given simulation run.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>ci.est <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">3</span>))</span>
-<span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>  student <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(sample_N, true_mean, true_sd)</span>
-<span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>  up<span class="fl">.95</span> <span class="ot">&lt;-</span> <span class="fu">mean</span>(student) <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">se</span>(<span class="fu">sd</span>(student), sample_N)</span>
-<span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a>  low<span class="fl">.95</span> <span class="ot">&lt;-</span> <span class="fu">mean</span>(student) <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">se</span>(<span class="fu">sd</span>(student), sample_N)</span>
-<span id="cb118-7"><a href="#cb118-7" aria-hidden="true" tabindex="-1"></a>  ci.est[i,] <span class="ot">&lt;-</span> <span class="fu">c</span>(low<span class="fl">.95</span>, <span class="fu">mean</span>(student), up<span class="fl">.95</span>)</span>
-<span id="cb118-8"><a href="#cb118-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb118-9"><a href="#cb118-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-10"><a href="#cb118-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ci.est[,<span class="dv">2</span>])</span>
-<span id="cb118-11"><a href="#cb118-11" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">y0=</span>ci.est[,<span class="dv">1</span>], <span class="at">y1=</span>ci.est[,<span class="dv">3</span>], <span class="at">length =</span> <span class="dv">0</span>)</span>
-<span id="cb118-12"><a href="#cb118-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>true_mean, <span class="at">lwd=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="linearmodels_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(true_mean<span class="sc">&gt;</span>ci.est[,<span class="dv">1</span>] <span class="sc">&amp;</span> true_mean<span class="sc">&lt;</span>ci.est[,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-FALSE  TRUE 
-    5    95 </code></pre>
-</div>
-</div>
-<section id="predicting-with-se" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="predicting-with-se"><span class="header-section-number">9.3.1</span> Predicting with SE</h3>
+<section id="predicting-with-se" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="predicting-with-se"><span class="header-section-number">9.2.1</span> Predicting with SE</h3>
 <p>Now, back to the bison. We can add the standard error of our model estimate to our plots to indicated that there is some uncertainty in our estimated values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>p.f.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">0</span>), </span>
-<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
-<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
-<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a>p.m.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">1</span>), </span>
-<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
-<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
-<span id="cb121-8"><a href="#cb121-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-9"><a href="#cb121-9" aria-hidden="true" tabindex="-1"></a><span class="co"># typically, we want to visualize our data on the scale that it was collected</span></span>
-<span id="cb121-10"><a href="#cb121-10" aria-hidden="true" tabindex="-1"></a><span class="co"># so, because it is easier for us as humans to visualize age, rather than the square</span></span>
-<span id="cb121-11"><a href="#cb121-11" aria-hidden="true" tabindex="-1"></a><span class="co"># root of age, we should plot across that scale</span></span>
-<span id="cb121-12"><a href="#cb121-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data=</span>dat, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"red"</span>)[dat<span class="sc">$</span>sex<span class="sc">+</span><span class="dv">1</span>])</span>
-<span id="cb121-13"><a href="#cb121-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.f.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"orange"</span>)</span>
-<span id="cb121-14"><a href="#cb121-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.m.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"red"</span>)</span>
-<span id="cb121-15"><a href="#cb121-15" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
-<span id="cb121-16"><a href="#cb121-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.f.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit,</span>
-<span id="cb121-17"><a href="#cb121-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.f.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#F0F00088"</span>, <span class="at">border=</span>F)</span>
-<span id="cb121-18"><a href="#cb121-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb121-19"><a href="#cb121-19" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
-<span id="cb121-20"><a href="#cb121-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.m.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit,</span>
-<span id="cb121-21"><a href="#cb121-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.m.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#FF000088"</span>, <span class="at">border=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>p.f.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">0</span>), </span>
+<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
+<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
+<span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>p.m.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">1</span>), </span>
+<span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
+<span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
+<span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-9"><a href="#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="co"># typically, we want to visualize our data on the scale that it was collected</span></span>
+<span id="cb110-10"><a href="#cb110-10" aria-hidden="true" tabindex="-1"></a><span class="co"># so, because it is easier for us as humans to visualize age, rather than the square</span></span>
+<span id="cb110-11"><a href="#cb110-11" aria-hidden="true" tabindex="-1"></a><span class="co"># root of age, we should plot across that scale</span></span>
+<span id="cb110-12"><a href="#cb110-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data=</span>dat, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"red"</span>)[dat<span class="sc">$</span>sex<span class="sc">+</span><span class="dv">1</span>])</span>
+<span id="cb110-13"><a href="#cb110-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.f.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"orange"</span>)</span>
+<span id="cb110-14"><a href="#cb110-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.m.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"red"</span>)</span>
+<span id="cb110-15"><a href="#cb110-15" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb110-16"><a href="#cb110-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.f.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit,</span>
+<span id="cb110-17"><a href="#cb110-17" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.f.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#F0F00088"</span>, <span class="at">border=</span>F)</span>
+<span id="cb110-18"><a href="#cb110-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb110-19"><a href="#cb110-19" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb110-20"><a href="#cb110-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.m.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit,</span>
+<span id="cb110-21"><a href="#cb110-21" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.m.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#FF000088"</span>, <span class="at">border=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="linearmodels_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
 </section>
-<section id="extrapolating" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="extrapolating"><span class="header-section-number">9.4</span> Extrapolating</h2>
+<section id="extrapolating" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="extrapolating"><span class="header-section-number">9.3</span> Extrapolating</h2>
 <p>Because we can predict our model to any value, we can extrapolate outside the realm of values used to fit the model. But, our estimates will be far less certain.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="fl">0.1</span>)</span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>p.f.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">0</span>), </span>
-<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
-<span id="cb122-4"><a href="#cb122-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
-<span id="cb122-5"><a href="#cb122-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-6"><a href="#cb122-6" aria-hidden="true" tabindex="-1"></a>p.m.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">1</span>), </span>
-<span id="cb122-7"><a href="#cb122-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
-<span id="cb122-8"><a href="#cb122-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
-<span id="cb122-9"><a href="#cb122-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-10"><a href="#cb122-10" aria-hidden="true" tabindex="-1"></a><span class="co"># typically, we want to visualize our data on the scale that it was collected</span></span>
-<span id="cb122-11"><a href="#cb122-11" aria-hidden="true" tabindex="-1"></a><span class="co"># so, because it is easier for us as humans to visualize age, rather than the square</span></span>
-<span id="cb122-12"><a href="#cb122-12" aria-hidden="true" tabindex="-1"></a><span class="co"># root of age, we should plot across that scale</span></span>
-<span id="cb122-13"><a href="#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data=</span>dat, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"red"</span>)[dat<span class="sc">$</span>sex<span class="sc">+</span><span class="dv">1</span>], <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8000</span>))</span>
-<span id="cb122-14"><a href="#cb122-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.f.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"orange"</span>)</span>
-<span id="cb122-15"><a href="#cb122-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.m.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"red"</span>)</span>
-<span id="cb122-16"><a href="#cb122-16" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
-<span id="cb122-17"><a href="#cb122-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.f.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit,</span>
-<span id="cb122-18"><a href="#cb122-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.f.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#F0F00088"</span>, <span class="at">border=</span>F)</span>
-<span id="cb122-19"><a href="#cb122-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-20"><a href="#cb122-20" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
-<span id="cb122-21"><a href="#cb122-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.m.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit,</span>
-<span id="cb122-22"><a href="#cb122-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.m.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#FF000088"</span>, <span class="at">border=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="fl">0.1</span>)</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>p.f.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">0</span>), </span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a>p.m.se <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod.int, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">age.sq=</span><span class="fu">sqrt</span>(xvals), <span class="at">sex=</span><span class="dv">1</span>), </span>
+<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">type=</span><span class="st">"response"</span>,</span>
+<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">se.fit=</span>T)</span>
+<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a><span class="co"># typically, we want to visualize our data on the scale that it was collected</span></span>
+<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a><span class="co"># so, because it is easier for us as humans to visualize age, rather than the square</span></span>
+<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a><span class="co"># root of age, we should plot across that scale</span></span>
+<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(weight <span class="sc">~</span> age, <span class="at">data=</span>dat, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"red"</span>)[dat<span class="sc">$</span>sex<span class="sc">+</span><span class="dv">1</span>], <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8000</span>))</span>
+<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.f.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"orange"</span>)</span>
+<span id="cb111-15"><a href="#cb111-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p.m.se<span class="sc">$</span>fit <span class="sc">~</span> (xvals), <span class="at">col=</span><span class="st">"red"</span>)</span>
+<span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.f.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit,</span>
+<span id="cb111-18"><a href="#cb111-18" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.f.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.f.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#F0F00088"</span>, <span class="at">border=</span>F)</span>
+<span id="cb111-19"><a href="#cb111-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-20"><a href="#cb111-20" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x=</span><span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb111-21"><a href="#cb111-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(p.m.se<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit,</span>
+<span id="cb111-22"><a href="#cb111-22" aria-hidden="true" tabindex="-1"></a>            <span class="fu">rev</span>(p.m.se<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p.m.se<span class="sc">$</span>se.fit)), <span class="at">col=</span><span class="st">"#FF000088"</span>, <span class="at">border=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="linearmodels_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+<p><img src="linearmodels_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</section>
-</section>
-<section id="bringing-it-all-together" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> Bringing it all together</h1>
-<p>(for next week) Form a hypothesis Make a prediction Gather data Specify a model Fit the model Evaluate model fit Make inference from your model Make predictions</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./distributions.html" rel="next">
-<link href="./prediction.html" rel="prev">
+<link href="./lab4.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,10 +95,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
 <body class="nav-sidebar floating">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -102,13 +138,19 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How to Use This Book</span></a>
+ <span class="menu-text">Welcome to BIOL 431</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to the Course</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Thinking like a Modeler</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Getting comfortable in R and RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,32 +167,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab 2: Data structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linearmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Components of linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Fitting</span></span></a>
+  <a href="./lab3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 3: Functions and for loops</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evaluating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prediction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prediction and Inference</span></span></a>
+  <a href="./lab4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Data visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,127 +201,24 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Uncertainty</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability Distributions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./linkfunctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Link Functions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./glms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixedeffects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pathanalysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Path Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayes Theorem</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mcmc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Markov Chain Monte Carlo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./jags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Fitting Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hierarchical.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Advanced Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixturemodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Mixture Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./overdispersion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Overdispersion and Zero-inflation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./latent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Latent Variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dimensionality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Dimensionality Reduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./multivariate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Multivariate Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./aic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Information Theoretic Approaches</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Ethics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./frontiers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Emerging Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#standard-error-and-confidence-intervals" id="toc-standard-error-and-confidence-intervals" class="nav-link active" data-scroll-target="#standard-error-and-confidence-intervals"><span class="header-section-number">9.1</span> Standard error and confidence intervals</a></li>
+  <li><a href="#parametric-statistics" id="toc-parametric-statistics" class="nav-link" data-scroll-target="#parametric-statistics"><span class="header-section-number">9.2</span> Parametric statistics</a></li>
+  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping"><span class="header-section-number">9.3</span> Bootstrapping</a>
+  <ul class="collapse">
+  <li><a href="#predicting-with-se" id="toc-predicting-with-se" class="nav-link" data-scroll-target="#predicting-with-se"><span class="header-section-number">9.3.1</span> Predicting with SE</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -301,8 +240,408 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="standard-error-and-confidence-intervals" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="standard-error-and-confidence-intervals"><span class="header-section-number">9.1</span> Standard error and confidence intervals</h2>
+<p>We can never really know the <em>exact</em> value for something, and our parameter estimates have some degree of uncertainty to them. In frequentist statistics, we are assuming that the parameters are fixed and the data are random variables. When we estimate parameters, we are assuming that there is some truth out there in the world, and we are imperfectly estimating it from our observed data. Our data are a random draw from the ‘truth’. We will talk about this in much, much more detail next week. In the meantime, let’s just stick with the general understanding that our estimates aren’t precise, and there is some wobbly room around our predicted values because we aren’t 100% confident in our estimate of the parameter values.</p>
+<p>Let’s step back for a bit to thinking about just a single parameter estimate, not a whole bunch of them. To help keep our brain compartmentalized, let’s go to a rather far-fetched example. I have a castle filled with 500 salamanders. I know every salamander by name, and I know exactly how aggressive each salamander is, because I have perfectly curated my population of salamanders to have a mean aggression of 5, and to fit perfectly into a standard normal distribution with a standard deviation of 1 because apparently when I was curating my salamander population I was a little too influenced by Galton.</p>
+<p>I have trapped 25 BIOL 431 students in my castle filled with aggressive salamanders, and you can only escape if you can accurately guess how aggressive the average salamander in my population is. Each student can only check the aggressiveness of 15 salamanders before you get too beat up by them, and you aren’t allowed to share your raw data with each other. Because Joe is the TA, you send him out first to battle the salamanders. He comes back and reports that the average salamander he encountered was 5.48 aggressive.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>true_mean <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>true_sd <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>true_N <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sample_N <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>joe <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(sample_N, true_mean, true_sd)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(joe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.484234</code></pre>
+</div>
+</div>
+<p>But, there is of course variation in the individual salamanders that Joe measured. We are assuming that the sample he has taken of the salamanders is a random sample of the entire population in the castle. Based on the mean and the standard deviation of the sample he has taken, we want to make inference about the population mean. There is a measure called the standard error, which is equal to <span class="math inline">\(\sigma / \sqrt n\)</span> where <span class="math inline">\(\sigma\)</span> is the standard deviation (the square root of the variance) and <span class="math inline">\(n\)</span> is the sample size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> <span class="cf">function</span>(sigma, n){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  sigma<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">se</span>(<span class="fu">sd</span>(joe), sample_N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2647167</code></pre>
+</div>
+</div>
+<p>Often, this gets reported as the mean plus or minus the SE. We can also convert the SE to a 95% confidence interval. What a 95% confidence interval tells us is that, 95 times out of 100, if we calculated the mean and standard deviation from our sample size it would contain the <em>true</em> population mean (the one that I so perfectly curated in my population of salamanders). To convert from an SE to a 95% confidence interval, we multiply it by 1.96 (going back to Pearson and the convenience of 1.96 being nearly two standard deviations in the standard normal distribution). So, Joe could take the standard deviation and sample size from his adventure into the castle to calculate the 95% confidence interval surrounding his estimate of the population mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>joe_se <span class="ot">&lt;-</span> <span class="fu">se</span>(<span class="fu">sd</span>(joe), sample_N)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(joe) <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>joe_se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.003079</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(joe) <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>joe_se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.965389</code></pre>
+</div>
+</div>
+<p>This means that if there were 100 BIOL 431 students trapped in the castle and they each calculated things the same way, 95 of their confidence intervals would include the <em>true</em> population mean. Let’s run this in a for-loop to see how it pans out for them, keeping in mind that we are randomly drawing from a distribution so it may be a bit higher or lower on any given simulation run.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ci.est <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">3</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  student <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(sample_N, true_mean, true_sd)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  up<span class="fl">.95</span> <span class="ot">&lt;-</span> <span class="fu">mean</span>(student) <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">se</span>(<span class="fu">sd</span>(student), sample_N)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  low<span class="fl">.95</span> <span class="ot">&lt;-</span> <span class="fu">mean</span>(student) <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span><span class="fu">se</span>(<span class="fu">sd</span>(student), sample_N)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  ci.est[i,] <span class="ot">&lt;-</span> <span class="fu">c</span>(low<span class="fl">.95</span>, <span class="fu">mean</span>(student), up<span class="fl">.95</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ci.est[,<span class="dv">2</span>])</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="at">x0=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">y0=</span>ci.est[,<span class="dv">1</span>], <span class="at">y1=</span>ci.est[,<span class="dv">3</span>], <span class="at">length =</span> <span class="dv">0</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>true_mean, <span class="at">lwd=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(true_mean<span class="sc">&gt;</span>ci.est[,<span class="dv">1</span>] <span class="sc">&amp;</span> true_mean<span class="sc">&lt;</span>ci.est[,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE  TRUE 
+    5    95 </code></pre>
+</div>
+</div>
+</section>
+<section id="parametric-statistics" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="parametric-statistics"><span class="header-section-number">9.2</span> Parametric statistics</h2>
+<p>In frequentist, or parametric, statistics we assume that there is some true parameter value in the world. The data we observe are randomly drawn from distributions governed by those true parameters. We are the ones observing the truth imperfectly. We are trying to get at the ‘truth’ by taking a sample and making inference about the population based on our sample.</p>
+<p>This concept also extends beyond simple things like a population mean, where we are basically fitting an intercept-only model where the intercept is the mean. It applies to all our parameter estimates. 95% of the time, if we went out and collected data and calculated parameter values in this way, we would end up capturing the ‘true’ parameter value.</p>
+<p>It is very, very important to keep this distinction in mind because it is often reported incorrectly in the literature. A 95% confidence interval means that, 95% of the time if we do things this way, our estimate will contain the true population mean, and 5% of the time the true mean will fall outside our estimate. It does <em>NOT</em> mean that there is a 95% probability that the true value lies within that range. There is no probability associated with the true value. It is just some immutable thing, out there in the world, that we are trying to understand. If you want to actually be able to assign probabilities to parameter values, join me on the dark side and go Bayesian.</p>
+</section>
+<section id="bootstrapping" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="bootstrapping"><span class="header-section-number">9.3</span> Bootstrapping</h2>
+<p>The sample distribution is quite literally just the distribution of values in our sample. So for example, in our salamander example, Joe’s sample distribution is the aggressiveness scores of the 15 salamanders he encountered. We could also generate something that is confusingly called the sampling distribution, which is the distribution of some metric calculated on our sample distribution(s). Because we could send out let’s say 100 BIOL 431 students, each time we send someone out we could calculate the mean of their sample. As our sample size approaches infinity, the sampling distribution will become increasingly normal shaped and the mean of the sampling distribution will approximate the true population mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sampling_dist <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  student <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(sample_N, true_mean, true_sd)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  sampling_dist[i] <span class="ot">&lt;-</span> <span class="fu">mean</span>(student)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(sampling_dist, <span class="dv">20</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-6.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-7.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-8.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-9.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-10.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-11.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-12.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-13.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-14.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-15.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-16.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-17.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-18.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-19.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-20.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-21.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-22.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-23.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-24.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-25.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-26.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-27.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-28.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-29.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-30.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-31.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-32.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-33.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-34.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-35.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-36.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-37.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-38.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-39.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-40.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-41.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-42.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-43.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-44.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-45.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-46.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-47.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-48.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-49.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-50.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-51.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-52.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-53.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-54.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-55.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-56.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-57.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-58.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-59.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-60.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-61.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-62.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-63.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-64.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-65.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-66.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-67.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-68.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-69.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-70.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-71.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-72.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-73.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-74.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-75.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-76.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-77.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-78.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-79.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-80.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-81.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-82.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-83.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-84.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-85.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-86.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-87.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-88.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-89.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-90.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-91.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-92.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-93.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-94.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-95.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-96.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-97.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-98.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-99.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_dist, <span class="dv">20</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(sampling_dist), <span class="at">lwd=</span><span class="dv">5</span>, <span class="at">col=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="uncertainty_files/figure-html/unnamed-chunk-5-100.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sampling_dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.006488</code></pre>
+</div>
+</div>
+<section id="predicting-with-se" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="predicting-with-se"><span class="header-section-number">9.3.1</span> Predicting with SE</h3>
+<p>Now, back to models. We can add the standard error of our model estimate to our plots to indicated that there is some uncertainty in our estimated values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we will write this code together in class</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -540,14 +879,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./prediction.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prediction and Inference</span></span>
+      <a href="./lab4.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Data visualization</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./distributions.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability Distributions</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
