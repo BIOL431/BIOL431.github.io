@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BIOL 431/531: Ecological Modeling - 12&nbsp; Generalized Linear Models</title>
+<title>BIOL 431/531: Ecological Modeling - 10&nbsp; Generalized linear models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./mixedeffects.html" rel="next">
-<link href="./linkfunctions.html" rel="prev">
+<link href="./uncertainty.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -62,10 +95,13 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
 <body class="nav-sidebar floating">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -74,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glms.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./glms.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -102,13 +138,19 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How to Use This Book</span></a>
+ <span class="menu-text">Welcome to BIOL 431</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to the Course</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Thinking like a Modeler</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Getting comfortable in R and RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,32 +167,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab 2: Data structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linearmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Components of linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Fitting</span></span></a>
+  <a href="./lab3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 3: Functions and for loops</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evaluating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prediction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prediction and Inference</span></span></a>
+  <a href="./lab4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Data visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -161,116 +203,8 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability Distributions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./linkfunctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Link Functions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./glms.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixedeffects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pathanalysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Path Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayes Theorem</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mcmc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Markov Chain Monte Carlo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./jags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Fitting Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hierarchical.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Advanced Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixturemodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Mixture Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./overdispersion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Overdispersion and Zero-inflation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./latent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Latent Variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dimensionality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Dimensionality Reduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./multivariate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Multivariate Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./aic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Information Theoretic Approaches</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Ethics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./frontiers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Emerging Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
   </div>
 </li>
     </ul>
@@ -279,14 +213,35 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link active" data-scroll-target="#logistic-regression"><span class="header-section-number">10.1</span> Logistic regression</a></li>
+  <li><a href="#common-distributions-in-ecology" id="toc-common-distributions-in-ecology" class="nav-link" data-scroll-target="#common-distributions-in-ecology"><span class="header-section-number">10.2</span> Common distributions in ecology</a>
+  <ul class="collapse">
+  <li><a href="#what-to-look-for-in-a-distribution" id="toc-what-to-look-for-in-a-distribution" class="nav-link" data-scroll-target="#what-to-look-for-in-a-distribution"><span class="header-section-number">10.2.1</span> What to look for in a distribution</a></li>
+  </ul></li>
+  <li><a href="#bernoulli-and-binomial" id="toc-bernoulli-and-binomial" class="nav-link" data-scroll-target="#bernoulli-and-binomial"><span class="header-section-number">10.3</span> Bernoulli and Binomial</a></li>
+  <li><a href="#poisson" id="toc-poisson" class="nav-link" data-scroll-target="#poisson"><span class="header-section-number">10.4</span> Poisson</a>
+  <ul class="collapse">
+  <li><a href="#example-ant-species-richness-in-canopy" id="toc-example-ant-species-richness-in-canopy" class="nav-link" data-scroll-target="#example-ant-species-richness-in-canopy"><span class="header-section-number">10.4.1</span> Example: Ant species richness in canopy</a></li>
+  </ul></li>
+  <li><a href="#negative-binomial-distribution" id="toc-negative-binomial-distribution" class="nav-link" data-scroll-target="#negative-binomial-distribution"><span class="header-section-number">10.5</span> Negative binomial distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">10.6</span> Normal distribution</a></li>
+  <li><a href="#lognormal-distribution" id="toc-lognormal-distribution" class="nav-link" data-scroll-target="#lognormal-distribution"><span class="header-section-number">10.7</span> Lognormal distribution</a></li>
+  <li><a href="#gamma-distribution" id="toc-gamma-distribution" class="nav-link" data-scroll-target="#gamma-distribution"><span class="header-section-number">10.8</span> Gamma distribution</a></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">10.9</span> Uniform distribution</a></li>
+  <li><a href="#beta-distribution" id="toc-beta-distribution" class="nav-link" data-scroll-target="#beta-distribution"><span class="header-section-number">10.10</span> Beta distribution</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></h1>
 </div>
 
 
@@ -301,8 +256,277 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Remember that the linear models we have been running so far have some assumptions:</p>
+<ol type="1">
+<li>It makes <em>biological sense</em>.</li>
+<li>The effects are <em>additive</em>.</li>
+<li>Effects are <em>linear</em>.</li>
+<li>Errors (aka residuals, in this case) are <em>independent</em>.</li>
+<li>Errors have equal variance (“<em>homoscedasticity</em>”).</li>
+<li>Errors are <em>normally</em> distributed.</li>
+</ol>
+<p>In ecology, one of the assumptions we often fail to meet is that the errors are normally distributed. Instead of assuming normality when it is rarely the case, we can instead use a more flexible model with is the generalized linear model. In addition to the deterministic and stochastic components present in a general linear model, a generalized linear model also has a <strong>link function</strong>. This link function translates between the structure of our observed data and model estimates so that effects are additive on some scale. Note that this is different from transforming our predictor variables (e.g., how we used the square root of bison age as a predictor of weight, rather than age itself). Instead, we are translating the model predictions to match the structure of the response variable.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pbs.twimg.com/media/EqoEzhpXcAIX-BK.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Data in ecology</figcaption>
+</figure>
+</div>
+<section id="logistic-regression" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="logistic-regression"><span class="header-section-number">10.1</span> Logistic regression</h2>
+<p>Let’s revisit the example of guillemot chicks jumping from the cliff to the ocean. Earlier this semester, we only looked at the probability of success, and all individuals had the same probability of making it. i.e.&nbsp;the model we fit was what is displayed below, where the only value we are concerned with estimating is the intercept (i.e.&nbsp;the mean value)</p>
+<p><span class="math display">\[y \sim Bern(p)\\
+p = 0.4\]</span></p>
+<p>If we had additional information about each individual guillemot chick, we might want to model the probability of success as a function of that information. For instance, perhaps birds with longer wings have a higher likelihood of success. Now each individual chick <span class="math inline">\(i\)</span> can have its own estimated probability of success based on its wing size <span class="math inline">\(x_i\)</span>.</p>
+<p><span class="math display">\[y_i \sim Bern(p_i)\\
+p_i = \beta_0 + \beta_1*x_i\]</span></p>
+<p>This is not quite right, however, because we know that probability can only be between 0 and 1. So we need to put some constraints on the value that <span class="math inline">\(p_i\)</span> can take. We do this with the logit link function. The logit function takes all real numbers, <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span> and maps them on to the range from 0 to 1, but never actually reaches 0 or 1.</p>
+<p><span class="math display">\[y_i \sim Bern(p_i)\\
+\text{logit}(p_i) = \beta_0 + \beta_1*x_i\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a vector of real numbers</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x <span class="sc">~</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="fl">0.1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot it with the logit link</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">plogis</span>(x) <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>By using the logit link, we can only ever get probabilities between 0 and 1, which means that we will be able to draw from the Bernoulli distribution to get successes of 0 or 1 for each guillemot depending on their probability of survival. Let’s first simulate a dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">88</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define an intercept</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># for every one unit increase in wing length, increase pro</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fl">2.2</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># number of chicks</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">88</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>wing <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n.obs)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">plogis</span>(b0 <span class="sc">+</span> b1<span class="sc">*</span>wing)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(n.obs, <span class="dv">1</span>, p)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize our simulated data</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> wing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we have a simulated dataset in which the response is Bernoulli distributed, and chicks with larger wings seem to have a higher probability of success (i.e.&nbsp;there are more observations of ‘success’ to the right of the graph, and more observations of failure to the left). Let’s fit a generalized linear model with a logit link predicting the probability of success in response to weight using the function <code>glm()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> wing, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link=</span><span class="st">"logit"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = y ~ wing, family = binomial(link = "logit"))
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)   0.1962     0.2879   0.682    0.496    
+wing          2.3643     0.4868   4.857 1.19e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 121.584  on 87  degrees of freedom
+Residual deviance:  75.481  on 86  degrees of freedom
+AIC: 79.481
+
+Number of Fisher Scoring iterations: 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>, <span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">wing=</span>xvals), <span class="at">type =</span> <span class="st">"response"</span>, <span class="at">se.fit =</span> T)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>up.ci <span class="ot">&lt;-</span> p1<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>low.ci <span class="ot">&lt;-</span> p1<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>p1<span class="sc">$</span>se.fit</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> wing)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p1<span class="sc">$</span>fit <span class="sc">~</span> xvals)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(xvals, <span class="fu">rev</span>(xvals)),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci, <span class="fu">rev</span>(up.ci)), </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">"#006e6d88"</span>, <span class="at">border=</span><span class="st">"#006e6d88"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="common-distributions-in-ecology" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="common-distributions-in-ecology"><span class="header-section-number">10.2</span> Common distributions in ecology</h2>
+<section id="what-to-look-for-in-a-distribution" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="what-to-look-for-in-a-distribution"><span class="header-section-number">10.2.1</span> What to look for in a distribution</h3>
+<p><img src="https://pbs.twimg.com/media/Bo06aWZIcAAevoX.jpg" class="img-fluid"></p>
+<ul>
+<li><p><strong>Discrete versus continuous</strong>: Do your data only fall into discrete bins, or are any points along the line valid?</p></li>
+<li><p><strong>Range of support</strong>: What are the possible values your data can take? Can you have negative values? Only positive values? Can your data ever include zero? Can you have values above 1?</p></li>
+<li><p><strong>Skewness</strong>: How asymmetric are the data? Is there a long tail in either direction?</p></li>
+<li><p><strong>Kurtosis</strong>: How fat are the tails of the distribution? i.e.&nbsp;how much weight the probability distribution is in the tails?</p></li>
+</ul>
+<p><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA_gpmDfGJEFfs6C1iChSE_jgTokguKhctBg&amp;s">Platykurtic distributions have relatively flat tails</a></p>
+<p><a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-w9P8eBeVNAGsuO2f-whYxLWoUuffOkyUXg&amp;s">Leptokurtic distributions have relatively fat tails</a></p>
+</section>
+</section>
+<section id="bernoulli-and-binomial" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="bernoulli-and-binomial"><span class="header-section-number">10.3</span> Bernoulli and Binomial</h2>
+<p>Remember that the Bernoulli distribution is a special case of the Binomial distribution with only one trial. <span class="math inline">\(y \sim Bern(p)\)</span>. Beyond success/failure, it is useful for a lot of different types of data in ecology. For example, presence or absence of a species at a site (i.e.&nbsp;occurrence), condition when there are only two options (e.g.&nbsp;diseased or not), and anything else that you can imagine coding as 0 or 1.</p>
+<p>The Binomial distribution has multiple trials. <span class="math inline">\(y \sim Binom(N, p)\)</span>. For instance, we talked about it earlier in the semester in terms of reproductive success of a breeding pair of guillemots, where the number of trials is equal to the number of chicks that they have attempting to make it to the ocean.</p>
+</section>
+<section id="poisson" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="poisson"><span class="header-section-number">10.4</span> Poisson</h2>
+<p>The Poisson distribution describes count data. Because many, many questions in ecology involve counting (e.g.&nbsp;abundance, species richness, number of leaves, etc.) it is a very commonly used distribution and worth getting familiar with.</p>
+<p>The Poisson distribution has only one parameter, <span class="math inline">\(\lambda\)</span>, that describes both the mean and the variance. Because there is only one parameter, the variance increases with the mean, i.e.&nbsp;at larger values, the variance also increases.</p>
+<p>The values that can be returned from the Poisson distribution are only positive integers (including zero).</p>
+<p>The link function typically used for the Poisson distribution is the log, which means that the effects are not additive but instead are multiplicative.</p>
+<section id="example-ant-species-richness-in-canopy" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="example-ant-species-richness-in-canopy"><span class="header-section-number">10.4.1</span> Example: Ant species richness in canopy</h3>
+<p>The dataset we will use comes from <a href="https://doi.org/10.1111/ecog.02608">Adams et al.&nbsp;(2016). Trees as islands: canopy ant species richness increases with the size of liana-free trees in a Neotropical forest. <em>Ecography</em>.</a> The data are publicly available on Dryad at <a href="https://doi.org/10.5061/dryad.b34d2">https://doi.org/10.5061/dryad.b34d2</a>. In this study, researchers counted ant species richness in tree crowns on Barro Colorado Island to test the hypotheses that species richness follows the species-area relationship with tree basal area, that this relationship would be less strong in the presence of lianas which serve as connective corridors between different trees, and that overall species richness would be higher in the presence of lianas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ants <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">"~/Downloads/Adams+et+al+2016+Ecography.xlsx"</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's rename the columns to be easier to call in the model</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ants<span class="sc">$</span>tree_size <span class="ot">&lt;-</span> ants<span class="sc">$</span><span class="st">`</span><span class="at">Basal area (cm²)</span><span class="st">`</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ants<span class="sc">$</span>scale_tree <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">scale</span>(ants<span class="sc">$</span>tree_size))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and let's collapse lianas into a binary, i.e. liana score of 0 versus</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># liana score greater than 0</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ants<span class="sc">$</span>lianas <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(ants<span class="sc">$</span><span class="st">`</span><span class="at">Liana score</span><span class="st">`</span><span class="sc">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># visualize the data</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ants<span class="sc">$</span>Richness <span class="sc">~</span> ants<span class="sc">$</span>tree_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ants<span class="sc">$</span>Richness <span class="sc">~</span> ants<span class="sc">$</span>lianas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's start by fitting a model with just tree size as a predictor</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>mod_tree <span class="ot">&lt;-</span> <span class="fu">glm</span>(Richness <span class="sc">~</span> tree_size, <span class="at">data=</span>ants, <span class="at">family=</span><span class="fu">poisson</span>(<span class="at">link=</span><span class="st">"log"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Don’t forget that, because of the link function, we cannot simply add up our predictors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ant species richness in a tree with a basal area of 5000 cm</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>rich <span class="ot">&lt;-</span> <span class="fl">2.1884</span> <span class="sc">+</span> <span class="fl">0.000027946</span><span class="sc">*</span><span class="dv">5000</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ... that's not right! Need to remember that log(lambda) = b0 + b1*x1 </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># is the same as lambda = exp(b0 + b1*x1)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(rich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.25874</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>tree_xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">16000</span>, <span class="at">by=</span><span class="dv">1</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pred_tree <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod_tree, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">tree_size=</span>tree_xvals),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">se.fit=</span>T, <span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>up.ci <span class="ot">&lt;-</span> pred_tree<span class="sc">$</span>fit <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>pred_tree<span class="sc">$</span>se.fit</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>low.ci <span class="ot">&lt;-</span> pred_tree<span class="sc">$</span>fit <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>pred_tree<span class="sc">$</span>se.fit</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ants<span class="sc">$</span>Richness <span class="sc">~</span> ants<span class="sc">$</span>tree_size, </span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Species richness"</span>, <span class="at">xlab=</span><span class="st">"Tree basal area"</span>,</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">19</span>, <span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(pred_tree<span class="sc">$</span>fit <span class="sc">~</span> tree_xvals)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="at">x =</span> <span class="fu">c</span>(tree_xvals, <span class="fu">rev</span>(tree_xvals)),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">y=</span><span class="fu">c</span>(low.ci, <span class="fu">rev</span>(up.ci)), </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">"#006e6d88"</span>, <span class="at">border=</span><span class="st">"#006e6d88"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>What would have happened if we fit the model as if the residuals were normally distributed?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mod_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Richness <span class="sc">~</span> tree_size, <span class="at">data=</span>ants)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(mod_lm), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># compare to:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">residuals</span>(mod_tree), <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># notice the difference in the y-axis</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(mod_lm) <span class="sc">~</span> <span class="fu">predict</span>(mod_lm), <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-7-3.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">residuals</span>(mod_tree) <span class="sc">~</span> <span class="fu">predict</span>(mod_tree), <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-7-4.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Because generalized linear models are just a more flexible version of the linear models we have already talked about, you can similarly add in other covariates, interactions, etc. Let’s now fit a model that addresses all three of the authors hypotheses combined: the effect of tree size, lianas, and an interaction between lianas and tree size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mod_full <span class="ot">&lt;-</span> <span class="fu">glm</span>(Richness <span class="sc">~</span> tree_size <span class="sc">+</span> lianas <span class="sc">+</span> lianas<span class="sc">*</span>tree_size,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">data=</span>ants, </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">family=</span><span class="fu">poisson</span>(<span class="at">link=</span><span class="st">"log"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="negative-binomial-distribution" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="negative-binomial-distribution"><span class="header-section-number">10.5</span> Negative binomial distribution</h2>
+<p>Count data can often be overdispersed, meaning that there is more spread or variance than expected. Because variance increases with the mean in the Poisson distribution, at low values, there is low variance. If you are dealing with overdispersed count data, you may want to look into the negative binomial distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rnbinom</span>(<span class="at">n =</span> <span class="dv">10000</span>, <span class="at">size=</span><span class="dv">20</span>, <span class="at">mu=</span><span class="fl">2.2</span>), <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="normal-distribution" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">10.6</span> Normal distribution</h2>
+<p>The normal, or Gaussian, distribution is probably the most familiar to people because it is taught in every introductory statistics course. The normal distribution has two parameters: the mean (<span class="math inline">\(\mu\)</span>) and standard deviation (<span class="math inline">\(\sigma\)</span>) which is the square root of the variance (<span class="math inline">\(\sigma^2\)</span>). The support of the normal distribution is all numbers from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>.</p>
+</section>
+<section id="lognormal-distribution" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="lognormal-distribution"><span class="header-section-number">10.7</span> Lognormal distribution</h2>
+<p>The log normal distribution is the normal distribution, but log-transformed. It has skewness and the support is all positive real numbers, including zero. It has two parameters, <span class="math inline">\(\alpha\)</span> which is the mean of the log of the distribution, and <span class="math inline">\(\beta\)</span> which is the standard deviation of the log of the distribution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rlnorm</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">meanlog=</span><span class="dv">5</span>, <span class="at">sdlog=</span>.<span class="dv">5</span>), <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="gamma-distribution" class="level2" data-number="10.8">
+<h2 data-number="10.8" class="anchored" data-anchor-id="gamma-distribution"><span class="header-section-number">10.8</span> Gamma distribution</h2>
+<p>The gamma distribution is super useful in ecology! It is highly, highly skewed at many parameter combinations, and also very flexible. The support is all positive real numbers (excluding zero!). It has two parameters: <span class="math inline">\(\apha\)</span>, which is the shape, and <span class="math inline">\(\beta\)</span> which is the scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rgamma</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">shape=</span><span class="fl">1.2</span>, <span class="at">rate=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rgamma</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">shape=</span><span class="fl">1.2</span>, <span class="at">rate=</span>.<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-11-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="uniform-distribution" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="uniform-distribution"><span class="header-section-number">10.9</span> Uniform distribution</h2>
+<p>Probability is uniform between the minimum and maximum values. This distribution is not typically used to represent data, but is often a prior (more on that when we get to Bayesian things).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">runif</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">min=</span><span class="sc">-</span><span class="dv">5</span>, <span class="at">max=</span><span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="glms_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="beta-distribution" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="beta-distribution"><span class="header-section-number">10.10</span> Beta distribution</h2>
+<p>The beta distribution returns numbers between (but not including!) 0 and 1. It is great for modeling probabilities.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -540,14 +764,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./linkfunctions.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Link Functions</span></span>
+      <a href="./uncertainty.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Uncertainty</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./mixedeffects.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
