@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BIOL 431/531: Ecological Modeling - 13&nbsp; Mixed Effects Models</title>
+<title>BIOL 431/531: Ecological Modeling - 11&nbsp; Mixed Effects Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./causality.html" rel="next">
 <link href="./glms.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -67,6 +100,7 @@ ul.task-list li input[type="checkbox"] {
 
 <body class="nav-sidebar floating">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mixedeffects.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./mixedeffects.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -102,13 +136,19 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">How to Use This Book</span></a>
+ <span class="menu-text">Welcome to BIOL 431</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to the Course</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Thinking like a Modeler</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Getting comfortable in R and RStudio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -125,32 +165,32 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab 2: Data structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./simulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Simulation and Probability</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./linearmodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Components of linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelfit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Model Fitting</span></span></a>
+  <a href="./lab3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Lab 3: Functions and for loops</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./evaluation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Evaluating Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prediction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prediction and Inference</span></span></a>
+  <a href="./lab4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Lab 4: Data visualization</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -161,116 +201,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability Distributions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./linkfunctions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Link Functions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./glms.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./mixedeffects.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./causality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pathanalysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Path Analysis</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bayes Theorem</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mcmc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Markov Chain Monte Carlo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./jags.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Fitting Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hierarchical.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Advanced Bayesian Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./mixturemodels.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Mixture Models</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./overdispersion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Overdispersion and Zero-inflation</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./latent.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Latent Variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./dimensionality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Dimensionality Reduction</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./multivariate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Multivariate Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./aic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Information Theoretic Approaches</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./ethics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Ethics</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./frontiers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Emerging Methods</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
   </div>
 </li>
     </ul>
@@ -279,14 +217,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#pseudoreplication" id="toc-pseudoreplication" class="nav-link active" data-scroll-target="#pseudoreplication"><span class="header-section-number">11.1</span> Pseudoreplication</a></li>
+  <li><a href="#dependence-in-error-structure" id="toc-dependence-in-error-structure" class="nav-link" data-scroll-target="#dependence-in-error-structure"><span class="header-section-number">11.2</span> Dependence in error structure</a></li>
+  <li><a href="#consequences-of-ignoring-dependence-in-errors" id="toc-consequences-of-ignoring-dependence-in-errors" class="nav-link" data-scroll-target="#consequences-of-ignoring-dependence-in-errors"><span class="header-section-number">11.3</span> Consequences of ignoring dependence in errors</a></li>
+  <li><a href="#dealing-with-dependence" id="toc-dealing-with-dependence" class="nav-link" data-scroll-target="#dealing-with-dependence"><span class="header-section-number">11.4</span> Dealing with dependence</a></li>
+  <li><a href="#fitting-mixed-effects-models" id="toc-fitting-mixed-effects-models" class="nav-link" data-scroll-target="#fitting-mixed-effects-models"><span class="header-section-number">11.5</span> Fitting mixed effects models</a>
+  <ul class="collapse">
+  <li><a href="#interpreting-random-effects" id="toc-interpreting-random-effects" class="nav-link" data-scroll-target="#interpreting-random-effects"><span class="header-section-number">11.5.1</span> Interpreting random effects</a></li>
+  <li><a href="#interpreting-fixed-effects" id="toc-interpreting-fixed-effects" class="nav-link" data-scroll-target="#interpreting-fixed-effects"><span class="header-section-number">11.5.2</span> Interpreting fixed effects</a></li>
+  <li><a href="#predicting-from-mems" id="toc-predicting-from-mems" class="nav-link" data-scroll-target="#predicting-from-mems"><span class="header-section-number">11.5.3</span> Predicting from MEMs</a></li>
+  </ul></li>
+  <li><a href="#shrinkage" id="toc-shrinkage" class="nav-link" data-scroll-target="#shrinkage"><span class="header-section-number">11.6</span> Shrinkage</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></h1>
 </div>
 
 
@@ -301,8 +255,101 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Remember that one of the assumptions of linear models, and generalized linear models, is that our <em>errors are independent</em> from each other. In reality, this is rarely the case with ecological data.</p>
+<section id="pseudoreplication" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="pseudoreplication"><span class="header-section-number">11.1</span> Pseudoreplication</h2>
+<blockquote class="blockquote">
+<p>“Pseudoreplication is … use of inferential statistics to test for treatment effects with data from experiments where either treatments have not been replicated (though samples may be) or replicates are not statistically independent” - Hurlbert 1984</p>
+</blockquote>
+<p>As an example of how to think about pseudoreplication, imagine that you’ve been asked to judge the quality of apples from different states to determine where the best apples are grown. The biggest apple growing states in the US, in order, are: Washington, Michigan, New York, Pennsylvania, California, Virginia, and Oregon. Each of these states can submit up to 50 different apple varieties from different growers in the state to give a full picture of the types and quality of apples grown. Independent growers in each state submit a random apple, and then these apples are packed up and shipped to you, the world expert on apple quality. You grab one at random from the shipment from Washington, and it tastes foul. You grab another one at random from the Washington shipment, and it also tastes foul even though it was submitted by a different, completely independent grower. Even as your sample size increases and you keep trying different apples, they all taste foul. When trying shipments from other states, you can taste differences between the apples and they seem to be a bit more ‘random’ than the Washington ones, though the ones from Michigan are more similar to each other than they are to the ones from California. Because the apples are shipped in the same barrel, a single rotten one affects the flavor of all of them, i.e.&nbsp;the apples are not truly independent replicates. Similarly, even though the other barrels are not contaminated, the apples in them still share some characteristics (e.g.&nbsp;similar climatic or soil conditions) that makes them not truly independent <em>at the level of comparing apples across states</em>. That last bit, that they are not independent <em>at the level of your analysis</em> is critical. If we were only interested in variation in apple quality within the state of New York and had independent growers randomly submit apples, then we would not have a pseudoreplication issue going through that barrel.</p>
+<p>Put into more ecological terms, pseudoreplication occurs when you add more samples but they are not more replicates, i.e.&nbsp;just because you have 200 fish does not mean your sample size is 200 if those fish are divided evenly into 20 tanks of 10 fish each (i.e.&nbsp;your number of replicates is actually 20 tanks, not 200 fish).</p>
+<p>How can we avoid pseudoreplication? The best thing to do is to plan ahead for it, and not be dealing with it after the fact. When planning your experimental design setup, think of the variety of ways that the environment (or other characteristics of your particular system) could lead to pseudoreplication or other confounding factors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://dt5vp8kor0orz.cloudfront.net/1f062c71580d2978d8688b805cb383c29e237f2f/7-Figure1-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Design of field experiments</figcaption>
+</figure>
+</div>
+<p>Firstly, you want to add <em>more blocks</em> not more repeated measures within blocks. Randomly assigning blocks is one approach, but a random assignment can sometimes end up interacting strangely with the environment and biasing your sample in unintended ways. A systematic design is another approach which avoids clumping that can sometimes happen with random assignment. But, your data could have other forms of dependence. A randomized block design is typically a pretty good approach because it has the advantages of being both systematic and random.</p>
+</section>
+<section id="dependence-in-error-structure" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="dependence-in-error-structure"><span class="header-section-number">11.2</span> Dependence in error structure</h2>
+<p>More broadly than just pseudoreplication, it is worth thinking about what processes could result in dependence in errors (i.e.&nbsp;is there some other factor that could explain variation in residuals that is not in your model). Some common examples in ecology include:</p>
+<ul>
+<li><p><strong>Phylogenetic non-independence</strong>. Species with shared evolutionary history may be more likely to exhibit similar traits. For instance, if you wanted to know something about how body size in birds relates to their lifespan, so you sampled a hoatzin, a saltmarsh sparrow, a barnacle goose, a chickadee, and an albatross. The residuals for the saltmarsh sparrow and chickadee will likely be much more similar to each other than to other because they are both passerines. <img src="https://media.springernature.com/full/springer-static/esm/art%3A10.1038%2Fs41586-024-07323-1/MediaObjects/41586_2024_7323_Fig16_ESM.jpg?as=webp" class="img-fluid" alt="Bird phylogeny showing body size trait"></p></li>
+<li><p><strong>Spatial autocorrelation</strong>. Things that are more similar in space often tend to be more similar in other ways. For example, plants grown on the same soil type, insects reared from the same population, chipmunks studied in the same forest fragment, etc. This also applies to lab environments, not just field experiments! For instance, you can end up with gradients in labs from drafts, distance to a fan, light gradients, etc.</p></li>
+<li><p><strong>Proximity in time</strong>. Similar to space, when you measure things near the same time point, they may be more similar. This does not necessarily need to be linear time! For instance, atmospheric CO2 concentration measured in 1961 and 1962 would be more similar to each other than when comparing 1961 to 2021, but also the concentration will be more similar between Northern Hemisphere summer of 2020 and summer of 2021, than between Northern Hemisphere summer and winter of 2021.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://images.nationalgeographic.org/image/upload/t_edhub_resource_key_image/v1638890092/EducationHub/photos/scripps-keeling-curve.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Fluctuations and increase in atmospheric CO2</figcaption>
+</figure>
+</div>
+<ul>
+<li><p><strong>Measurement dependence</strong>. Sometimes you might also heard this referred to as observer bias, though it does not necessarily need to be an observer (e.g.&nbsp;it could also be an equipment or measurement device bias). <img src="https://www.researchgate.net/publication/253288282/figure/fig6/AS:669405482586127@1536610112325/Above-a-good-hold-for-measuring-the-wing-chord-and-below-the-measurement-of-the-wing.png" class="img-fluid" alt="Bird wing chord measurement"></p></li>
+<li><p><strong>Same reagent or lab equipment.</strong> Samples processed with the same equipment, or at the same time (e.g.&nbsp;sending sequences off to be processed in a batch), can result in dependence if there is something different about that equipment or batch.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://static.wixstatic.com/media/d84614_77b1a23d0d124062bdbee2f4cbe3a6cf~mv2.png/v1/fill/w_968,h_910,al_c,q_90,enc_auto/d84614_77b1a23d0d124062bdbee2f4cbe3a6cf~mv2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Batch effects in sequencing</figcaption>
+</figure>
+</div>
+</section>
+<section id="consequences-of-ignoring-dependence-in-errors" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="consequences-of-ignoring-dependence-in-errors"><span class="header-section-number">11.3</span> Consequences of ignoring dependence in errors</h2>
+<p>If we ignore dependence in errors, we will end up: 1) Overestimating test statistics, 2) Underestimating variance, and 3) Biasing parameter estimates, all of which means we may end up making errors when it comes to inference.</p>
+<p>We will also incorrectly estimate the degrees of freedom for the model. Degrees of freedom are how many things are free to vary, though I find it is easier to think of them as the number of pieces of information we have to be able to fit our model, but we use one up every time we estimate something.</p>
+<p>Calculating a mean uses one degree of freedom. Let’s say we have four numbers, and the mean is 7. Three of the numbers are free to vary. If the first number is 8, the second number can be whatever it wants (let’s say it is 14), and the third number can also be anything (let’s say -5). Because the first three numbers are now set, and we know the mean, the last number <em>has</em> to be 11.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">14</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+</section>
+<section id="dealing-with-dependence" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="dealing-with-dependence"><span class="header-section-number">11.4</span> Dealing with dependence</h2>
+<p>Other than just ignoring it and knowing our results are likely wrong, there are two approaches to dealing with dependence in error structure: 1) we can include covariates that explain variation or soak up the noise, or 2) we can explicitly model the dependence.</p>
+<p>The first approach is something we have already done, i.e.&nbsp;we have included group level differences in models already when estimating differences in diving depth of simulated lizards (i.e.&nbsp;adding in a categorical / dummy variable indicating if a lizard was black or orange), and also when modeling weight of bison when we had separate effects for age and sex. We could deal with dependence in our data in the same way.</p>
+<p>Take the example of measuring bird wing chord. Let’s say we have four field technicians measuring bird wings, and we suspect that they each have a slightly different approach. Sam is careful to not flatten the wing at all so his estimates are slightly lower than if Frodo were to measure the same wing because he pushes it down slightly; Pippin tends to grab larger birds to measure, and Merry insists on using his own ruler which is in inches instead of centimeters and then does the back calculations to get the numbers. You could include four categorical variables to soak up the ‘noise’ associated with each of these technicians, so that birds measured by Sam all had a missing 0.2 centimeters explained, Pippin’s had an extra error correction, etc. Those coefficient estimates do not carry any real biological information, they are just accounting for nuisance.</p>
+<p>Adding in extra categorical or dummy variables as a <strong>fixed effect</strong> is all well and good in terms of inference and interpretation of the model, but it comes at a cost - for each extra parameter that we estimate, we lose one degree of freedom. If we run out of degrees of freedom, then we cannot actually fit our model. If you have sufficient sample size and a small number of groups, that can be no problem, but what if you have dozens or even hundreds of treatment groups?</p>
+<p>A <strong>random effect</strong> is one way to deal with dependence in errors. Instead of estimating a parameter for each group, you give each group some freedom to vary by assuming it is drawn from some distribution centered at the mean across groups with some standard deviation. Each random effect, then, is drawn from that distribution. We only have to estimate the standard deviation of the distribution, so it uses far, far less degrees of freedom than if we were to explicitly model each group as a fixed effect. Random effects can take the form of <em>random intercepts</em> (i.e.&nbsp;an offset for each group, like with the lizard color morphs except not explicitly estimated) or <em>random slopes</em> where each group is allowed to have a slightly different response to a covariate.</p>
+<p><strong>Beware of Simpson’s Paradox</strong> when dealing with random effects. Simpson’s Paradox occurs when the direction of the effect of a predictor on a response is different when looking within groups compared to between groups. If you’ve been listening to <a href="https://quantitudepod.org/">Quantitude</a>, you might be familiar with the example of the effect of body size on lifespan in animals. In general, the bigger an animal is, the longer it lives. Elephants live longer than dogs, which live longer than mice, etc. If you fit a model predicting longevity as a function of body size at the species level, you would end up with a positive relationship.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://ars.els-cdn.com/content/image/1-s2.0-S1146609X23000292-gr1_lrg.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Kuparinen et al.&nbsp;2023. Acta Oecologia</figcaption>
+</figure>
+</div>
+<p>But within a species, smaller individuals tend to live longer. Small dog breeds, for example, live longer than large breeds. So depending <em>on the level of your analysis</em> you would reach very different conclusions about how body size impacts lifespan, which is Simpson’s Paradox.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/resize:fit:1042/1*T5X22TMXchelXlP0yNOgTw.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Simpson’s Paradox</figcaption>
+</figure>
+</div>
+</section>
+<section id="fitting-mixed-effects-models" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="fitting-mixed-effects-models"><span class="header-section-number">11.5</span> Fitting mixed effects models</h2>
+<section id="interpreting-random-effects" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="interpreting-random-effects"><span class="header-section-number">11.5.1</span> Interpreting random effects</h3>
+</section>
+<section id="interpreting-fixed-effects" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="interpreting-fixed-effects"><span class="header-section-number">11.5.2</span> Interpreting fixed effects</h3>
+</section>
+<section id="predicting-from-mems" class="level3" data-number="11.5.3">
+<h3 data-number="11.5.3" class="anchored" data-anchor-id="predicting-from-mems"><span class="header-section-number">11.5.3</span> Predicting from MEMs</h3>
+</section>
+</section>
+<section id="shrinkage" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="shrinkage"><span class="header-section-number">11.6</span> Shrinkage</h2>
+<p>The random effect we added for Station is at the level of Station, because remember we are only estimating the standard deviation of the distribution from which deviations by groups are drawn. Each level of our grouping factor (i.e.&nbsp;CG1, CG2, etc.) has its own ‘Best Linear Unbiased Predictor’ drawn from that distribution, more commonly called BLUPs because it is fun to say. BLUPs are the individual predicted differences, i.e.&nbsp;the result of adding a random effect for Station means each station has a different BLUP.</p>
+<p>They are not estimates because we did not estimate parameters, hence why they are called predictions. They rely on data from other groups to fit the overall random effect, which means that groups with small sample size have BLUPs that are more influenced by the population mean than large groups. BLUPs tell us how much the parameter for each group differs from the population mean, i.e.&nbsp;in the case of a random intercept, how much each group’s intercept is above or below the mean intercept.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -541,13 +588,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./glms.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Generalized Linear Models</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./causality.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Correlation and Causation</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

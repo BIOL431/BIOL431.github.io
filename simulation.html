@@ -208,6 +208,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mixedeffects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -316,8 +322,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">proportions</span>(<span class="fu">table</span>(adult_weights<span class="sc">&gt;</span><span class="dv">1250</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-FALSE  TRUE 
-  0.5   0.5 </code></pre>
+    FALSE      TRUE 
+0.5583333 0.4416667 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability of an adult weighing exactly 1000 grams? (not 1000.1, 1000.2, etc.)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we could do this empirically, i.e. how many of our 120 adults were exactly 1000 grams?</span></span>
@@ -417,7 +423,7 @@ FALSE
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># correlation is a measure of how much two things covary</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cat_wts, cat_lngs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.05785315</code></pre>
+<pre><code>[1] -0.0002014431</code></pre>
 </div>
 </div>
 <p>There is a package called <code>MASS</code> which should already come installed with base R (I think?) which is useful for simulating some simple correlated data. It has a function called <code>mvrnorm()</code> which is for simulating multivariate normal data. We need to pass it <code>n</code> for the number of samples we want to draw, and a vector <code>mu</code> with the means for all the variables we want to simulate, and a covariance matrix <code>Sigma</code> specifying how those variables are related to each other.</p>
@@ -443,15 +449,15 @@ FALSE
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(sim_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>           [,1]      [,2]
-[1,] 10666.8616 242.74368
-[2,]   242.7437  28.29483</code></pre>
+<pre><code>         [,1]      [,2]
+[1,] 8752.445 177.93899
+[2,]  177.939  23.72461</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(sim_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          [,1]      [,2]
-[1,] 1.0000000 0.4418512
-[2,] 0.4418512 1.0000000</code></pre>
+[1,] 1.0000000 0.3904873
+[2,] 0.3904873 1.0000000</code></pre>
 </div>
 </div>
 <p>We can also simulate data based on what we expect the effect of one variable is on another. For instance, let’s say we think that for every additional gram of weight, a cat becomes 0.01 units less stealthy (measured in units of sneakiness). I typically use something like <code>b.wt</code> to represent this effect, which stands for <span class="math inline">\(\beta\)</span> weight in my mind, because <span class="math inline">\(\beta\)</span> is the term typically used to describe standardized partial regression coefficients. We’ll get to those when we get to linear models next week, but it is good to build the habit now. Let’s also say that there is no effect of length on being sneaky. We will assume sneakiness is normally distributed and that the expected value of sneakiness is 0.01 times the cat’s weight and increases by 0.01 units for every one unit increase in weight (in this case, grams). We will also assume there is some error surrounding that measure.</p>
