@@ -224,14 +224,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pseudoreplication" id="toc-pseudoreplication" class="nav-link active" data-scroll-target="#pseudoreplication"><span class="header-section-number">11.1</span> Pseudoreplication</a></li>
   <li><a href="#dependence-in-error-structure" id="toc-dependence-in-error-structure" class="nav-link" data-scroll-target="#dependence-in-error-structure"><span class="header-section-number">11.2</span> Dependence in error structure</a></li>
   <li><a href="#consequences-of-ignoring-dependence-in-errors" id="toc-consequences-of-ignoring-dependence-in-errors" class="nav-link" data-scroll-target="#consequences-of-ignoring-dependence-in-errors"><span class="header-section-number">11.3</span> Consequences of ignoring dependence in errors</a></li>
-  <li><a href="#dealing-with-dependence" id="toc-dealing-with-dependence" class="nav-link" data-scroll-target="#dealing-with-dependence"><span class="header-section-number">11.4</span> Dealing with dependence</a></li>
-  <li><a href="#fitting-mixed-effects-models" id="toc-fitting-mixed-effects-models" class="nav-link" data-scroll-target="#fitting-mixed-effects-models"><span class="header-section-number">11.5</span> Fitting mixed effects models</a>
+  <li><a href="#dealing-with-dependence" id="toc-dealing-with-dependence" class="nav-link" data-scroll-target="#dealing-with-dependence"><span class="header-section-number">11.4</span> Dealing with dependence</a>
   <ul class="collapse">
-  <li><a href="#interpreting-random-effects" id="toc-interpreting-random-effects" class="nav-link" data-scroll-target="#interpreting-random-effects"><span class="header-section-number">11.5.1</span> Interpreting random effects</a></li>
-  <li><a href="#interpreting-fixed-effects" id="toc-interpreting-fixed-effects" class="nav-link" data-scroll-target="#interpreting-fixed-effects"><span class="header-section-number">11.5.2</span> Interpreting fixed effects</a></li>
-  <li><a href="#predicting-from-mems" id="toc-predicting-from-mems" class="nav-link" data-scroll-target="#predicting-from-mems"><span class="header-section-number">11.5.3</span> Predicting from MEMs</a></li>
+  <li><a href="#interpreting-fixed-effects" id="toc-interpreting-fixed-effects" class="nav-link" data-scroll-target="#interpreting-fixed-effects"><span class="header-section-number">11.4.1</span> Interpreting fixed effects</a></li>
+  <li><a href="#interpreting-random-effects" id="toc-interpreting-random-effects" class="nav-link" data-scroll-target="#interpreting-random-effects"><span class="header-section-number">11.4.2</span> Interpreting random effects</a></li>
   </ul></li>
-  <li><a href="#shrinkage" id="toc-shrinkage" class="nav-link" data-scroll-target="#shrinkage"><span class="header-section-number">11.6</span> Shrinkage</a></li>
   </ul>
 </nav>
     </div>
@@ -330,25 +327,110 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption class="figure-caption">Simpson’s Paradox</figcaption>
 </figure>
 </div>
+<p>Let’s simulate Simpson’s Paradox as a way of understanding within versus among group effects. Let’s assume we have seven species and we want to know how the effect of body size (measured in kilograms) affects their longevity (lifespan, measured in years). We can take many samples within each species. Within a species, we expect there to be a negative effect of weight on longevity (i.e., chows live longer than greyhounds, and chihuahuas will outlive us all). But, among species, we expect that on average species which are larger live longer (i.e., elephants live longer than wombats, which live longer than mice).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"Leopardus colocolo"</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sylvilagus audubonii"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Microtus agrestis"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Lynx canadensis"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Sorex alpinus"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Cercopithecus diana"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Hylobates klossii"</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>mu.age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">19.6</span>, <span class="fl">7.8</span>, <span class="fl">4.8</span>, <span class="fl">26.8</span>, <span class="fl">1.3</span>, <span class="fl">35.1</span>, <span class="dv">37</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>mu.size <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2950</span>, <span class="dv">900</span>, <span class="dv">46</span>, <span class="dv">10100</span>, <span class="fl">7.8</span>, <span class="dv">4550</span>, <span class="dv">5900</span>)<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mu.age <span class="sc">~</span> <span class="fu">log</span>(mu.size))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="mixedeffects_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># estimated effect of body size on weight (arbitrary, we're simulating stuff)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>b.size <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.4</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Decide how many total individual animals to sample across all species</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>n.obs <span class="ot">&lt;-</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can simulate body size and lifespan for each individual, making sure to include the effect of body size on lifespan, and the group mean of body size.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>long.dat <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">dim=</span><span class="fu">c</span>(n.obs, <span class="dv">3</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n.obs){</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  sp <span class="ot">&lt;-</span> <span class="fu">sample</span>(species, <span class="dv">1</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  wt <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, mu.size[sp], <span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  ag <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>, mu.age[sp] <span class="sc">+</span> b.size<span class="sc">*</span>wt, <span class="dv">1</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  long.dat[i, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">as.character</span>(sp), wt, ag)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(long.dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"species"</span>, <span class="st">"weight"</span>, <span class="st">"age"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>long.dat <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(long.dat)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>long.dat<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="fu">factor</span>(long.dat<span class="sc">$</span>species)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>long.dat<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(long.dat<span class="sc">$</span>weight)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>long.dat<span class="sc">$</span>age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(long.dat<span class="sc">$</span>age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can use a boxplot to check that the body size for each species is roughly what we expected based on our parameter values. We can also plot longevity over body size to make sure it looks the way we intended and resembles Simpson’s Paradox.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(long.dat<span class="sc">$</span>weight <span class="sc">~</span> long.dat<span class="sc">$</span>species, <span class="at">names=</span>species, <span class="at">las=</span><span class="dv">3</span>, <span class="at">xlab=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="mixedeffects_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(long.dat<span class="sc">$</span>age <span class="sc">~</span> long.dat<span class="sc">$</span>weight,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span>long.dat<span class="sc">$</span>species, <span class="at">pch=</span><span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="mixedeffects_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>To illustrate how our modeling choices affect our predictions, and inference, we will fit three different models: 1) a general linear model using the <code>lm</code> function with age predicted from weight; 2) a general linear model with age predicted from weight and species identity; and 3) a mixed effects model using <code>lmer</code> (from the <code>lme4</code> package) with age predicted from weight with a random effect for species identity.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(age <span class="sc">~</span> weight, <span class="at">data=</span>long.dat)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(age <span class="sc">~</span> weight <span class="sc">+</span> species, <span class="at">data=</span>long.dat)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>mod3<span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(age <span class="sc">~</span> weight <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>species), <span class="at">data=</span>long.dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s now plot longevity over body size using different colors for points of different species. We can then add the line of best fit for our three different models.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(long.dat<span class="sc">$</span>age <span class="sc">~</span> long.dat<span class="sc">$</span>weight,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span>long.dat<span class="sc">$</span>species, <span class="at">pch=</span><span class="dv">19</span>, <span class="at">cex=</span><span class="fl">0.5</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod1, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(species)){</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  wt.range <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(long.dat<span class="sc">$</span>weight[long.dat<span class="sc">$</span>species<span class="sc">==</span>species[i]]),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">max</span>(long.dat<span class="sc">$</span>weight[long.dat<span class="sc">$</span>species<span class="sc">==</span>species[i]]),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                  <span class="at">l=</span><span class="dv">100</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  p2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod2, <span class="at">newdata=</span><span class="fu">data.frame</span>(</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">species =</span> species[i],</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">weight=</span>wt.range</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(p2 <span class="sc">~</span> wt.range, <span class="at">col=</span><span class="fu">as.numeric</span>(species[i]), <span class="at">lwd=</span><span class="dv">4</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>xvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>, <span class="dv">100</span>, <span class="at">l=</span><span class="dv">200</span>)</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co"># note that we use re.form=~0 to indicate the fixed effects only</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod3, <span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">weight=</span>xvals), <span class="at">re.form=</span><span class="sc">~</span><span class="dv">0</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(p3 <span class="sc">~</span> xvals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="mixedeffects_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="interpreting-fixed-effects" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="interpreting-fixed-effects"><span class="header-section-number">11.4.1</span> Interpreting fixed effects</h3>
+<p>The way we interpret the fixed effects from a random effects model is basically the same as an LM or GLM: the coefficient estimates for the slope(s) are the expected change in the response variable for every one unit increase in the predictor variable, and the intercept(s) are the expected difference among groups, all else being held constant.</p>
 </section>
-<section id="fitting-mixed-effects-models" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="fitting-mixed-effects-models"><span class="header-section-number">11.5</span> Fitting mixed effects models</h2>
-<section id="interpreting-random-effects" class="level3" data-number="11.5.1">
-<h3 data-number="11.5.1" class="anchored" data-anchor-id="interpreting-random-effects"><span class="header-section-number">11.5.1</span> Interpreting random effects</h3>
-</section>
-<section id="interpreting-fixed-effects" class="level3" data-number="11.5.2">
-<h3 data-number="11.5.2" class="anchored" data-anchor-id="interpreting-fixed-effects"><span class="header-section-number">11.5.2</span> Interpreting fixed effects</h3>
-</section>
-<section id="predicting-from-mems" class="level3" data-number="11.5.3">
-<h3 data-number="11.5.3" class="anchored" data-anchor-id="predicting-from-mems"><span class="header-section-number">11.5.3</span> Predicting from MEMs</h3>
-</section>
-</section>
-<section id="shrinkage" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="shrinkage"><span class="header-section-number">11.6</span> Shrinkage</h2>
-<p>The random effect we added for Station is at the level of Station, because remember we are only estimating the standard deviation of the distribution from which deviations by groups are drawn. Each level of our grouping factor (i.e.&nbsp;CG1, CG2, etc.) has its own ‘Best Linear Unbiased Predictor’ drawn from that distribution, more commonly called BLUPs because it is fun to say. BLUPs are the individual predicted differences, i.e.&nbsp;the result of adding a random effect for Station means each station has a different BLUP.</p>
+<section id="interpreting-random-effects" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="interpreting-random-effects"><span class="header-section-number">11.4.2</span> Interpreting random effects</h3>
+<p>The random effect we added for Species is at the level of Species, because remember we are only estimating the standard deviation of the distribution from which deviations by groups are drawn. Each level of our grouping factor has its own ‘Best Linear Unbiased Predictor’ drawn from that distribution, more commonly called BLUPs because it is fun to say. BLUPs are the individual predicted differences, i.e.&nbsp;the result of adding a random effect for Species means each species has a different BLUP.</p>
 <p>They are not estimates because we did not estimate parameters, hence why they are called predictions. They rely on data from other groups to fit the overall random effect, which means that groups with small sample size have BLUPs that are more influenced by the population mean than large groups. BLUPs tell us how much the parameter for each group differs from the population mean, i.e.&nbsp;in the case of a random intercept, how much each group’s intercept is above or below the mean intercept.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
