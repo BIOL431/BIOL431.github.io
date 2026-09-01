@@ -111,6 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -218,6 +219,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Effects</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_stochasticity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochasticity</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -312,16 +319,16 @@ window.Quarto = {
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># success (heads) of 0.5</span></span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we could keep running this line over and over</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or we could increase n, the number of replicates</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># this gives us a vector of 100 observations of a coin flip</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fu">c</span>(<span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 1 0 0 0 1 0 1 0 1 0 1 0 0 1 1 0 0 1 0 1 0 1 1 1 1 1 0 0 1 0 1 0 1 0 0 1
- [38] 1 0 1 1 1 1 0 1 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1
- [75] 1 1 0 1 0 0 1 1 1 0 0 1 0 0 0 1 1 1 1 1 0 0 1 1 1 1</code></pre>
+<pre><code>  [1] 1 0 1 1 0 0 1 1 0 1 1 0 0 0 1 1 1 1 0 1 0 1 0 1 1 0 0 1 1 0 1 0 1 0 1 1 0
+ [38] 1 0 1 1 1 1 0 0 1 0 0 1 0 1 1 1 0 1 0 1 1 0 1 0 1 0 0 0 0 0 0 0 1 1 1 1 1
+ [75] 0 0 0 1 0 0 1 1 0 1 1 0 1 1 0 0 0 0 1 0 0 1 1 1 0 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># to visualize the outcome, we can create a histogram plotting the results</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># using the function hist()</span></span>
@@ -346,7 +353,7 @@ window.Quarto = {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>Note that the value we get from this can only ever be 0 or 1, but, the value returned is random. We don’t always get a 1, and we don’t always get a 0, but every single time we have a 0.5 probability of getting a 1 (i.e., a ‘success’).</p>
@@ -355,12 +362,12 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take ten draws of size 1 from the distribution</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 0 0 0 1 1 0 0 0</code></pre>
+<pre><code> [1] 1 0 1 1 0 0 0 1 0 1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take 1 draw (for one comedian) who gets 10 guesses, and report the number of successes in those 10 attempts</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>We could now tally up the number of times a comedian was successful based on this random draw. Over the long-run, this number should balance out to roughly 50/50, but on any given draw it is random. The reason it starts to balance out when we take enough draws is due to the <em>law of large numbers</em>. If we make enough draws from a probability distribution, eventually it will start to resemble the expected value. Let’s try still letting our comedian guess 10 times, but now we will iterate that for 1000 attempts. So in our simulated world, you could think of it like 1000 comedians all get a shot to guess horse or laminator 10 times each, and we want to know the average number of times they were correct. We would expect it to stabilize probably somewhere around five out of 10 times.</p>
@@ -368,56 +375,42 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this will give us 1000 simulations of 10 draws from binomial</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   [1]  4  6  4  5  6  7  6  5  4  7  5  3  2  4  7  7  6  5  3  4  4  4  4  5
-  [25]  5  4  6  4  4  1  2  5  3  7  5  4  3  4  6  2  5  5  5  3  6  3  4  3
-  [49]  6  6  4  3  6  3  3  8  5  6  5  2  4  6  4  6  3  6  4  7  6  6  7  6
-  [73]  4  6  4  3  4  6  2  8  5  6  5  2  5  3  5  6  4  6  4  5  6  4  5  6
-  [97]  5  7  3  5  3  8  6  5  6  6  5  7  3  3  5  5  5  3  5  3  4  6  3  6
- [121]  6  2  5  6  4  6  3  6  5  4  6  7  6  3  7  6  6  5  4  4  9  4  4  5
- [145]  4  6  8  5  5  6  4  2  6  7  3  4  8  5  4  7  6  7  5  4  6  4  3  4
- [169]  5  5  7  4  5  6  3  5  3  4  8  6  6  6  8  4  4  7  8  4  5  1  4  5
- [193]  4  6  7  3  6  5  4  4  4  5  6  7  6  7  6  3  4  5  5  3  7  3  6  1
- [217]  4  2  4  5  3  6  7  4  5  1  6  4  3  4  4  4  6  7  8  5  6  4  5  6
- [241]  6  4  8  4  8  5  5  2  3  4  4  7  6  4  3  6  4  4  6  4  5  6  4  6
- [265]  6  1  2  5  3  6  3  4  5  7  6  8  3  6  8  6  2  4  7  3  5  2  6  3
- [289]  6  8  6  4  5  3  6  6  7  6  4  6  4  5  4  5  5  4  2  7  5  4  8  8
- [313]  5  5  4  7  4  7  7  5  2  3  7  3  5  7  5  3  4  6  5  4  4  5  2  7
- [337]  7  5  6  5  7  5  4  3  4  3  4  5  5  4  8  6  7  7  7  4  3  5  6  6
- [361]  4  3  3  6  4  5  5  4  2  5  6  4  4  6  6  5  6  5  6  7  5  5  4  8
- [385]  4  4  2  4  4  5  9  4  5  4  3  2  6  3  6  1  6  4  3  4  7  8  1  4
- [409]  6  5  5  4  4  6  4  5  5  5  5  5  5  4  7  5  4  5  5  5  5  4  3  5
- [433]  6  3  3  5  6  7  3  6  5  8  6  5  4  5  6  7  6  3  4  6  5  3  6  9
- [457]  7  4  7  7  1  7  6  6  2  6  2  6  4  5  7  5  7  4  6  8  4  3  3  9
- [481]  6  8  2  5  5  6  4  6  5  3  2  5  3  3  4  5  3  6  4  5  3  7  4  6
- [505]  5  5  4  7  2  7  6  4  5  5  5  6  2  4  4  5  4  5  5  5  4  4  6  4
- [529]  6  6  6  3  3  4  3  1  2  7  7  6  7  4  4  4  5  6  3  6  6  6  6  7
- [553]  7  4  5  7  7  3  3  5  5  7  3  3  6  2  5  5  5  5  6  4  5  4  3  7
- [577]  6  4  5  5  7  3  3  8  5  5  6  2  6  3  6  4  6  4  6  4  5  6  5  4
- [601]  5  2  5  6  5  2  7  3  4  4  4  7  5  8  9  3  7  5  4  6  6  5  6  7
- [625]  2  5  3  4  7  4  5  2  9  4  5  3  6  4  8  4  8  4  7  5  4  5  6  4
- [649]  4  6  6  4  6  6  2  2  5  4  6  8  6  7  5  5  5  2  6  6  4  5  4  7
- [673]  4  6  7  5  1  5  5  6  6  4  8  1 10  7  5  8  2  6  4  6  8  4  5  3
- [697]  9  2  3  3  3  2  3  3  4  2  4  5  3  6  5  4  1  5  6  6  6  7  6  5
- [721]  6  4  6  6  6  5  6  6  5  5  5  4  2  5  2  6  7  6  8  6  2  4  4  8
- [745]  4  3  6  5  4  7  7  6  8  4  7  5  3  6  3  4  4  7  4  3  2  4  7  3
- [769]  1  5  4  5  5  4  4  2  5  8  5  3  5  5  4  3  4  6  6  6  7  5  3  9
- [793]  5  3  5  5  6  4  6  5  5  6  2  5  3  4  7  0  3  5  6  5  6  6  5  5
- [817]  3  3  6  4  5  5  2  7  3  1  4  5  6  5  3  4  7  6  7  5  4  4  6  5
- [841]  5  8  4  2  3  2  3  4  5  6  4  8  3  8  7  5  4  6  3  7  6  5  6  4
- [865]  4  3  5  3  5  6  8  5  5  5  4  6  7  3  5  8  7  6  4  2  4  3  4  9
- [889]  6  6  7  6  5  2  0  6  2  4  6  5  4  6  3  8  4  3  6  4  5  3  7  8
- [913]  5  5  7  5  3  5  3  5  6  5  5  2  4  2  4  5  5  6  5  5  8  5  2  4
- [937]  3  5  7  5  6  8  6  5  3  6  4  3  5  8  6  5  8  3  6  5  4  2  5  4
- [961]  5  8  6  6  6  2  5  6  3  5  6  4  5  5  6  5  5  5  5  3  3  6  3  7
- [985]  7  6  6  4  6  5  5  7  4  7  3  3  6  5  7  6</code></pre>
+<pre><code>   [1] 4 4 3 2 3 3 6 5 4 3 4 5 6 5 7 4 9 5 5 5 2 3 6 5 5 6 5 6 5 3 5 6 7 7 4 2 3
+  [38] 4 2 6 4 6 4 2 6 5 5 5 7 6 6 3 6 8 5 7 3 5 4 6 4 5 4 8 3 6 2 6 2 4 9 5 4 7
+  [75] 5 3 6 5 5 4 5 4 3 5 7 5 7 4 4 4 4 4 5 6 8 5 8 6 4 6 4 6 3 5 2 8 2 5 2 4 4
+ [112] 5 7 6 7 6 2 2 5 5 3 5 5 5 7 6 5 6 6 1 3 6 4 2 6 6 7 3 7 5 2 5 6 4 4 6 9 4
+ [149] 3 4 5 3 5 7 4 6 5 7 2 4 8 5 2 4 2 5 6 5 5 5 3 3 6 4 6 5 5 3 7 4 4 6 4 4 6
+ [186] 6 5 5 4 6 4 6 6 7 5 7 3 2 6 3 3 5 5 3 4 6 6 5 6 5 1 3 4 4 6 8 6 3 5 5 7 5
+ [223] 5 5 4 5 4 6 5 3 6 3 6 6 4 5 4 3 4 6 4 7 8 3 5 7 3 5 7 5 4 4 3 3 0 5 3 5 4
+ [260] 4 7 4 6 8 6 6 4 5 4 5 5 3 5 5 7 4 6 2 4 5 5 6 5 5 6 7 7 3 2 5 5 2 6 7 7 6
+ [297] 6 5 3 6 5 7 6 5 2 2 8 3 4 2 7 6 5 6 6 5 4 6 3 8 7 5 7 6 6 4 5 6 8 7 4 5 4
+ [334] 6 4 5 4 4 8 3 4 7 3 5 6 6 5 6 5 5 6 6 5 6 4 2 7 3 6 5 3 5 3 8 4 4 7 8 2 6
+ [371] 4 5 5 4 5 5 5 5 3 5 3 6 6 5 6 7 4 5 6 2 7 7 7 6 4 3 5 4 4 4 5 5 4 4 7 3 6
+ [408] 6 5 3 5 6 6 7 6 5 3 2 2 7 2 4 7 4 4 6 4 4 5 4 3 6 4 6 5 3 7 3 4 6 5 6 7 6
+ [445] 8 4 3 1 3 3 7 1 8 2 5 6 5 6 6 5 6 3 5 3 6 5 5 5 6 4 6 5 5 5 6 3 7 5 6 3 1
+ [482] 6 4 5 7 7 8 5 4 5 6 5 6 4 3 6 7 5 5 7 7 6 5 7 7 5 5 6 6 8 7 5 6 4 5 7 7 5
+ [519] 3 5 5 4 6 6 6 5 3 4 4 3 5 5 5 4 3 6 6 4 4 5 4 6 3 2 7 4 4 7 6 5 5 5 5 6 5
+ [556] 4 4 9 5 5 5 3 3 8 6 6 5 7 4 5 5 5 5 7 7 6 5 8 6 6 3 6 8 8 6 6 4 3 5 6 5 3
+ [593] 2 6 6 4 4 3 5 2 7 4 5 6 8 4 6 4 6 6 3 5 5 6 5 7 6 7 7 5 4 4 5 7 4 4 5 6 5
+ [630] 6 6 4 5 6 2 5 8 5 7 7 7 6 6 3 7 5 4 7 5 9 4 4 3 4 5 3 5 4 8 4 6 4 4 5 4 5
+ [667] 5 4 8 4 6 4 2 6 5 4 8 7 2 3 5 4 5 4 3 4 7 4 6 5 5 6 7 8 5 6 4 7 5 4 7 9 4
+ [704] 5 9 4 5 2 3 4 9 8 5 7 5 4 3 3 4 6 5 6 3 5 5 4 2 6 8 7 2 4 6 5 4 5 5 5 6 4
+ [741] 4 6 5 5 3 8 5 7 3 5 3 6 6 7 7 6 4 3 6 6 2 5 4 6 3 7 6 4 6 5 3 3 6 8 7 7 7
+ [778] 5 1 3 4 3 3 6 5 2 6 6 5 5 7 5 7 7 4 7 6 4 7 5 4 4 3 3 8 3 6 5 4 5 4 5 4 4
+ [815] 5 7 4 5 6 3 6 5 3 4 5 6 4 5 5 6 4 8 3 6 4 4 4 5 4 4 5 4 5 9 4 3 4 7 5 6 5
+ [852] 8 4 5 6 4 6 5 5 7 5 4 3 4 7 5 5 6 2 4 5 2 4 7 5 6 4 6 4 6 4 5 4 5 5 6 6 7
+ [889] 5 6 4 6 6 8 5 7 5 7 7 4 6 3 4 2 3 7 6 5 3 7 2 4 4 5 8 6 7 4 6 5 3 8 3 7 4
+ [926] 7 5 5 4 1 5 4 2 3 5 4 6 6 5 4 5 4 5 6 4 8 9 4 6 6 7 3 6 4 6 5 5 7 2 7 7 4
+ [963] 5 3 6 6 7 5 5 6 3 6 3 9 2 6 5 8 5 6 6 2 6 8 6 4 6 3 7 7 7 6 4 3 6 5 6 4 4
+[1000] 7</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we should save this to an object so it is easier to work with</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ten_attempts <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob=</span><span class="fl">0.5</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(ten_attempts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ten_attempts
-  0   1   2   3   4   5   6   7   8   9 
-  1   7  46 112 225 238 200 123  40   8 </code></pre>
+  1   2   3   4   5   6   7   8   9  10 
+  9  49 101 199 255 218 112  40  16   1 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ten_attempts)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -442,19 +435,19 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>
    FALSE     TRUE 
-0.968565 0.031435 
+0.968787 0.031213 
 
    FALSE     TRUE 
-0.500368 0.499632 
+0.500155 0.499845 
+
+  FALSE    TRUE 
+0.49881 0.50119 
 
    FALSE     TRUE 
-0.500401 0.499599 
+0.499653 0.500347 
 
    FALSE     TRUE 
-0.500207 0.499793 
-
-   FALSE     TRUE 
-0.999883 0.000117 </code></pre>
+0.999889 0.000111 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we could also do it mathematically, instead of with simulation</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(scores, scores, <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -474,9 +467,9 @@ window.Quarto = {
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 100 observations, each with one draw from the Bernoulli distribution</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 0 0 0 1 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 0 1 1 1 1 1 0 1 0 0 0 1 1 0 1 1 0
- [38] 1 0 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 1
- [75] 0 0 1 1 0 0 0 0 0 1 0 0 0 1 1 0 1 0 1 1 0 0 0 0 0 0</code></pre>
+<pre><code>  [1] 1 0 1 0 0 1 1 0 0 1 1 1 1 1 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 1 1 1 0 0 1 0
+ [38] 0 1 1 0 0 0 0 0 1 0 0 0 1 0 1 0 0 1 0 0 1 1 0 0 0 0 0 0 0 1 1 0 1 1 0 0 0
+ [75] 0 0 1 0 0 0 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 0 1 1 0 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># so far, we have just been running functions and the output is shown in the console</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># but we don't have anything in our environment</span></span>
@@ -504,7 +497,7 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for one nest with 3 chicks and a probability of success of 0.4</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">p=</span><span class="fl">0.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we could also think about a colony with let's say 100 nests</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># how many chicks from each nest will make it?</span></span>
@@ -519,9 +512,9 @@ window.Quarto = {
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>nest_offspring</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  [1] 1 0 1 1 1 2 2 0 2 0 1 2 1 2 0 2 1 2 1 0 2 1 1 1 0 1 0 2 0 2 2 2 2 2 1 1 0
- [38] 2 1 2 1 1 1 2 2 1 0 1 1 3 3 2 1 1 0 2 1 1 0 1 1 1 1 1 1 1 0 2 1 2 1 0 0 1
- [75] 1 1 1 2 0 3 1 2 1 2 1 1 2 2 2 2 2 1 1 1 0 1 1 0 1 1</code></pre>
+<pre><code>  [1] 0 0 0 1 2 2 0 1 1 2 1 2 0 3 2 0 0 1 2 3 2 2 2 0 1 3 0 3 2 0 2 0 1 0 2 0 1
+ [38] 1 0 2 2 1 0 1 2 2 2 0 0 2 1 2 0 3 2 1 2 1 1 3 3 2 2 1 2 0 2 1 1 0 2 1 2 1
+ [75] 2 1 2 2 1 1 2 3 2 1 1 2 2 0 1 1 2 2 1 2 1 1 2 2 1 2</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability that all three chicks from a nest make it?</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># because we know what we fixed p to, we could multiply the probabilities</span></span>
@@ -545,7 +538,7 @@ window.Quarto = {
 <div class="cell-output cell-output-stdout">
 <pre><code>nest_offspring
  0  1  2  3 
-18 49 30  3 </code></pre>
+21 31 40  8 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># proportions will convert the table into proportions instead of counts</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co"># so will prop.table and I often use that function because I learned it first</span></span>
@@ -570,12 +563,12 @@ window.Quarto = {
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the table of proportions to estimate the probability at least one survives?</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.82</code></pre>
+<pre><code>[1] 0.79</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the probability at least two survive?</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(survival_prob[<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.33</code></pre>
+<pre><code>[1] 0.48</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># side note: if you're not sure which indices to subset, it can help to look at</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># your object; you can easily do this in RStudio by highlighting just the bit of</span></span>

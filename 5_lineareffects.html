@@ -71,6 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./6_stochasticity.html" rel="next">
 <link href="./4_probability.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -110,6 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -215,6 +217,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./5_lineareffects.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Effects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_stochasticity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochasticity</span></span></a>
   </div>
 </li>
     </ul>
@@ -412,7 +420,7 @@ window.Quarto = {
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>exp.temp <span class="ot">&lt;-</span> avg.t <span class="sc">+</span> b.col<span class="sc">*</span>ant.col <span class="sc">+</span> b.nap <span class="sc">*</span> napping <span class="sc">+</span> b.pit<span class="sc">*</span>in.pit</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exp.temp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 60.71960 60.50585 60.39357 64.53184 64.34244 70.71112</code></pre>
+<pre><code>[1] 64.48484 70.31124 60.52879 60.52464 64.51203 60.54041</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(exp.temp <span class="sc">~</span> ant.col)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -548,12 +556,12 @@ A =
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predvals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         [,1]
-[1,] 60.71960
-[2,] 60.50585
-[3,] 60.39357
-[4,] 64.53184
-[5,] 64.34244
-[6,] 70.71112</code></pre>
+[1,] 64.48484
+[2,] 70.31124
+[3,] 60.52879
+[4,] 60.52464
+[5,] 64.51203
+[6,] 60.54041</code></pre>
 </div>
 </div>
 
@@ -968,6 +976,9 @@ A =
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./6_stochasticity.html" class="pagination-link" aria-label="Stochasticity">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochasticity</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
