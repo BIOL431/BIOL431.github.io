@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Stochasticity – BIOL 431/531: Ecological Modeling</title>
+<title>7&nbsp; Stochasticity – BIOL 431/531: Ecological Modeling</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./5_lineareffects.html" rel="prev">
+<link href="./lab2_data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -151,7 +151,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./6_stochasticity.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochasticity</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./6_stochasticity.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Stochasticity</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -220,8 +220,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab2_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lab 2: Data structures</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./6_stochasticity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochasticity</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Stochasticity</span></span></a>
   </div>
 </li>
     </ul>
@@ -234,8 +240,8 @@ window.Quarto = {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#errors-or-residuals" id="toc-errors-or-residuals" class="nav-link active" data-scroll-target="#errors-or-residuals"><span class="header-section-number">6.1</span> Errors (or residuals)</a></li>
-  <li><a href="#ordinary-least-squares" id="toc-ordinary-least-squares" class="nav-link" data-scroll-target="#ordinary-least-squares"><span class="header-section-number">6.2</span> Ordinary Least Squares</a></li>
+  <li><a href="#errors-or-residuals" id="toc-errors-or-residuals" class="nav-link active" data-scroll-target="#errors-or-residuals"><span class="header-section-number">7.1</span> Errors (or residuals)</a></li>
+  <li><a href="#ordinary-least-squares" id="toc-ordinary-least-squares" class="nav-link" data-scroll-target="#ordinary-least-squares"><span class="header-section-number">7.2</span> Ordinary Least Squares</a></li>
   </ul>
 </nav>
     </div>
@@ -244,7 +250,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Stochasticity</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Stochasticity</span></h1>
 </div>
 
 
@@ -262,26 +268,26 @@ window.Quarto = {
 
 
 <p>On Tuesday, we talked about the first three assumptions of linear models: that they make biological sense, that the effects are linear, and the effects are additive. Today, we are talking (at least indirectly) about the last three, which all have to do with <em>errors</em>.</p>
-<section id="errors-or-residuals" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="errors-or-residuals"><span class="header-section-number">6.1</span> Errors (or residuals)</h2>
+<section id="errors-or-residuals" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="errors-or-residuals"><span class="header-section-number">7.1</span> Errors (or residuals)</h2>
 <p><em>Error</em> is a terrible term for what it describes, which is the difference between the predicted values (i.e., the expected values based on our additive, linear effects) and the observed values. These differences are also called the <em>residuals</em>, meaning the residual variation left behind that is not explained by the linear effects. The term error implies that for some reason, we should expect all values to fit perfectly along the modeled line, and to be perfectly explained by our model. But, we know that models are simplifications of the real world, and the most parsimonious model is the best one. So we should always expect that we are going to be a bit wrong, which is why it then seems silly to say we’ve made an ‘error’ when really, there are just deviations from expected values. It would be absolutely bonkers to assume that because the average adult women in the United States is approximately 63.5 inches that it is an ‘error’ for someone to be taller or shorter than that. Variation just exists.</p>
 <p>Sure, variation could stem from an actual error. For example, because we imperfectly observe the world, miscount individuals, our measurement tools are a bit faulty, etc. It could also represent true biological variability around a population mean (e.g.&nbsp;think about intraspecific trait variability). Or, it could represent unmeasured or unmodeled variables (i.e., the variable we are modeling is predicted by two covariates, but we only included one, so we are working with an incomplete picture). And, of course, it could be a combination of these different factors.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># what is the expected number of ones, given there are 25 dice?</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">25</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0</code></pre>
+<pre><code> [1] 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">size=</span><span class="dv">25</span>, <span class="at">replace=</span>T))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 1 2 3 4 5 6 
-4 5 3 5 6 2 </code></pre>
+2 5 5 7 2 4 </code></pre>
 </div>
 </div>
 </section>
-<section id="ordinary-least-squares" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="ordinary-least-squares"><span class="header-section-number">6.2</span> Ordinary Least Squares</h2>
+<section id="ordinary-least-squares" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="ordinary-least-squares"><span class="header-section-number">7.2</span> Ordinary Least Squares</h2>
 <p>In an algebraic linear function represented in slope-intercept form, all values of <span class="math inline">\(y\)</span> lie on the line, with no deviation from it. In the real world, data are messy, so how do we find the line of best fit through that data? Typically, we use ordinary least squares (OLS) regression. You can think of it as if we are attempting to find the combination of the slope (<span class="math inline">\(m\)</span>) and intercept (<span class="math inline">\(b\)</span>) that leads to a line that is as close as possible to all data points. In other words, we want to have the smallest <em>residuals</em> (the difference between each point and the predicted value on the line) as possible. In reality, we base this fit on the sum of the squared residuals. Why squared? Let’s simulate some data.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, let's create a function that generates observations as a linear function </span></span>
@@ -909,8 +915,8 @@ F-statistic: 2.925 on 1 and 8 DF,  p-value: 0.1256</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./5_lineareffects.html" class="pagination-link" aria-label="Linear Effects">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear Effects</span></span>
+      <a href="./lab2_data.html" class="pagination-link" aria-label="Lab 2: Data structures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lab 2: Data structures</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
