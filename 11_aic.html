@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -208,8 +243,19 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#stepwise-regression" id="toc-stepwise-regression" class="nav-link active" data-scroll-target="#stepwise-regression"><span class="header-section-number">12.1</span> Stepwise regression</a></li>
+  <li><a href="#information-theoretic-approaches" id="toc-information-theoretic-approaches" class="nav-link" data-scroll-target="#information-theoretic-approaches"><span class="header-section-number">12.2</span> Information theoretic approaches</a>
+  <ul class="collapse">
+  <li><a href="#general-things-to-remember-if-you-end-up-using-aic" id="toc-general-things-to-remember-if-you-end-up-using-aic" class="nav-link" data-scroll-target="#general-things-to-remember-if-you-end-up-using-aic"><span class="header-section-number">12.2.1</span> General things to remember if you end up using AIC</a></li>
+  </ul></li>
+  <li><a href="#practice-with-aic" id="toc-practice-with-aic" class="nav-link" data-scroll-target="#practice-with-aic"><span class="header-section-number">12.3</span> Practice with AIC</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -233,8 +279,87 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Sometimes, we have a lot of hypotheses and predictions, and therefore we have run a lot of models and need to choose between them. I’m a big fan of just focusing your analyses on a handful of models that you’re most interested in, because if you’ve posed your questions in an interesting way, no matter what results you get, you’ll have an interesting answer. But, sometimes you get handed a gigantic dataset or too many variables and have to choose amongst many models. More importantly, you should know how to read and evaluate published papers that have used model selection approaches.</p>
+<section id="stepwise-regression" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="stepwise-regression"><span class="header-section-number">12.1</span> Stepwise regression</h2>
+<p>Let’s say you have a dataset with 30 different variables which you think might be related to your response variable. In an ideal world, you would have a set of models that you’re interested in to test your a priori hypotheses, which should be based on theory or the results of past work. In a less ideal world, you haven’t got a clue which ones might matter. What you should <strong>not</strong> do is what is called stepwise regression. This technique has (thankfully) lost favor and you won’t encounter it much, but it is worth being superficially familiar with it in case you come across a paper using it. In stepwise regression, you fit a model that has all your predictor variables in it. i.e., throw everything in a hat and see what sticks. Then, you remove the variable with the smallest effect or the ‘least significant’ (note: a significance threshold is a threshold; things cannot actually have degrees of significance, they can be or not be) predictor. Then you refit the model, and do the same thing again. You basically keep dropping variables across steps until you’re left with a significant model, i.e.&nbsp;you only keep things that make the model “better” in some way. This can be down backwards (as described here, where you start with everything and then drop stuff) or forwards (where you add things, but only if they improve model fit). This is all around a bad idea. Why? Because you’re basically guaranteeing good model fit by only including things that make the model a better fit, so you’re forcing your model to conform to the data rather than just interpreting the model. It is a form of p-hacking. You’re also making decisions based on the data, rather than what makes biological sense. Small differences in the data could lead to big differences in the eventual model that is selected. And, because the data are driving the decisions, you’ll most likely end up with a model that has really high within-sample performance but terrible out-of-sample performance and is not generalizable. So just don’t do it, and take papers that use this approach with a huge grain of salt (at <em>least</em> one baby bird’s worth).</p>
+</section>
+<section id="information-theoretic-approaches" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="information-theoretic-approaches"><span class="header-section-number">12.2</span> Information theoretic approaches</h2>
+<p>If you only have a few parameters, you probably don’t need model selection. For example, if you have one or two a priori models based on theory, then you only need to run those models. If you designed your experiment around your hypothesis, you likely also don’t need to select amongst models. But, if you have many variables and multiple hypotheses, you may want to use model selection.</p>
+<p>The general approach to information theoretic approaches is to start with a set of candidate models. These are derived from the global model (<em>not</em> through stepwise selection, but based on groups you’ve come up with). The global model is all the variables that you think are possibly relevant to your hypothesis. Global models should accurately reflect your study system and variation within it (e.g.&nbsp;if all your samples come from one species, don’t include that as a variable). They should also be based on theory and previous research; they should make biological sense. Global models should not be based on patterns in the data (i.e.&nbsp;do not use p-values to determine your global model). From your global model, you should then define a set of candidate models. Candidate models should <em>not</em> be all possible permutations of variables from your global model. Each candidate model should make biological sense and have a corresponding hypothesis.</p>
+<blockquote class="blockquote">
+<p><em>Multi-model inference is not a substitute for critical thinking.</em></p>
+</blockquote>
+<p>The best model is one that has the fewest parameters that still adequately represents the data. This is known as parsimony, or if you’re feeling fancy, Occam’s razor. Therefore, we want to penalize models that have too many predictors in them, because a simpler model, if it explains just as much or at least close to as much as a more complex one, is better.</p>
+<blockquote class="blockquote">
+<p>“More things should not be used than are necessary” - Occam “The procedure of induction consists in accepting as true the simplest law that can be reconciled with our experiences.” - Wittgenstein (Tractatus Logico-Philosophicus)</p>
+</blockquote>
+<p>In information theoretic approaches to inference, the goal is to balance overfitting (i.e., too many predictors) and underfitting (i.e., not enough predictive ability). Underfitting and overfitting are only relevant <em>in the context of the best model</em> because they are not absolute terms – they are relative. Underfitting ignores important structure in the data and has high bias. Overfitting often includes spurious effects and is far too sensitive to the data.</p>
+<p>Overfitting can happen pretty easily with stepwise selection or data dredging. Data dredging is when you iteratively build different models hoping that somehow the ‘best model’ will emerge. This is a massive problem because it leads to overfitting the data which means that you overestimate the precision and the resulting tests are not valid.</p>
+<blockquote class="blockquote">
+<p>“Journal editors and referees rarely seem to show concern for the validity of results and conclusions where substantial data dredging has occurred. Thus, the entire methodology based on data dredging has been allowed to be perpetuated in an unthinking manner.” - Burnham and Anderson</p>
+</blockquote>
+<p>Let’s talk about AIC. AIC was developed by Akaike and originally called ‘An Information Criterion’ but now people just call it ‘Akaike Information Criterion’ or AIC. It is one of the most popularly used information theoretic approaches. It balances model performance with parsimony. Information theoretic approaches are based on Kullback-Leibler information, which is the ‘distance’ between two models in terms of how close they are to the truth. It cannot tell us how close a model actually is to the ‘truth’ but rather how relatively close two, or more, different models are. It is a measure of relative entropy, and represents the information we lose when moving from one model to another. We can use it by comparing some truth or reality f() to some model g(); to compute the distance between reality and our model, we need to know their parameters. But, we can never actually know the parameters for reality, so instead we just assume that the truth is the same for everything, and then compare our models to that unmeasurable truth, so at least we can determine if one model is closer or farther from reality than another.</p>
+<p>There is a <em>very</em> important caveat here: we are only comparing models to each other. So the “best” model is only of the ones we compared in our candidate set, and may actually be a pretty trash model. For example, consider <a href="https://packaged-media.redd.it/9xcpslmqgfg61/pb/m2-res_720p.mp4?m=DASHPlaylist.mpd&amp;var=sgpssan&amp;v=1&amp;e=1777582800&amp;s=37458d93cd3dc1fb9d352f27f678e90a69b43bb5">this race</a>. One of those kids is the ‘best’ but I bet if you threw Usain Bolt into the same race, he would be a lot closer to the ‘truth’ than they were.</p>
+<p>Akaikie proposed using the K-L distance to compare models, and showed that the relative K-L distance can be estimated from the log-likelihood at its maximum point but it is biased upwards. That bias is proportional to the number of parameters in the model; more parameters will always be closer to the truth, but at the cost of parsimony. So, we add a penalty to models with more predictor variables. Thus, AIC is an estimate of the relative distance between the fitted model and the true process that generated the observed data, after penalizing models that are less parsimonious.</p>
+<p>How does AIC get used? Typically, we calculate AIC for every model in our candidate set. The model with the lowest AIC is the “closest” to the truth of the models that we considered. If two models are both ranked similarly and have relatively small differences in AIC, we make inference on the one that makes the most biological sense. I say ‘relatively small’ because there are of course gradients here. Some people say a difference of less than 2 in AIC values is a reasonable distance, but that’s a totally arbitrary rule of thumb that has no real meaning despite what people say in the literature. Beware, and be very skeptical of, arbitrary cutoffs!</p>
+<p>Remember that only models in the candidate set will be considered, and ALL your models can be bad but AIC will still select the ‘best model’ of the ones you compared. The best model may not be a good model.</p>
+<section id="general-things-to-remember-if-you-end-up-using-aic" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="general-things-to-remember-if-you-end-up-using-aic"><span class="header-section-number">12.2.1</span> General things to remember if you end up using AIC</h3>
+<p>AIC cannot be used when you have different datasets; because it is relative, it is only valid for internal comparisons (i.e.&nbsp;an AIC of 300 in one model set may be good, but in another it may be bad) You should always sort tables with lowest AIC models on top. Your response variable must be the same and not transformed (i.e.&nbsp;y ~ x1 + x2 and log(y) ~ x1 + x2 are not comparable). The word ‘significant’ should not appear in your description of the results - AIC is not a hypothesis test. If you’re using AIC for inference, do not combine it with other inferential approaches (i.e.&nbsp;do not compare two top-ranking models with a statistical test).</p>
+</section>
+</section>
+<section id="practice-with-aic" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="practice-with-aic"><span class="header-section-number">12.3</span> Practice with AIC</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fl">2.2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>est <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x1 <span class="co"># we'll call this the 'truth'</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> est) </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">~</span>x1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="11_aic_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x3 <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x4 <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">100</span>, <span class="dv">1</span>, .<span class="dv">2</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>mod4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mod1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 469.2477</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mod2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 467.2677</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mod3)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 273.4643</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(mod4)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 272.2444</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># which model is the closest to the truth?</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">AIC</span>(mod1), <span class="fu">AIC</span>(mod2), <span class="fu">AIC</span>(mod3), <span class="fu">AIC</span>(mod4))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 469.2477 467.2677 273.4643 272.2444</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
