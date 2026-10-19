@@ -267,6 +267,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Generalized linear models</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_mixedeffects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Mixed Effects Models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab6_reporting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Best practices for reporting</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -462,7 +474,7 @@ window.Quarto = {
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>exp.temp <span class="ot">&lt;-</span> avg.t <span class="sc">+</span> b.col<span class="sc">*</span>ant.col <span class="sc">+</span> b.nap <span class="sc">*</span> napping <span class="sc">+</span> b.pit<span class="sc">*</span>in.pit</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(exp.temp)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 64.40683 60.41833 74.59142 70.52106 60.59502 64.48701</code></pre>
+<pre><code>[1] 60.60343 60.52713 70.46529 60.68522 60.51608 64.61473</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(exp.temp <span class="sc">~</span> ant.col)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -598,12 +610,12 @@ A =
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(predvals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         [,1]
-[1,] 64.40683
-[2,] 60.41833
-[3,] 74.59142
-[4,] 70.52106
-[5,] 60.59502
-[6,] 64.48701</code></pre>
+[1,] 60.60343
+[2,] 60.52713
+[3,] 70.46529
+[4,] 60.68522
+[5,] 60.51608
+[6,] 64.61473</code></pre>
 </div>
 </div>
 
